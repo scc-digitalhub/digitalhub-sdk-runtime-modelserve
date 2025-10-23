@@ -13,9 +13,9 @@ from digitalhub_runtime_modelserve.entities.function.modelserve.spec import (
     FunctionValidatorModelserve,
 )
 
-path_regex = r"^(store://([^/]+)/model/sklearn/.*)|.*\\.pkl$|.*\\.joblib$"
+path_regex = r"^(store://([^/]+)/model/sklearn/.*)|.*\.pkl$|.*\.joblib$"
 
-image_regex = r"^seldonio\\/mlserver?:.*-sklearn$"
+image_regex = r"^seldonio\/mlserver?:.*-sklearn$"
 
 
 class FunctionSpecSklearnserve(FunctionSpecModelserve):

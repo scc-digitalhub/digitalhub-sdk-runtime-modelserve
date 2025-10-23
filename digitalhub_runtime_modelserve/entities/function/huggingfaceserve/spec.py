@@ -16,9 +16,9 @@ from digitalhub_runtime_modelserve.entities.function.modelserve.spec import (
 path_regex = (
     r"^(store://([^/]+)/model/huggingface/.*)"
     + r"|"
-    + r".*\\/$"
+    + r".*\/$"
     + r"|"
-    + r".*\\.zip$"
+    + r".*\.zip$"
     + r"|"
     + r"^huggingface?://.*$"
     + r"|"

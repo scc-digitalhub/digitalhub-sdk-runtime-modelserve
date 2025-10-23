@@ -1,7 +1,7 @@
 {
     "id": "67801f26-135c-41ab-913c-c37fcc8c7851",
     "key": "store://demo-etl/run/mlflowserve+run/67801f26-135c-41ab-913c-c37fcc8c7851",
-    "kind": "mlflowserve+run",
+    "kind": "mlflowserve+serve:run",
     "metadata": {
       "name": "67801f26-135c-41ab-913c-c37fcc8c7851",
       "updated_by": "digitalhubdev",

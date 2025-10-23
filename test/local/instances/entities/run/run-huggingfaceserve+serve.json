@@ -1,7 +1,7 @@
 {
     "id": "f01f768d-5996-454c-b204-af3bc65b05ab",
     "key": "store://demo-etl/run/huggingfaceserve+run/f01f768d-5996-454c-b204-af3bc65b05ab",
-    "kind": "huggingfaceserve+run",
+    "kind": "huggingfaceserve+serve:run",
     "metadata": {
       "name": "f01f768d-5996-454c-b204-af3bc65b05ab",
       "updated_by": "digitalhubdev",

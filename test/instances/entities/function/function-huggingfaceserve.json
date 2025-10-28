@@ -17,7 +17,7 @@
     "spec": {
       "path": "huggingface://model1/model",
       "model_name": "model1",
-      "image": "kserve\/huggingfaceserver:0.7.0-gpu"
+      "image": "kserve\\/huggingfaceserver:0.7.0-gpu"
     },
     "status": {
       "state": "CREATED"

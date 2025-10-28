@@ -22,7 +22,6 @@
       ],
       "tokenizer_revision": "1.0",
       "max_log_len": 20,
-      "replicas": 3,
       "profile": "1xa10",
       "huggingface_task": "sequence_classification",
       "dtype": "FLOAT32",

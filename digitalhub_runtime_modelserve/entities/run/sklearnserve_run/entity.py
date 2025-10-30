@@ -65,19 +65,19 @@ class RunSklearnserveRun(RunModelserveRun):
             Response from the request.
         """
         try:
-            base_url = self.status.service.get("url")
+            base_url: str = self.status.service.get("url")
         except AttributeError:
             raise EntityError(
                 "Url not specified and service not found on run status."
                 " If a service is deploying, use run.wait() or try again later."
             )
 
-        if url is not None and not url.startswith(base_url):
+        if url is not None and not url.startswith(base_url.removeprefix("http://").removeprefix("https://")):
             raise EntityError(f"Invalid URL: {url}. It must start with the service URL: {base_url}")
 
         if url is None:
             model_name = model_name if model_name is not None else "model"
-            url = f"{base_url}/v2/models/{model_name}/infer"
+            url = f"http://{base_url}/v2/models/{model_name}/infer"
 
         if "data" not in kwargs and "json" not in kwargs:
             method = "GET"

@@ -40,6 +40,7 @@ class RunHuggingfaceserveRun(RunModelserveRun):
 
     def invoke(
         self,
+        model_name: str | None = None,
         method: str = "POST",
         url: str | None = None,
         **kwargs,
@@ -75,7 +76,8 @@ class RunHuggingfaceserveRun(RunModelserveRun):
             raise EntityError(f"Invalid URL: {url}. It must start with the service URL: {base_url}")
 
         if url is None:
-            url = f"http://{base_url}"
+            model_name = model_name if model_name is not None else "model"
+            url = f"http://{base_url}/v2/models/{model_name}/infer"
 
         if "data" not in kwargs and "json" not in kwargs:
             method = "GET"

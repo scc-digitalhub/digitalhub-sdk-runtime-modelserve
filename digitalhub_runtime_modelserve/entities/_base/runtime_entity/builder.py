@@ -30,12 +30,12 @@ class RuntimeEntityBuilderMlflowserve(RuntimeEntityBuilder):
     )
 
 
-class RuntimeEntityBuilderSklearnserve(RuntimeEntityBuilder):
-    EXECUTABLE_KIND = EntityKinds.FUNCTION_SKLEARNSERVE.value
+class RuntimeEntityBuilderVllmserve(RuntimeEntityBuilder):
+    EXECUTABLE_KIND = EntityKinds.FUNCTION_VLLMSERVE.value
     TASKS_KINDS = map_actions(
         [
             (
-                EntityKinds.TASK_SKLEARNSERVE_SERVE.value,
+                EntityKinds.TASK_VLLMSERVE_SERVE.value,
                 Actions.SERVE.value,
             ),
         ]
@@ -43,7 +43,7 @@ class RuntimeEntityBuilderSklearnserve(RuntimeEntityBuilder):
     RUN_KINDS = map_actions(
         [
             (
-                EntityKinds.RUN_SKLEARNSERVE_SERVE.value,
+                EntityKinds.RUN_VLLMSERVE_SERVE.value,
                 Actions.SERVE.value,
             ),
         ]
@@ -124,6 +124,26 @@ class RuntimeEntityBuilderKubeaiserveText(RuntimeEntityBuilder):
         [
             (
                 EntityKinds.RUN_KUBEAISERVETEXT_SERVE.value,
+                Actions.SERVE.value,
+            ),
+        ]
+    )
+
+
+class RuntimeEntityBuilderSklearnserve(RuntimeEntityBuilder):
+    EXECUTABLE_KIND = EntityKinds.FUNCTION_SKLEARNSERVE.value
+    TASKS_KINDS = map_actions(
+        [
+            (
+                EntityKinds.TASK_SKLEARNSERVE_SERVE.value,
+                Actions.SERVE.value,
+            ),
+        ]
+    )
+    RUN_KINDS = map_actions(
+        [
+            (
+                EntityKinds.RUN_SKLEARNSERVE_SERVE.value,
                 Actions.SERVE.value,
             ),
         ]

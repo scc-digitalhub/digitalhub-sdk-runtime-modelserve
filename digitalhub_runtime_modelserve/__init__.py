@@ -9,6 +9,7 @@ from digitalhub_runtime_modelserve.entities.function.kubeaiservespeechtotext.bui
 from digitalhub_runtime_modelserve.entities.function.kubeaiservetext.builder import FunctionKubeaiserveTextBuilder
 from digitalhub_runtime_modelserve.entities.function.mlflowserve.builder import FunctionMlflowserveBuilder
 from digitalhub_runtime_modelserve.entities.function.sklearnserve.builder import FunctionSklearnserveBuilder
+from digitalhub_runtime_modelserve.entities.function.vllmserve.builder import FunctionVllmserveBuilder
 from digitalhub_runtime_modelserve.entities.run.huggingfaceserve_run.builder import RunHuggingfaceserveRunBuilder
 from digitalhub_runtime_modelserve.entities.run.kubeaiservespeechtotext_run.builder import (
     RunKubeaiserveSpeechtotextRunBuilder,
@@ -16,6 +17,7 @@ from digitalhub_runtime_modelserve.entities.run.kubeaiservespeechtotext_run.buil
 from digitalhub_runtime_modelserve.entities.run.kubeaiservetext_run.builder import RunKubeaiserveTextRunBuilder
 from digitalhub_runtime_modelserve.entities.run.mlflowserve_run.builder import RunMlflowserveRunBuilder
 from digitalhub_runtime_modelserve.entities.run.sklearnserve_run.builder import RunSklearnserveRunBuilder
+from digitalhub_runtime_modelserve.entities.run.vllmserve_run.builder import RunVllmserveRunBuilder
 from digitalhub_runtime_modelserve.entities.task.huggingfaceserve_serve.builder import TaskHuggingfaceserveServeBuilder
 from digitalhub_runtime_modelserve.entities.task.kubeaiservespeechtotext_serve.builder import (
     TaskKubeaiserveSpeechtotextServeBuilder,
@@ -23,6 +25,7 @@ from digitalhub_runtime_modelserve.entities.task.kubeaiservespeechtotext_serve.b
 from digitalhub_runtime_modelserve.entities.task.kubeaiservetext_serve.builder import TaskKubeaiserveTextServeBuilder
 from digitalhub_runtime_modelserve.entities.task.mlflowserve_serve.builder import TaskMlflowserveServeBuilder
 from digitalhub_runtime_modelserve.entities.task.sklearnserve_serve.builder import TaskSklearnserveServeBuilder
+from digitalhub_runtime_modelserve.entities.task.vllmserve_serve.builder import TaskVllmserveServeBuilder
 
 entity_builders = (
     (EntityKinds.FUNCTION_HUGGINGFACESERVE.value, FunctionHuggingfaceserveBuilder),
@@ -30,16 +33,19 @@ entity_builders = (
     (EntityKinds.FUNCTION_KUBEAISERVETEXT.value, FunctionKubeaiserveTextBuilder),
     (EntityKinds.FUNCTION_MLFLOWSERVE.value, FunctionMlflowserveBuilder),
     (EntityKinds.FUNCTION_SKLEARNSERVE.value, FunctionSklearnserveBuilder),
-    (EntityKinds.TASK_HUGGINGFACESERVE_SERVE.value, TaskHuggingfaceserveServeBuilder),
-    (EntityKinds.TASK_KUBEAISERVESPEECHTOTEXT_SERVE.value, TaskKubeaiserveSpeechtotextServeBuilder),
-    (EntityKinds.TASK_KUBEAISERVETEXT_SERVE.value, TaskKubeaiserveTextServeBuilder),
-    (EntityKinds.TASK_MLFLOWSERVE_SERVE.value, TaskMlflowserveServeBuilder),
-    (EntityKinds.TASK_SKLEARNSERVE_SERVE.value, TaskSklearnserveServeBuilder),
+    (EntityKinds.FUNCTION_VLLMSERVE.value, FunctionVllmserveBuilder),
     (EntityKinds.RUN_HUGGINGFACESERVE_SERVE.value, RunHuggingfaceserveRunBuilder),
     (EntityKinds.RUN_KUBEAISERVESPEECHTOTEXT_SERVE.value, RunKubeaiserveSpeechtotextRunBuilder),
     (EntityKinds.RUN_KUBEAISERVETEXT_SERVE.value, RunKubeaiserveTextRunBuilder),
     (EntityKinds.RUN_MLFLOWSERVE_SERVE.value, RunMlflowserveRunBuilder),
     (EntityKinds.RUN_SKLEARNSERVE_SERVE.value, RunSklearnserveRunBuilder),
+    (EntityKinds.RUN_VLLMSERVE_SERVE.value, RunVllmserveRunBuilder),
+    (EntityKinds.TASK_HUGGINGFACESERVE_SERVE.value, TaskHuggingfaceserveServeBuilder),
+    (EntityKinds.TASK_KUBEAISERVESPEECHTOTEXT_SERVE.value, TaskKubeaiserveSpeechtotextServeBuilder),
+    (EntityKinds.TASK_KUBEAISERVETEXT_SERVE.value, TaskKubeaiserveTextServeBuilder),
+    (EntityKinds.TASK_MLFLOWSERVE_SERVE.value, TaskMlflowserveServeBuilder),
+    (EntityKinds.TASK_SKLEARNSERVE_SERVE.value, TaskSklearnserveServeBuilder),
+    (EntityKinds.TASK_VLLMSERVE_SERVE.value, TaskVllmserveServeBuilder),
 )
 
 try:

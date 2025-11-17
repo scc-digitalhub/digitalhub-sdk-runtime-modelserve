@@ -36,6 +36,10 @@ class EntityKinds(Enum):
     TASK_KUBEAISERVESPEECHTOTEXT_SERVE = "kubeai-speech+serve"
     RUN_KUBEAISERVESPEECHTOTEXT_SERVE = "kubeai-speech+serve:run"
 
+    FUNCTION_VLLMSERVE = "vllmserve"
+    TASK_VLLMSERVE_SERVE = "vllmserve+serve"
+    RUN_VLLMSERVE_SERVE = "vllmserve+serve:run"
+
 
 class Actions(Enum):
     """

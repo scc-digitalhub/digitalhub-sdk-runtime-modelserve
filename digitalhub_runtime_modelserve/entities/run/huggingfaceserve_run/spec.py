@@ -4,8 +4,6 @@
 
 from __future__ import annotations
 
-from typing import Optional
-
 from pydantic import Field
 
 from digitalhub_runtime_modelserve.entities.run.modelserve_run.spec import (
@@ -95,13 +93,13 @@ class RunValidatorHuggingfaceserveRun(RunValidatorModelserveRun):
     """RunValidatorHuggingfaceserveRun validator."""
 
     # Task parameters
-    huggingface_task: Optional[HuggingfaceTask] = None
-    backend: Optional[Backend] = None
+    huggingface_task: HuggingfaceTask | None = None
+    backend: Backend | None = None
     tokenizer_revision: str = None
     max_length: int = None
     disable_lower_case: bool = None
     disable_special_tokens: bool = None
-    Dtype: Optional[Dtype] = None
+    Dtype: Dtype | None = None
     trust_remote_code: bool = None
     tensor_input_names: list[str] = None
     return_token_type_ids: bool = None
@@ -113,5 +111,5 @@ class RunValidatorHuggingfaceserveRun(RunValidatorModelserveRun):
     args: list[str] = None
     """Arguments for the huggingface serve command."""
 
-    path: Optional[str] = Field(default=None, pattern=path_regex)
+    path: str | None = Field(default=None, pattern=path_regex)
     "Path to the model files"

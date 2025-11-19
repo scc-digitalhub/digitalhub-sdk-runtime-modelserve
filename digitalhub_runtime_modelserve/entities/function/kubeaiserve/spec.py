@@ -4,8 +4,6 @@
 
 from __future__ import annotations
 
-from typing import Optional
-
 from digitalhub.entities.function._base.spec import FunctionSpec, FunctionValidator
 
 from digitalhub_runtime_modelserve.entities.function.kubeaiserve.models import KubeaiAdapter
@@ -45,8 +43,8 @@ class FunctionValidatorKubeaiserve(FunctionValidator):
     FunctionValidatorKubeaiserve validator.
     """
 
-    image: Optional[str] = None
+    image: str | None = None
     "Image where the function will be executed."
 
-    adapters: Optional[list[KubeaiAdapter]] = None
+    adapters: list[KubeaiAdapter] | None = None
     "Adapters."

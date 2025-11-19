@@ -4,8 +4,6 @@
 
 from __future__ import annotations
 
-from typing import Optional
-
 from digitalhub.entities.run._base.spec import RunSpec, RunValidator
 from pydantic import Field
 
@@ -78,30 +76,30 @@ class RunValidatorKubeaiserveRun(RunValidator):
     """RunValidatorKubeaiserveRun validator."""
 
     # Function parameters
-    image: Optional[str] = None
-    adapters: Optional[list[dict]] = None
+    image: str | None = None
+    adapters: list[dict] | None = None
 
     # Run parameters
-    url: Optional[str] = Field(pattern=regexp, default=None)
+    url: str | None = Field(pattern=regexp, default=None)
     "Model URL."
 
-    model_name: Optional[str] = None
+    model_name: str | None = None
     "Model name."
 
-    processors: Optional[int] = Field(default=None, ge=1)
+    processors: int | None = Field(default=None, ge=1)
     "Number of processors."
 
-    env: Optional[dict] = None
+    env: dict | None = None
     """Environment variables."""
 
-    args: Optional[list[str]] = None
+    args: list[str] | None = None
     """Arguments."""
 
-    cache_profile: Optional[str] = None
+    cache_profile: str | None = None
     """Cache profile."""
 
-    files: Optional[list[KubeaiFile]] = None
+    files: list[KubeaiFile] | None = None
     """Files."""
 
-    scaling: Optional[Scaling] = None
+    scaling: Scaling | None = None
     """Scaling parameters."""

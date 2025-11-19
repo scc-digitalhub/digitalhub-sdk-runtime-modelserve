@@ -4,8 +4,6 @@
 
 from __future__ import annotations
 
-from typing import Optional
-
 from digitalhub.entities.function._base.spec import FunctionSpec, FunctionValidator
 
 
@@ -27,5 +25,5 @@ class FunctionValidatorModelserve(FunctionValidator):
     FunctionValidatorModelserve validator.
     """
 
-    image: Optional[str] = None
+    image: str | None = None
     "Image where the function will be executed"

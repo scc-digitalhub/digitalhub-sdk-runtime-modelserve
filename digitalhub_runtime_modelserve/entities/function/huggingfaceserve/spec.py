@@ -4,8 +4,6 @@
 
 from __future__ import annotations
 
-from typing import Optional
-
 from pydantic import Field
 
 from digitalhub_runtime_modelserve.entities.function.modelserve.spec import (
@@ -27,5 +25,5 @@ class FunctionValidatorHuggingfaceserve(FunctionValidatorModelserve):
     FunctionValidatorHuggingfaceserve validator.
     """
 
-    image: Optional[str] = Field(default=None, pattern=image_regex)
+    image: str | None = Field(default=None, pattern=image_regex)
     "Function image"

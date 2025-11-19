@@ -4,8 +4,6 @@
 
 from __future__ import annotations
 
-from typing import Optional
-
 from digitalhub_runtime_modelserve.entities.run.kubeaiserve_run.spec import (
     RunSpecKubeaiserveRun,
     RunValidatorKubeaiserveRun,
@@ -69,5 +67,5 @@ class RunSpecKubeaiserveTextRun(RunSpecKubeaiserveRun):
 class RunValidatorKubeaiserveTextRun(RunValidatorKubeaiserveRun):
     """RunValidatorKubeaiserveTextRun validator."""
 
-    features: Optional[list[str]] = None
-    engine: Optional[str] = None
+    features: list[str] | None = None
+    engine: str | None = None

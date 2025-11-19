@@ -4,8 +4,6 @@
 
 from __future__ import annotations
 
-from typing import Optional
-
 from digitalhub_runtime_modelserve.entities.function.kubeaiserve.spec import (
     FunctionSpecKubeaiserve,
     FunctionValidatorKubeaiserve,
@@ -35,8 +33,8 @@ class FunctionValidatorKubeaiserveText(FunctionValidatorKubeaiserve):
     FunctionValidatorKubeaiserveText validator.
     """
 
-    features: Optional[list[KubeaiFeature]] = None
+    features: list[KubeaiFeature] | None = None
     "Features."
 
-    engine: Optional[KubeaiEngine] = None
+    engine: KubeaiEngine | None = None
     "Engine."

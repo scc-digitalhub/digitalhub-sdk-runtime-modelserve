@@ -16,6 +16,8 @@ class RunSpecModelserveRun(RunSpec):
         self,
         task: str,
         local_execution: bool = False,
+        path: str | None = None,
+        model_name: str | None = None,
         function: str | None = None,
         workflow: str | None = None,
         volumes: list[dict] | None = None,
@@ -24,9 +26,6 @@ class RunSpecModelserveRun(RunSpec):
         secrets: list[str] | None = None,
         profile: str | None = None,
         image: str | None = None,
-        path: str | None = None,
-        model_name: str | None = None,
-        model_key: str | None = None,
         service_type: str | None = None,
         service_name: str | None = None,
         replicas: int | None = None,
@@ -44,10 +43,9 @@ class RunSpecModelserveRun(RunSpec):
             profile,
             **kwargs,
         )
-        self.image = image
         self.path = path
         self.model_name = model_name
-        self.model_key = model_key
+        self.image = image
         self.service_type = service_type
         self.service_name = service_name
         self.replicas = replicas
@@ -58,11 +56,15 @@ class RunValidatorModelserveRun(RunValidator):
 
     # Function parameters
     image: Optional[str] = None
-    path: Optional[str] = None
-    model_name: Optional[str] = None
-    model_key: Optional[str] = None
 
     # Task serve
     service_type: Optional[str] = None
     service_name: Optional[str] = None
     replicas: Optional[int] = None
+
+    # Run parameters
+    path: Optional[str] = None
+    "Path to the model files"
+
+    model_name: Optional[str] = None
+    "Name of the model"

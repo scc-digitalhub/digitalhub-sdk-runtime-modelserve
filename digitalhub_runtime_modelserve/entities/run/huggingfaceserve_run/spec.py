@@ -6,11 +6,25 @@ from __future__ import annotations
 
 from typing import Optional
 
+from pydantic import Field
+
 from digitalhub_runtime_modelserve.entities.run.modelserve_run.spec import (
     RunSpecModelserveRun,
     RunValidatorModelserveRun,
 )
 from digitalhub_runtime_modelserve.entities.task.huggingfaceserve_serve.models import Backend, Dtype, HuggingfaceTask
+
+path_regex = (
+    r"^(store://([^/]+)/model/huggingface/.*)"
+    + r"|"
+    + r".*\/$"
+    + r"|"
+    + r".*\.zip$"
+    + r"|"
+    + r"^huggingface?://.*$"
+    + r"|"
+    + r"^hf?://.*$"
+)
 
 
 class RunSpecHuggingfaceserveRun(RunSpecModelserveRun):
@@ -20,6 +34,8 @@ class RunSpecHuggingfaceserveRun(RunSpecModelserveRun):
         self,
         task: str,
         local_execution: bool = False,
+        path: str | None = None,
+        model_name: str | None = None,
         function: str | None = None,
         workflow: str | None = None,
         volumes: list[dict] | None = None,
@@ -28,9 +44,6 @@ class RunSpecHuggingfaceserveRun(RunSpecModelserveRun):
         secrets: list[str] | None = None,
         profile: str | None = None,
         image: str | None = None,
-        path: str | None = None,
-        model_name: str | None = None,
-        model_key: str | None = None,
         service_type: str | None = None,
         replicas: int | None = None,
         huggingface_task: str | None = None,
@@ -58,13 +71,12 @@ class RunSpecHuggingfaceserveRun(RunSpecModelserveRun):
             secrets,
             profile,
             image,
-            path,
-            model_name,
-            model_key,
             service_type,
             replicas,
             **kwargs,
         )
+        self.path = path
+        self.model_name = model_name
         self.huggingface_task = huggingface_task
         self.backend = backend
         self.tokenizer_revision = tokenizer_revision
@@ -100,3 +112,6 @@ class RunValidatorHuggingfaceserveRun(RunValidatorModelserveRun):
     # Run parameters
     args: list[str] = None
     """Arguments for the huggingface serve command."""
+
+    path: Optional[str] = Field(default=None, pattern=path_regex)
+    "Path to the model files"

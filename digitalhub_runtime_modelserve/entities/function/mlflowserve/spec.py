@@ -13,8 +13,6 @@ from digitalhub_runtime_modelserve.entities.function.modelserve.spec import (
     FunctionValidatorModelserve,
 )
 
-path_regex = r"^(store://([^/]+)/model/mlflow/.*)" + r"|" + r".*\/$" + r"|" + r".*\.zip$"
-
 image_regex = r"^seldonio\/mlserver?:.*-mlflow$"
 
 
@@ -28,9 +26,6 @@ class FunctionValidatorMlflowserve(FunctionValidatorModelserve):
     """
     FunctionValidatorMlflowserve validator.
     """
-
-    path: Optional[str] = Field(default=None, pattern=path_regex)
-    "Path to the model files"
 
     image: Optional[str] = Field(default=None, pattern=image_regex)
     "Function image"

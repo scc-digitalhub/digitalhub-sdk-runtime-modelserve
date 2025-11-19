@@ -50,7 +50,7 @@ class RunSpecHuggingfaceserveRun(RunSpecModelserveRun):
         max_length: int | None = None,
         disable_lower_case: bool | None = None,
         disable_special_tokens: bool | None = None,
-        Dtype: str | None = None,
+        dtype: str | None = None,
         trust_remote_code: bool | None = None,
         tensor_input_names: list[str] | None = None,
         return_token_type_ids: bool | None = None,
@@ -81,7 +81,7 @@ class RunSpecHuggingfaceserveRun(RunSpecModelserveRun):
         self.max_length = max_length
         self.disable_lower_case = disable_lower_case
         self.disable_special_tokens = disable_special_tokens
-        self.Dtype = Dtype
+        self.dtype = dtype
         self.trust_remote_code = trust_remote_code
         self.tensor_input_names = tensor_input_names
         self.return_token_type_ids = return_token_type_ids
@@ -99,7 +99,7 @@ class RunValidatorHuggingfaceserveRun(RunValidatorModelserveRun):
     max_length: int = None
     disable_lower_case: bool = None
     disable_special_tokens: bool = None
-    Dtype: Dtype | None = None
+    dtype: Dtype | None = None
     trust_remote_code: bool = None
     tensor_input_names: list[str] = None
     return_token_type_ids: bool = None

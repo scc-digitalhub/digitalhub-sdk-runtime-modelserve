@@ -64,67 +64,67 @@ class TaskValidatorHuggingfaceserveServe(TaskValidatorModelserveServe):
     TaskValidatorHuggingfaceserveServe validator.
     """
 
-    huggingface_task: HuggingfaceTask = None
+    huggingface_task: HuggingfaceTask | None = None
     """
     Huggingface task name.
     """
 
-    backend: Backend = None
+    backend: Backend | None = None
     """
     Backend type.
     """
 
-    tokenizer_revision: str = None
+    tokenizer_revision: str | None = None
     """
     Tokenizer revision.
     """
 
-    max_length: int = None
+    max_length: int | None = None
     """
     Huggingface max sequence length for the tokenizer.
     """
 
-    disable_lower_case: bool = None
+    disable_lower_case: bool | None = None
     """
     Do not use lower case for the tokenizer.
     """
 
-    disable_special_tokens: bool = None
+    disable_special_tokens: bool | None = None
     """
     The sequences will not be encoded with the special tokens relative to their model
     """
 
-    dtype: Dtype = None
+    dtype: Dtype | None = None
     """
     Data type to load the weights in.
     """
 
-    trust_remote_code: bool = None
+    trust_remote_code: bool | None = None
     """
     Allow loading of models and tokenizers with custom code.
     """
 
-    tensor_input_names: list[str] = None
+    tensor_input_names: list[str] | None = None
     """
     The tensor input names passed to the model
     """
 
-    return_token_type_ids: bool = None
+    return_token_type_ids: bool | None = None
     """
     Return token type ids
     """
 
-    return_probabilities: bool = None
+    return_probabilities: bool | None = None
     """
     Return all probabilities
     """
 
-    disable_log_requests: bool = None
+    disable_log_requests: bool | None = None
     """
     Disable log requests
     """
 
-    max_log_len: int = None
+    max_log_len: int | None = None
     """
     Max number of prompt characters or prompt
     """

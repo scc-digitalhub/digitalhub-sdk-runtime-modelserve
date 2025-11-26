@@ -14,11 +14,11 @@ from digitalhub_runtime_modelserve.entities.run.modelserve_run.spec import (
 path_regex = r"^(store://([^/]+)/model/mlflow/.*)" + r"|" + r".*\/$" + r"|" + r".*\.zip$"
 
 
-class RunSpecMlflowserveRun(RunSpecModelserveRun):
-    """RunSpecMlflowserveRun specifications."""
+class RunSpecMlflowserveServeRun(RunSpecModelserveRun):
+    """RunSpecMlflowserveServeRun specifications."""
 
 
-class RunValidatorMlflowserveRun(RunValidatorModelserveRun):
-    """RunValidatorMlflowserveRun validator."""
+class RunValidatorMlflowserveServeRun(RunValidatorModelserveRun):
+    """RunValidatorMlflowserveServeRun validator."""
 
     path: str | None = Field(default=None, pattern=path_regex)

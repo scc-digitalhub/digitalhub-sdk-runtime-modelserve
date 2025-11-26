@@ -18,6 +18,10 @@ class RuntimeEntityBuilderMlflowserve(RuntimeEntityBuilder):
                 EntityKinds.TASK_MLFLOWSERVE_SERVE.value,
                 Actions.SERVE.value,
             ),
+            (
+                EntityKinds.TASK_MLFLOWSERVE_BUILD.value,
+                Actions.BUILD.value,
+            ),
         ]
     )
     RUN_KINDS = map_actions(
@@ -25,6 +29,10 @@ class RuntimeEntityBuilderMlflowserve(RuntimeEntityBuilder):
             (
                 EntityKinds.RUN_MLFLOWSERVE_SERVE.value,
                 Actions.SERVE.value,
+            ),
+            (
+                EntityKinds.RUN_MLFLOWSERVE_BUILD.value,
+                Actions.BUILD.value,
             ),
         ]
     )

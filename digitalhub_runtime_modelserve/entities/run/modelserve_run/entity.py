@@ -7,9 +7,11 @@ from __future__ import annotations
 import time
 import typing
 
+import requests
 from digitalhub.entities._commons.enums import State
 from digitalhub.entities.run._base.entity import Run
 from digitalhub.factory.entity import entity_factory
+from digitalhub.utils.exceptions import EntityError
 from digitalhub.utils.logger import LOGGER
 
 from digitalhub_runtime_modelserve.entities._commons.enums import Actions
@@ -88,3 +90,54 @@ class RunModelserveRun(Run):
             return self
 
         return super().wait(log_info=log_info)
+
+    def invoke(
+        self,
+        model_name: str | None = None,
+        method: str = "POST",
+        url: str | None = None,
+        **kwargs,
+    ) -> requests.Response:
+        """
+        Invoke served model. By default it exposes infer v2 endpoint
+        (http://<service_url>/v2/models/{model_name}/infer).
+        The method defaults to "POST" if data or json is provided in kwargs,
+        otherwise it defaults to "GET". The function returns a requests.Response
+        object.
+
+        Parameters
+        ----------
+        model_name : str
+            Name of the model to build the URL for.
+        method : str
+            Method of the request (e.g., "GET", "POST").
+        url : str
+            URL to invoke. If specified, it must start with the service URL
+            (http:// or https:// prefixes are required and stripped before comparison).
+        **kwargs : dict
+            Keyword arguments to pass to the request.
+
+        Returns
+        -------
+        requests.Response
+            Response from the request.
+        """
+        try:
+            base_url: str = self.status.service.get("url")
+        except AttributeError:
+            raise EntityError(
+                "Url not specified and service not found on run status."
+                " If a service is deploying, use run.wait() or try again later."
+            )
+
+        if url is not None and not url.removeprefix("http://").removeprefix("https://").startswith(base_url):
+            raise EntityError(f"Invalid URL: {url}. It must start with the service URL: {base_url}")
+
+        if url is None:
+            model_name = model_name if model_name is not None else "model"
+            url = f"http://{base_url}/v2/models/{model_name}/infer"
+
+        if "data" not in kwargs and "json" not in kwargs:
+            method = "GET"
+
+        return requests.request(method=method, url=url, **kwargs)

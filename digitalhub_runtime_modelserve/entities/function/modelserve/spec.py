@@ -31,11 +31,10 @@ class FunctionValidatorModelserve(FunctionValidator):
     FunctionValidatorModelserve validator.
     """
 
-    path: Optional[str] = None
-    "Path to the model files"
-
-    model_name: Optional[str] = None
-    "Name of the model"
-
     image: Optional[str] = None
     "Image where the function will be executed"
+
+    model_name: Optional[str] = None
+    "Name of the model to be served"
+
+    path: Optional[str] = None

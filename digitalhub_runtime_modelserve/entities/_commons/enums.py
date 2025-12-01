@@ -17,6 +17,8 @@ class EntityKinds(Enum):
     RUN_HUGGINGFACESERVE_SERVE = "huggingfaceserve+serve:run"
 
     FUNCTION_MLFLOWSERVE = "mlflowserve"
+    TASK_MLFLOWSERVE_BUILD = "mlflowserve+build"
+    RUN_MLFLOWSERVE_BUILD = "mlflowserve+build:run"
     TASK_MLFLOWSERVE_SERVE = "mlflowserve+serve"
     RUN_MLFLOWSERVE_SERVE = "mlflowserve+serve:run"
 
@@ -43,3 +45,4 @@ class Actions(Enum):
     """
 
     SERVE = "serve"
+    BUILD = "build"

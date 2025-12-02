@@ -9,7 +9,6 @@ from digitalhub_runtime_modelserve.entities.function.kubeaiservespeechtotext.bui
 from digitalhub_runtime_modelserve.entities.function.kubeaiservetext.builder import FunctionKubeaiserveTextBuilder
 from digitalhub_runtime_modelserve.entities.function.mlflowserve.builder import FunctionMlflowserveBuilder
 from digitalhub_runtime_modelserve.entities.function.sklearnserve.builder import FunctionSklearnserveBuilder
-from digitalhub_runtime_modelserve.entities.function.vllmserve.builder import FunctionVllmserveBuilder
 from digitalhub_runtime_modelserve.entities.run.huggingfaceserve_run.builder import RunHuggingfaceserveRunBuilder
 from digitalhub_runtime_modelserve.entities.run.kubeaiservespeechtotext_run.builder import (
     RunKubeaiserveSpeechtotextRunBuilder,
@@ -18,7 +17,6 @@ from digitalhub_runtime_modelserve.entities.run.kubeaiservetext_run.builder impo
 from digitalhub_runtime_modelserve.entities.run.mlflowserve_build_run.builder import RunMlflowserveBuildRunBuilder
 from digitalhub_runtime_modelserve.entities.run.mlflowserve_serve_run.builder import RunMlflowserveServeRunBuilder
 from digitalhub_runtime_modelserve.entities.run.sklearnserve_run.builder import RunSklearnserveRunBuilder
-from digitalhub_runtime_modelserve.entities.run.vllmserve_run.builder import RunVllmserveRunBuilder
 from digitalhub_runtime_modelserve.entities.task.huggingfaceserve_serve.builder import TaskHuggingfaceserveServeBuilder
 from digitalhub_runtime_modelserve.entities.task.kubeaiservespeechtotext_serve.builder import (
     TaskKubeaiserveSpeechtotextServeBuilder,
@@ -27,7 +25,6 @@ from digitalhub_runtime_modelserve.entities.task.kubeaiservetext_serve.builder i
 from digitalhub_runtime_modelserve.entities.task.mlflowserve_build.builder import TaskMlflowserveBuildBuilder
 from digitalhub_runtime_modelserve.entities.task.mlflowserve_serve.builder import TaskMlflowserveServeBuilder
 from digitalhub_runtime_modelserve.entities.task.sklearnserve_serve.builder import TaskSklearnserveServeBuilder
-from digitalhub_runtime_modelserve.entities.task.vllmserve_serve.builder import TaskVllmserveServeBuilder
 
 entity_builders = (
     (EntityKinds.FUNCTION_HUGGINGFACESERVE.value, FunctionHuggingfaceserveBuilder),

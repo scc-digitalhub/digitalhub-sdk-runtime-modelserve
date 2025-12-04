@@ -4,6 +4,8 @@
 
 from __future__ import annotations
 
+from typing import Optional
+
 from digitalhub_runtime_modelserve.entities.task.modelserve_serve.spec import (
     TaskSpecModelserveServe,
     TaskValidatorModelserveServe,
@@ -49,5 +51,5 @@ class TaskValidatorMlflowserveBuild(TaskValidatorModelserveServe):
     TaskValidatorMlflowserveBuild validator.
     """
 
-    instructions: list[str] | None = None
+    instructions: Optional[list[str]] = None
     """Instructions for the MLflow model serving build task."""

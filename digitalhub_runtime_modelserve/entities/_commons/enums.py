@@ -42,6 +42,18 @@ class EntityKinds(Enum):
     TASK_VLLMSERVE_SERVE = "vllmserve+serve"
     RUN_VLLMSERVE_SERVE = "vllmserve+serve:run"
 
+    FUNCTION_VLLMSERVESPEECH = "vllmserve-speech"
+    TASK_VLLMSERVESPEECH_SERVE = "vllmserve-speech+serve"
+    RUN_VLLMSERVESPEECH_SERVE = "vllmserve-speech+serve:run"
+
+    FUNCTION_VLLMSERVEPOLLING = "vllmserve-polling"
+    TASK_VLLMSERVEPOLLING_SERVE = "vllmserve-polling+serve"
+    RUN_VLLMSERVEPOLLING_SERVE = "vllmserve-polling+serve:run"
+
+    FUNCTION_VLLMSERVETEXT = "vllmserve-text"
+    TASK_VLLMSERVETEXT_SERVE = "vllmserve-text+serve"
+    RUN_VLLMSERVETEXT_SERVE = "vllmserve-text+serve:run"
+
 
 class Actions(Enum):
     """

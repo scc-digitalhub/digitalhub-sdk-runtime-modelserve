@@ -8,18 +8,6 @@ from digitalhub.entities.function._base.spec import FunctionSpec, FunctionValida
 
 from digitalhub_runtime_modelserve.entities.function.kubeaiserve.models import KubeaiAdapter
 
-regexp = (
-    r"^(store://([^/]+)/model/huggingface/.*)"
-    + r"|"
-    + r"^pvc?://.*$"
-    + r"|"
-    + r"^s3?://.*$"
-    + r"|"
-    + r"^ollama?://.*$"
-    + r"|"
-    + r"^hf?://.*$"
-)
-
 
 class FunctionSpecKubeaiserve(FunctionSpec):
     """
@@ -30,12 +18,10 @@ class FunctionSpecKubeaiserve(FunctionSpec):
         self,
         image: str | None = None,
         adapters: list[dict] | None = None,
-        engine: str | None = None,
     ) -> None:
         super().__init__()
         self.image = image
         self.adapters = adapters
-        self.engine = engine
 
 
 class FunctionValidatorKubeaiserve(FunctionValidator):

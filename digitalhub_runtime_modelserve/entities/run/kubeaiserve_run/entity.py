@@ -7,7 +7,6 @@ from __future__ import annotations
 import typing
 
 import requests
-from digitalhub.utils.exceptions import EntityError
 
 from digitalhub_runtime_modelserve.entities.run.modelserve_run.entity import RunModelserveRun
 
@@ -65,19 +64,12 @@ class RunKubeaiserveRun(RunModelserveRun):
         requests.Response
             Response from the request.
         """
-        try:
-            base_url: str = self.status.service.get("url")
-        except AttributeError:
-            raise EntityError(
-                "Url not specified and service not found on run status."
-                " If a service is deploying, use run.wait() or try again later."
-            )
-
-        if url is not None and not url.removeprefix("http://").removeprefix("https://").startswith(base_url):
-            raise EntityError(f"Invalid URL: {url}. It must start with the service URL: {base_url}")
+        base_url: str = self._get_base_url()
 
         if url is None:
             url = self.status.service.get("urls")[0]
+        else:
+            self._eval_url(url, base_url)
 
         if "data" not in kwargs and "json" not in kwargs:
             method = "GET"

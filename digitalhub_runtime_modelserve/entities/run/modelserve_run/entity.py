@@ -146,7 +146,7 @@ class RunModelserveRun(Run):
         """
         try:
             base_url: str = self.status.service.get("url")
-            base_url = self._strip_https(base_url)
+            return self._strip_https(base_url)
         except AttributeError:
             raise EntityError(
                 "Url not specified and service not found on run status."

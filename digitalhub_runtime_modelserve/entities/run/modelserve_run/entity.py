@@ -122,22 +122,70 @@ class RunModelserveRun(Run):
         requests.Response
             Response from the request.
         """
+        base_url: str = self._get_base_url()
+
+        if url is None:
+            model_name = model_name if model_name is not None else "model"
+            url = f"http://{base_url}/v2/models/{model_name}/infer"
+        else:
+            self._eval_url(url, base_url)
+
+        if "data" not in kwargs and "json" not in kwargs:
+            method = "GET"
+
+        return requests.request(method=method, url=url, **kwargs)
+
+    def _get_base_url(self) -> str:
+        """
+        Get base URL from service.
+
+        Returns
+        -------
+        str
+            Base URL.
+        """
         try:
             base_url: str = self.status.service.get("url")
+            return self._strip_https(base_url)
         except AttributeError:
             raise EntityError(
                 "Url not specified and service not found on run status."
                 " If a service is deploying, use run.wait() or try again later."
             )
 
-        if url is not None and not url.removeprefix("http://").removeprefix("https://").startswith(base_url):
-            raise EntityError(f"Invalid URL: {url}. It must start with the service URL: {base_url}")
+    def _eval_url(self, url: str, base_url: str) -> None:
+        """
+        Evaluate if URL starts with base URL.
 
-        if url is None:
-            model_name = model_name if model_name is not None else "model"
-            url = f"http://{base_url}/v2/models/{model_name}/infer"
+        Parameters
+        ----------
+        url : str
+            URL to evaluate.
+        base_url : str
+            Base URL.
 
-        if "data" not in kwargs and "json" not in kwargs:
-            method = "GET"
+        Raises
+        ------
+        EntityError
+            If URL does not start with base URL.
+        """
+        stripped_url = self._strip_https(url)
+        if not stripped_url.startswith(base_url):
+            raise EntityError(f"Invalid URL: {stripped_url}. It must start with the service URL: {base_url}")
 
-        return requests.request(method=method, url=url, **kwargs)
+    @staticmethod
+    def _strip_https(url: str) -> str:
+        """
+        Strip http:// or https:// from URL.
+
+        Parameters
+        ----------
+        url : str
+            URL to strip.
+
+        Returns
+        -------
+        str
+            Stripped URL.
+        """
+        return url.removeprefix("http://").removeprefix("https://")

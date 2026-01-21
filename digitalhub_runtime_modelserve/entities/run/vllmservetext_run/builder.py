@@ -6,7 +6,7 @@ from __future__ import annotations
 
 from digitalhub.entities.run._base.builder import RunBuilder
 
-from digitalhub_runtime_modelserve.entities._base.runtime_entity.builder import RuntimeEntityBuilderVllmserve
+from digitalhub_runtime_modelserve.entities._base.runtime_entity.builder import RuntimeEntityBuilderVllmserveText
 from digitalhub_runtime_modelserve.entities._commons.enums import EntityKinds
 from digitalhub_runtime_modelserve.entities.run.vllmservetext_run.entity import RunVllmservetextRun
 from digitalhub_runtime_modelserve.entities.run.vllmservetext_run.spec import (
@@ -16,7 +16,7 @@ from digitalhub_runtime_modelserve.entities.run.vllmservetext_run.spec import (
 from digitalhub_runtime_modelserve.entities.run.vllmservetext_run.status import RunStatusVllmservetextRun
 
 
-class RunVllmservetextRunBuilder(RunBuilder, RuntimeEntityBuilderVllmserve):
+class RunVllmservetextRunBuilder(RunBuilder, RuntimeEntityBuilderVllmserveText):
     """
     RunVllmservetextRunBuilder builder.
     """

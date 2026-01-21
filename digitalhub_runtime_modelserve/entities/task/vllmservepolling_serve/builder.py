@@ -6,7 +6,7 @@ from __future__ import annotations
 
 from digitalhub.entities.task._base.builder import TaskBuilder
 
-from digitalhub_runtime_modelserve.entities._base.runtime_entity.builder import RuntimeEntityBuilderVllmserve
+from digitalhub_runtime_modelserve.entities._base.runtime_entity.builder import RuntimeEntityBuilderVllmservePolling
 from digitalhub_runtime_modelserve.entities._commons.enums import EntityKinds
 from digitalhub_runtime_modelserve.entities.task.vllmservepolling_serve.entity import TaskVllmservepollingServe
 from digitalhub_runtime_modelserve.entities.task.vllmservepolling_serve.spec import (
@@ -16,7 +16,7 @@ from digitalhub_runtime_modelserve.entities.task.vllmservepolling_serve.spec imp
 from digitalhub_runtime_modelserve.entities.task.vllmservepolling_serve.status import TaskStatusVllmservepollingServe
 
 
-class TaskVllmservepollingServeBuilder(TaskBuilder, RuntimeEntityBuilderVllmserve):
+class TaskVllmservepollingServeBuilder(TaskBuilder, RuntimeEntityBuilderVllmservePolling):
     """
     TaskVllmservepollingServe builder.
     """

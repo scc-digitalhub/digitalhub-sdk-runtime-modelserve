@@ -6,7 +6,7 @@ from __future__ import annotations
 
 from digitalhub.entities.task._base.builder import TaskBuilder
 
-from digitalhub_runtime_modelserve.entities._base.runtime_entity.builder import RuntimeEntityBuilderVllmserve
+from digitalhub_runtime_modelserve.entities._base.runtime_entity.builder import RuntimeEntityBuilderVllmserveSpeech
 from digitalhub_runtime_modelserve.entities._commons.enums import EntityKinds
 from digitalhub_runtime_modelserve.entities.task.vllmservespeech_serve.entity import TaskVllmservespeechServe
 from digitalhub_runtime_modelserve.entities.task.vllmservespeech_serve.spec import (
@@ -16,7 +16,7 @@ from digitalhub_runtime_modelserve.entities.task.vllmservespeech_serve.spec impo
 from digitalhub_runtime_modelserve.entities.task.vllmservespeech_serve.status import TaskStatusVllmservespeechServe
 
 
-class TaskVllmservespeechServeBuilder(TaskBuilder, RuntimeEntityBuilderVllmserve):
+class TaskVllmservespeechServeBuilder(TaskBuilder, RuntimeEntityBuilderVllmserveSpeech):
     """
     TaskVllmservespeechServe builder.
     """

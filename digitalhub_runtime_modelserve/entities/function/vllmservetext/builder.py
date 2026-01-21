@@ -6,7 +6,7 @@ from __future__ import annotations
 
 from digitalhub.entities.function._base.builder import FunctionBuilder
 
-from digitalhub_runtime_modelserve.entities._base.runtime_entity.builder import RuntimeEntityBuilderVllmserve
+from digitalhub_runtime_modelserve.entities._base.runtime_entity.builder import RuntimeEntityBuilderVllmserveText
 from digitalhub_runtime_modelserve.entities._commons.enums import EntityKinds
 from digitalhub_runtime_modelserve.entities.function.vllmservetext.entity import FunctionVllmservetext
 from digitalhub_runtime_modelserve.entities.function.vllmservetext.spec import (
@@ -16,7 +16,7 @@ from digitalhub_runtime_modelserve.entities.function.vllmservetext.spec import (
 from digitalhub_runtime_modelserve.entities.function.vllmservetext.status import FunctionStatusVllmservetext
 
 
-class FunctionVllmservetextBuilder(FunctionBuilder, RuntimeEntityBuilderVllmserve):
+class FunctionVllmservetextBuilder(FunctionBuilder, RuntimeEntityBuilderVllmserveText):
     """
     FunctionVllmservetext builder.
     """

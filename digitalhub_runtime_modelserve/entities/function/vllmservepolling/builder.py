@@ -6,7 +6,7 @@ from __future__ import annotations
 
 from digitalhub.entities.function._base.builder import FunctionBuilder
 
-from digitalhub_runtime_modelserve.entities._base.runtime_entity.builder import RuntimeEntityBuilderVllmserve
+from digitalhub_runtime_modelserve.entities._base.runtime_entity.builder import RuntimeEntityBuilderVllmservePolling
 from digitalhub_runtime_modelserve.entities._commons.enums import EntityKinds
 from digitalhub_runtime_modelserve.entities.function.vllmservepolling.entity import FunctionVllmservepolling
 from digitalhub_runtime_modelserve.entities.function.vllmservepolling.spec import (
@@ -16,7 +16,7 @@ from digitalhub_runtime_modelserve.entities.function.vllmservepolling.spec impor
 from digitalhub_runtime_modelserve.entities.function.vllmservepolling.status import FunctionStatusVllmservepolling
 
 
-class FunctionVllmservepollingBuilder(FunctionBuilder, RuntimeEntityBuilderVllmserve):
+class FunctionVllmservepollingBuilder(FunctionBuilder, RuntimeEntityBuilderVllmservePolling):
     """
     FunctionVllmservepolling builder.
     """

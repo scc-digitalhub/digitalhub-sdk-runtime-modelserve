@@ -1,0 +1,34 @@
+{
+    "id": "c8801f26-135c-41ab-913c-c37fcc8c7858",
+    "key": "store://demo-etl/run/kubeaiserve+serve:run/c8801f26-135c-41ab-913c-c37fcc8c7858",
+    "kind": "kubeaiserve+serve:run",
+    "metadata": {
+      "name": "c8801f26-135c-41ab-913c-c37fcc8c7858",
+      "updated_by": "digitalhubdev",
+      "project": "demo-etl",
+      "updated": "2024-11-20T11:11:36.775Z",
+      "created_by": "digitalhubdev",
+      "created": "2024-11-20T11:03:06.691Z"
+    },
+    "name": "c8801f26-135c-41ab-913c-c37fcc8c7858",
+    "project": "demo-etl",
+    "spec": {
+      "path": "s3://my-bucket/my-kubeai-model",
+      "image": "substratusai/kubeai:latest",
+      "service_type": "NodePort",
+      "task": "kubeaiserve+serve://demo-etl/d0ce6d88-87bf-4c5b-a1cb-1beef4bfe792",
+      "model_name": "kubeai-model",
+      "replicas": 1,
+      "function": "kubeaiserve://demo-etl/func8:d0ce6d88-87bf-4c5b-a1cb-1beef4bfe792",
+      "profile": "1xa100",
+      "local_execution": false,
+      "resources": {
+        "cpu": "1",
+        "mem": "2Gi",
+        "gpu": "1"
+      }
+    },
+    "status": {
+      "state": "RUNNING"
+    }
+}

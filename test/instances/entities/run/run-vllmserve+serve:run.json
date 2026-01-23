@@ -1,0 +1,34 @@
+{
+    "id": "88801f26-135c-41ab-913c-c37fcc8c7854",
+    "key": "store://demo-etl/run/vllmserve+serve:run/88801f26-135c-41ab-913c-c37fcc8c7854",
+    "kind": "vllmserve+serve:run",
+    "metadata": {
+      "name": "88801f26-135c-41ab-913c-c37fcc8c7854",
+      "updated_by": "digitalhubdev",
+      "project": "demo-etl",
+      "updated": "2024-11-20T11:11:36.775Z",
+      "created_by": "digitalhubdev",
+      "created": "2024-11-20T11:03:06.691Z"
+    },
+    "name": "88801f26-135c-41ab-913c-c37fcc8c7854",
+    "project": "demo-etl",
+    "spec": {
+      "path": "s3://my-bucket/my-vllm-model",
+      "image": "vllm/vllm-openai:latest",
+      "service_type": "NodePort",
+      "task": "vllmserve+serve://demo-etl/f6ce6d88-87bf-4c5b-a1cb-1beef4bfe78e",
+      "model_name": "vllm-model",
+      "replicas": 1,
+      "function": "vllmserve://demo-etl/func4:f6ce6d88-87bf-4c5b-a1cb-1beef4bfe78e",
+      "profile": "1xa100",
+      "local_execution": false,
+      "resources": {
+        "cpu": "2",
+        "mem": "4Gi",
+        "gpu": "1"
+      }
+    },
+    "status": {
+      "state": "RUNNING"
+    }
+}

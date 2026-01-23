@@ -1,6 +1,6 @@
 {
     "id": "6ab3b321-14a3-40d3-a83d-c6340c8ecda9",
-    "key": "store://demo-etl/run/sklearnserve+run/6ab3b321-14a3-40d3-a83d-c6340c8ecda9",
+    "key": "store://demo-etl/run/sklearnserve+serve:run/6ab3b321-14a3-40d3-a83d-c6340c8ecda9",
     "kind": "sklearnserve+serve:run",
     "metadata": {
       "name": "6ab3b321-14a3-40d3-a83d-c6340c8ecda9",

@@ -17,7 +17,7 @@
       "profile": "1xa100",
       "replicas": 1,
       "service_type": "NodePort",
-      "service_name": null,
+      "service_name": "serve-service",
       "backend": null,
       "disable_log_requests": null,
       "disable_lower_case": null,
@@ -37,7 +37,8 @@
       "resources": {
         "cpu": "1",
         "mem": "2Gi",
-        "gpu": "1"
+        "gpu": "1",
+        "disk": "1Gi"
       }
     }
 }

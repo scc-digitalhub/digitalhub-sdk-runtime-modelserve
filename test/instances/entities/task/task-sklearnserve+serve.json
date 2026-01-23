@@ -17,11 +17,12 @@
       "profile": "1xa100",
       "replicas": 2,
       "service_type": "NodePort",
-      "service_name": null,
+      "service_name": "serve-service",
       "resources": {
         "cpu": "1",
         "mem": "1Gi",
-        "gpu": "1"
+        "gpu": "1",
+        "disk": "1Gi"
       },
       "envs": [
         {

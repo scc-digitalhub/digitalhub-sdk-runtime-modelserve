@@ -22,6 +22,13 @@
       "function": "kubeai-text://demo-etl/func9:e1ce6d88-87bf-4c5b-a1cb-1beef4bfe793",
       "profile": "1xa100",
       "local_execution": false,
+      "args": [],
+      "cache_profile": null,
+      "env": {},
+      "files": [],
+      "processors": 1,
+      "scaling": {},
+      "secrets": [],
       "resources": {
         "cpu": "1",
         "mem": "2Gi",

@@ -17,6 +17,7 @@
       "profile": "1xa100",
       "replicas": 2,
       "service_type": "NodePort",
+      "service_name": null,
       "resources": {
         "cpu": "1",
         "mem": "1Gi",

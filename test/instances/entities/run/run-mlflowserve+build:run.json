@@ -13,7 +13,7 @@
     "name": "67801f26-135c-41ab-913c-c37fcc8c7852",
     "project": "demo-etl",
     "spec": {
-      "path": "s3://my-bucket/my-model",
+      "path": "s3://my-bucket/my-model/",
       "image": "ghcr.io/mlflow/mlflow:latest",
       "service_type": "NodePort",
       "task": "mlflowserve+build://demo-etl/b3ce6d88-87bf-4c5b-a1cb-1beef4bfe78b",

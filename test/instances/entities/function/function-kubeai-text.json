@@ -13,8 +13,11 @@
     "name": "func9-e1ce6d88-87bf-4c5b-a1cb-1beef4bfe793",
     "project": "demo-etl",
     "spec": {
-      "path": "s3://my-bucket/my-kubeai-text-model",
+      "url": "hf://meta-llama/Llama-3.1-8B-Instruct",
+      "engine": "VLLM",
+      "features": ["TextGeneration"],
       "image": "substratusai/kubeai:latest",
+      "adapters": [],
       "model_name": "kubeai-text-model"
     }
 }

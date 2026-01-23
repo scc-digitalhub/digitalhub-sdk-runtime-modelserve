@@ -13,7 +13,7 @@
     "name": "78801f26-135c-41ab-913c-c37fcc8c7853",
     "project": "demo-etl",
     "spec": {
-      "path": "s3://my-bucket/my-hf-model",
+      "path": "hf://facebook/bart-large-cnn",
       "image": "ghcr.io/huggingface/text-generation-inference:latest",
       "service_type": "NodePort",
       "task": "huggingfaceserve+serve://demo-etl/e5ce6d88-87bf-4c5b-a1cb-1beef4bfe78d",

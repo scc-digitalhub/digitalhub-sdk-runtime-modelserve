@@ -13,8 +13,9 @@
     "name": "func10-f2ce6d88-87bf-4c5b-a1cb-1beef4bfe794",
     "project": "demo-etl",
     "spec": {
-      "path": "s3://my-bucket/my-kubeai-speech-model",
+      "url": "hf://openai/whisper-large-v3",
       "image": "substratusai/kubeai:latest",
+      "adapters": [],
       "model_name": "kubeai-speech-model"
     }
 }

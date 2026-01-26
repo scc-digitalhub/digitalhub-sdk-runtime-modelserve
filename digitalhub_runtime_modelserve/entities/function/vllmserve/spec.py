@@ -18,13 +18,11 @@ class FunctionSpecVllmserve(FunctionSpecModelserve):
 
     def __init__(
         self,
-        url: str | None = None,
         model_name: str | None = None,
         image: str | None = None,
         adapters: list[dict] | None = None,
     ) -> None:
         super().__init__()
-        self.url = url
         self.model_name = model_name
         self.image = image
         self.adapters = adapters
@@ -34,9 +32,6 @@ class FunctionValidatorVllmserve(FunctionValidatorModelserve):
     """
     FunctionValidatorVllmserve validator.
     """
-
-    url: str | None = None
-    """URL of the VLLMServe service."""
 
     model_name: str | None = None
     """Name of the model to be used."""

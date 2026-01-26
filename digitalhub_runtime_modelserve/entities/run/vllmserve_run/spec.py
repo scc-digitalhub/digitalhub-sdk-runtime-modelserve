@@ -67,12 +67,14 @@ class RunSpecVllmserveRun(RunSpecModelserveRun):
 class RunValidatorVllmserveRun(RunValidatorModelserveRun):
     """RunValidatorVllmserveRun validator."""
 
-    url: str | None = None
     model_name: str | None = None
     image: str | None = None
     adapters: list[dict] | None = None
 
     # Run spec
+    url: str | None = None
+    """URL of the VLLMServe service."""
+
     args: list[str] | None = None
     """List of arguments to pass to the VLLMServe run."""
 

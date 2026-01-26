@@ -78,10 +78,10 @@ class RunValidatorVllmserveRun(RunValidatorModelserveRun):
     args: list[str] | None = None
     """List of arguments to pass to the VLLMServe run."""
 
-    enable_telemetry: bool | None = None
+    enable_telemetry: bool = True
     """Flag to enable or disable telemetry for the VLLMServe run."""
 
-    use_cpu_image: bool | None = None
+    use_cpu_image: bool = True
     """Flag to indicate whether to use a CPU image for the VLLMServe run."""
 
     storage_space: str | None = None

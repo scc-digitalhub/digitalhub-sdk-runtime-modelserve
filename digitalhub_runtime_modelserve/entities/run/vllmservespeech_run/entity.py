@@ -9,7 +9,7 @@ import typing
 from digitalhub_runtime_modelserve.entities.run.vllmserve_run.entity import RunVllmserveRun
 
 if typing.TYPE_CHECKING:
-    from digitalhub.entities._base.entity.metadata import Metadata
+    from digitalhub.entities._base.metadata.entity import Metadata
 
     from digitalhub_runtime_modelserve.entities.run.vllmservespeech_run.spec import RunSpecVllmservespeechRun
     from digitalhub_runtime_modelserve.entities.run.vllmservespeech_run.status import RunStatusVllmservespeechRun

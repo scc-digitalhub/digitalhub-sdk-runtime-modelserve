@@ -9,7 +9,6 @@ import typing
 from digitalhub_runtime_modelserve.entities.run.kubeaiserve_run.entity import RunKubeaiserveRun
 
 if typing.TYPE_CHECKING:
-    from digitalhub.entities._base.metadata.entity import Metadata
 
     from digitalhub_runtime_modelserve.entities.run.kubeaiservespeechtotext_run.spec import (
         RunSpecKubeaiserveSpeechtotextRun,
@@ -24,17 +23,8 @@ class RunKubeaiserveSpeechtotextRun(RunKubeaiserveRun):
     RunKubeaiserveSpeechtotextRun class.
     """
 
-    def __init__(
-        self,
-        project: str,
-        uuid: str,
-        kind: str,
-        metadata: Metadata,
-        spec: RunSpecKubeaiserveSpeechtotextRun,
-        status: RunStatusKubeaiserveSpeechtotextRun,
-        user: str | None = None,
-    ) -> None:
-        super().__init__(project, uuid, kind, metadata, spec, status, user)
+    def __init__(self, *args, **kwargs) -> None:
+        super().__init__(*args, **kwargs)
 
         self.spec: RunSpecKubeaiserveSpeechtotextRun
         self.status: RunStatusKubeaiserveSpeechtotextRun

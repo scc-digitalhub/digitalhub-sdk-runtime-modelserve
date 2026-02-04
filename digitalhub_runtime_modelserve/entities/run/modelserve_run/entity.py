@@ -17,7 +17,6 @@ from digitalhub.utils.logger import LOGGER
 from digitalhub_runtime_modelserve.entities._commons.enums import Actions
 
 if typing.TYPE_CHECKING:
-    from digitalhub.entities._base.metadata.entity import Metadata
 
     from digitalhub_runtime_modelserve.entities.run.modelserve_run.spec import RunSpecModelserveRun
     from digitalhub_runtime_modelserve.entities.run.modelserve_run.status import RunStatusModelserveRun
@@ -28,17 +27,8 @@ class RunModelserveRun(Run):
     RunModelserveRun class.
     """
 
-    def __init__(
-        self,
-        project: str,
-        uuid: str,
-        kind: str,
-        metadata: Metadata,
-        spec: RunSpecModelserveRun,
-        status: RunStatusModelserveRun,
-        user: str | None = None,
-    ) -> None:
-        super().__init__(project, uuid, kind, metadata, spec, status, user)
+    def __init__(self, *args, **kwargs) -> None:
+        super().__init__(*args, **kwargs)
 
         self.spec: RunSpecModelserveRun
         self.status: RunStatusModelserveRun

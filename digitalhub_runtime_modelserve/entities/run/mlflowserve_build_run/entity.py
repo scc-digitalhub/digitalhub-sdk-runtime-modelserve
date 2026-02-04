@@ -9,7 +9,6 @@ import typing
 from digitalhub_runtime_modelserve.entities.run.modelserve_run.entity import RunModelserveRun
 
 if typing.TYPE_CHECKING:
-    from digitalhub.entities._base.metadata.entity import Metadata
 
     from digitalhub_runtime_modelserve.entities.run.mlflowserve_build_run.spec import RunSpecMlflowserveBuildRun
     from digitalhub_runtime_modelserve.entities.run.mlflowserve_build_run.status import RunStatusMlflowserveBuildRun
@@ -20,17 +19,8 @@ class RunMlflowserveBuildRun(RunModelserveRun):
     RunMlflowserveBuildRun class.
     """
 
-    def __init__(
-        self,
-        project: str,
-        uuid: str,
-        kind: str,
-        metadata: Metadata,
-        spec: RunSpecMlflowserveBuildRun,
-        status: RunStatusMlflowserveBuildRun,
-        user: str | None = None,
-    ) -> None:
-        super().__init__(project, uuid, kind, metadata, spec, status, user)
+    def __init__(self, *args, **kwargs) -> None:
+        super().__init__(*args, **kwargs)
 
         self.spec: RunSpecMlflowserveBuildRun
         self.status: RunStatusMlflowserveBuildRun

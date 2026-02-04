@@ -9,7 +9,6 @@ import typing
 from digitalhub_runtime_modelserve.entities.run.modelserve_run.entity import RunModelserveRun
 
 if typing.TYPE_CHECKING:
-    from digitalhub.entities._base.metadata.entity import Metadata
 
     from digitalhub_runtime_modelserve.entities.run.huggingfaceserve_run.spec import RunSpecHuggingfaceserveRun
     from digitalhub_runtime_modelserve.entities.run.huggingfaceserve_run.status import RunStatusHuggingfaceserveRun
@@ -20,17 +19,8 @@ class RunHuggingfaceserveRun(RunModelserveRun):
     RunHuggingfaceserveRun class.
     """
 
-    def __init__(
-        self,
-        project: str,
-        uuid: str,
-        kind: str,
-        metadata: Metadata,
-        spec: RunSpecHuggingfaceserveRun,
-        status: RunStatusHuggingfaceserveRun,
-        user: str | None = None,
-    ) -> None:
-        super().__init__(project, uuid, kind, metadata, spec, status, user)
+    def __init__(self, *args, **kwargs) -> None:
+        super().__init__(*args, **kwargs)
 
         self.spec: RunSpecHuggingfaceserveRun
         self.status: RunStatusHuggingfaceserveRun

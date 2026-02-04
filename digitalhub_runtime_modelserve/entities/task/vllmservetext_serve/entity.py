@@ -9,7 +9,6 @@ import typing
 from digitalhub_runtime_modelserve.entities.task.vllmserve_serve.entity import TaskVllmserveServe
 
 if typing.TYPE_CHECKING:
-    from digitalhub.entities._base.metadata.entity import Metadata
 
     from digitalhub_runtime_modelserve.entities.task.vllmservetext_serve.spec import TaskSpecVllmservetextServe
     from digitalhub_runtime_modelserve.entities.task.vllmservetext_serve.status import TaskStatusVllmservetextServe
@@ -20,17 +19,8 @@ class TaskVllmservetextServe(TaskVllmserveServe):
     TaskVllmservetextServe class.
     """
 
-    def __init__(
-        self,
-        project: str,
-        uuid: str,
-        kind: str,
-        metadata: Metadata,
-        spec: TaskSpecVllmservetextServe,
-        status: TaskStatusVllmservetextServe,
-        user: str | None = None,
-    ) -> None:
-        super().__init__(project, uuid, kind, metadata, spec, status, user)
+    def __init__(self, *args, **kwargs) -> None:
+        super().__init__(*args, **kwargs)
 
         self.spec: TaskSpecVllmservetextServe
         self.status: TaskStatusVllmservetextServe

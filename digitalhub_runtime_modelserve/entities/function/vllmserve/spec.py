@@ -21,11 +21,13 @@ class FunctionSpecVllmserve(FunctionSpecModelserve):
         model_name: str | None = None,
         image: str | None = None,
         adapters: list[dict] | None = None,
+        url: str | None = None,
     ) -> None:
         super().__init__()
         self.model_name = model_name
         self.image = image
         self.adapters = adapters
+        self.url = url
 
 
 class FunctionValidatorVllmserve(FunctionValidatorModelserve):
@@ -41,3 +43,6 @@ class FunctionValidatorVllmserve(FunctionValidatorModelserve):
 
     adapters: list[VLLMAdapter] | None = None
     """List of adapters configurations."""
+
+    url: str | None = None
+    """URL of the model to be served."""

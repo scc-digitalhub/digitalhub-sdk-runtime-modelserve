@@ -11,7 +11,6 @@ import requests
 from digitalhub_runtime_modelserve.entities.run.modelserve_run.entity import RunModelserveRun
 
 if typing.TYPE_CHECKING:
-
     from digitalhub_runtime_modelserve.entities.run.vllmserve_run.spec import RunSpecVllmserveRun
     from digitalhub_runtime_modelserve.entities.run.vllmserve_run.status import RunStatusVllmserveRun
 

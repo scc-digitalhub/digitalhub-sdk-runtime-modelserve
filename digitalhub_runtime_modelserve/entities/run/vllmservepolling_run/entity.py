@@ -9,7 +9,6 @@ import typing
 from digitalhub_runtime_modelserve.entities.run.vllmserve_run.entity import RunVllmserveRun
 
 if typing.TYPE_CHECKING:
-
     from digitalhub_runtime_modelserve.entities.run.vllmservepolling_run.spec import RunSpecVllmservepollingRun
     from digitalhub_runtime_modelserve.entities.run.vllmservepolling_run.status import RunStatusVllmservepollingRun
 

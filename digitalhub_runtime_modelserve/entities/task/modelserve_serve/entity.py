@@ -9,7 +9,6 @@ import typing
 from digitalhub.entities.task._base.entity import Task
 
 if typing.TYPE_CHECKING:
-
     from digitalhub_runtime_modelserve.entities.task.modelserve_serve.spec import TaskSpecModelserveServe
     from digitalhub_runtime_modelserve.entities.task.modelserve_serve.status import TaskStatusModelserveServe
 

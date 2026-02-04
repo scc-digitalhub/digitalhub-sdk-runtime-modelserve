@@ -9,7 +9,6 @@ import typing
 from digitalhub_runtime_modelserve.entities.run.modelserve_run.entity import RunModelserveRun
 
 if typing.TYPE_CHECKING:
-
     from digitalhub_runtime_modelserve.entities.run.mlflowserve_build_run.spec import RunSpecMlflowserveBuildRun
     from digitalhub_runtime_modelserve.entities.run.mlflowserve_build_run.status import RunStatusMlflowserveBuildRun
 

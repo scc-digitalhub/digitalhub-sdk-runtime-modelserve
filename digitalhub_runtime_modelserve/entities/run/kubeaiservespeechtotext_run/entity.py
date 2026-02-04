@@ -9,7 +9,6 @@ import typing
 from digitalhub_runtime_modelserve.entities.run.kubeaiserve_run.entity import RunKubeaiserveRun
 
 if typing.TYPE_CHECKING:
-
     from digitalhub_runtime_modelserve.entities.run.kubeaiservespeechtotext_run.spec import (
         RunSpecKubeaiserveSpeechtotextRun,
     )

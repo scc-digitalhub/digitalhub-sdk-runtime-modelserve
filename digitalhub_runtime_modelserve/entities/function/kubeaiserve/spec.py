@@ -16,18 +16,33 @@ class FunctionSpecKubeaiserve(FunctionSpec):
 
     def __init__(
         self,
+        model_name: str | None = None,
         image: str | None = None,
+        url: str | None = None,
         adapters: list[dict] | None = None,
+        engine: str | None = None,
     ) -> None:
         super().__init__()
+        self.model_name = model_name
         self.image = image
+        self.url = url
         self.adapters = adapters
+        self.engine = engine
 
 
 class FunctionValidatorKubeaiserve(FunctionValidator):
     """
     FunctionValidatorKubeaiserve validator.
     """
+
+    model_name: str | None = None
+    "Name of the model to be served."
+
+    url: str | None = None
+    "URL of the model to be served."
+
+    engine: str | None = None
+    "Engine used for serving the model."
 
     image: str | None = None
     "Image where the function will be executed."

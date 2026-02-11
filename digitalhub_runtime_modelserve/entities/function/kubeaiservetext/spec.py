@@ -24,7 +24,6 @@ class FunctionSpecKubeaiserveText(FunctionSpecKubeaiserve):
         adapters: list[dict] | None = None,
         engine: str | None = None,
         features: list[dict] | None = None,
-
     ) -> None:
         super().__init__(model_name, image, url, adapters)
         self.features = features

@@ -13,7 +13,6 @@ class RunSpecModelserveRun(RunSpec):
     def __init__(
         self,
         task: str,
-        local_execution: bool = False,
         path: str | None = None,
         model_name: str | None = None,
         function: str | None = None,
@@ -31,7 +30,6 @@ class RunSpecModelserveRun(RunSpec):
     ) -> None:
         super().__init__(
             task,
-            local_execution,
             function,
             workflow,
             volumes,

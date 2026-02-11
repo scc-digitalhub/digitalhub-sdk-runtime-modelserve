@@ -31,7 +31,6 @@ class RunSpecHuggingfaceserveRun(RunSpecModelserveRun):
     def __init__(
         self,
         task: str,
-        local_execution: bool = False,
         path: str | None = None,
         model_name: str | None = None,
         function: str | None = None,
@@ -60,7 +59,6 @@ class RunSpecHuggingfaceserveRun(RunSpecModelserveRun):
     ) -> None:
         super().__init__(
             task,
-            local_execution,
             function,
             workflow,
             volumes,

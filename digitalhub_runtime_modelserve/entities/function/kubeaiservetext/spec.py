@@ -18,12 +18,15 @@ class FunctionSpecKubeaiserveText(FunctionSpecKubeaiserve):
 
     def __init__(
         self,
+        model_name: str | None = None,
         image: str | None = None,
+        url: str | None = None,
         adapters: list[dict] | None = None,
-        features: list[dict] | None = None,
         engine: str | None = None,
+        features: list[dict] | None = None,
+
     ) -> None:
-        super().__init__(image, adapters)
+        super().__init__(model_name, image, url, adapters)
         self.features = features
         self.engine = engine
 

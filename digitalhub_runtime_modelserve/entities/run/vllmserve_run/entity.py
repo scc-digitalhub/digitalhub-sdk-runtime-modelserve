@@ -57,6 +57,8 @@ class RunVllmserveRun(RunModelserveRun):
 
         if url is None:
             url = self.status.service.get("urls")[0]
+            if not url.startswith("http://") and not url.startswith("https://"):
+                url = f"http://{url}"
         else:
             self._eval_url(url, base_url)
 

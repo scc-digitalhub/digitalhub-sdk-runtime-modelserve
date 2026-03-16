@@ -10,13 +10,13 @@ from digitalhub_runtime_modelserve.entities.task.vllmserve_serve.spec import (
 )
 
 
-class TaskSpecVllmservepollingServe(TaskSpecVllmserveServe):
+class TaskSpecVllmservepoolingServe(TaskSpecVllmserveServe):
     """
-    TaskSpecVllmservepollingServe specifications.
+    TaskSpecVllmservepoolingServe specifications.
     """
 
 
-class TaskValidatorVllmservepollingServe(TaskValidatorVllmserveServe):
+class TaskValidatorVllmservepoolingServe(TaskValidatorVllmserveServe):
     """
-    TaskValidatorVllmservepollingServe validator.
+    TaskValidatorVllmservepoolingServe validator.
     """

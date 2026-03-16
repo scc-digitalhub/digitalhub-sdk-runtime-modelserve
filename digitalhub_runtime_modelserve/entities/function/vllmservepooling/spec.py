@@ -10,13 +10,13 @@ from digitalhub_runtime_modelserve.entities.function.vllmserve.spec import (
 )
 
 
-class FunctionSpecVllmservepolling(FunctionSpecVllmserve):
+class FunctionSpecVllmservepooling(FunctionSpecVllmserve):
     """
-    FunctionSpecVllmservepolling specifications.
+    FunctionSpecVllmservepooling specifications.
     """
 
 
-class FunctionValidatorVllmservepolling(FunctionValidatorVllmserve):
+class FunctionValidatorVllmservepooling(FunctionValidatorVllmserve):
     """
-    FunctionValidatorVllmservepolling validator.
+    FunctionValidatorVllmservepooling validator.
     """

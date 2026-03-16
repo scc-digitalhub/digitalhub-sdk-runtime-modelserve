@@ -1,7 +1,7 @@
 {
     "id": "b8801f26-135c-41ab-913c-c37fcc8c7857",
-    "key": "store://demo-etl/run/vllmserve-polling+serve:run/b8801f26-135c-41ab-913c-c37fcc8c7857",
-    "kind": "vllmserve-polling+serve:run",
+    "key": "store://demo-etl/run/vllmserve-pooling+serve:run/b8801f26-135c-41ab-913c-c37fcc8c7857",
+    "kind": "vllmserve-pooling+serve:run",
     "metadata": {
       "name": "b8801f26-135c-41ab-913c-c37fcc8c7857",
       "updated_by": "digitalhubdev",
@@ -13,13 +13,13 @@
     "name": "b8801f26-135c-41ab-913c-c37fcc8c7857",
     "project": "demo-etl",
     "spec": {
-      "path": "s3://my-bucket/my-vllm-polling-model",
+      "path": "s3://my-bucket/my-vllm-pooling-model",
       "image": "vllm/vllm-openai:latest",
       "service_type": "NodePort",
-      "task": "vllmserve-polling+serve://demo-etl/c9ce6d88-87bf-4c5b-a1cb-1beef4bfe791",
-      "model_name": "vllm-polling-model",
+      "task": "vllmserve-pooling+serve://demo-etl/c9ce6d88-87bf-4c5b-a1cb-1beef4bfe791",
+      "model_name": "vllm-pooling-model",
       "replicas": 1,
-      "function": "vllmserve-polling://demo-etl/func7:c9ce6d88-87bf-4c5b-a1cb-1beef4bfe791",
+      "function": "vllmserve-pooling://demo-etl/func7:c9ce6d88-87bf-4c5b-a1cb-1beef4bfe791",
       "profile": "1xa100",
       "local_execution": false,
       "resources": {

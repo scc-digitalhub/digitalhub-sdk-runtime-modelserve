@@ -10,9 +10,9 @@ from digitalhub_runtime_modelserve.entities.run.vllmserve_run.spec import (
 )
 
 
-class RunSpecVllmservepollingRun(RunSpecVllmserveRun):
-    """RunSpecVllmservepollingRun specifications."""
+class RunSpecVllmservepoolingRun(RunSpecVllmserveRun):
+    """RunSpecVllmservepoolingRun specifications."""
 
 
-class RunValidatorVllmservepollingRun(RunValidatorVllmserveRun):
-    """RunValidatorVllmservepollingRun validator."""
+class RunValidatorVllmservepoolingRun(RunValidatorVllmserveRun):
+    """RunValidatorVllmservepoolingRun validator."""

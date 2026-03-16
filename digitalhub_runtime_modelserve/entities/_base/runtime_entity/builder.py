@@ -38,12 +38,12 @@ class RuntimeEntityBuilderMlflowserve(RuntimeEntityBuilder):
     )
 
 
-class RuntimeEntityBuilderVllmservePolling(RuntimeEntityBuilder):
-    EXECUTABLE_KIND = EntityKinds.FUNCTION_VLLMSERVEPOLLING.value
+class RuntimeEntityBuilderVllmservePooling(RuntimeEntityBuilder):
+    EXECUTABLE_KIND = EntityKinds.FUNCTION_VLLMSERVEPOOLING.value
     TASKS_KINDS = map_actions(
         [
             (
-                EntityKinds.TASK_VLLMSERVEPOLLING_SERVE.value,
+                EntityKinds.TASK_VLLMSERVEPOOLING_SERVE.value,
                 Actions.SERVE.value,
             ),
         ]
@@ -51,7 +51,7 @@ class RuntimeEntityBuilderVllmservePolling(RuntimeEntityBuilder):
     RUN_KINDS = map_actions(
         [
             (
-                EntityKinds.RUN_VLLMSERVEPOLLING_SERVE.value,
+                EntityKinds.RUN_VLLMSERVEPOOLING_SERVE.value,
                 Actions.SERVE.value,
             ),
         ]

@@ -1,7 +1,7 @@
 {
     "id": "func7-c9ce6d88-87bf-4c5b-a1cb-1beef4bfe791",
-    "key": "store://demo-etl/function/vllmserve-polling/func7-c9ce6d88-87bf-4c5b-a1cb-1beef4bfe791",
-    "kind": "vllmserve-polling",
+    "key": "store://demo-etl/function/vllmserve-pooling/func7-c9ce6d88-87bf-4c5b-a1cb-1beef4bfe791",
+    "kind": "vllmserve-pooling",
     "metadata": {
       "name": "func7-c9ce6d88-87bf-4c5b-a1cb-1beef4bfe791",
       "updated_by": "digitalhubdev",
@@ -13,8 +13,8 @@
     "name": "func7-c9ce6d88-87bf-4c5b-a1cb-1beef4bfe791",
     "project": "demo-etl",
     "spec": {
-      "path": "s3://my-bucket/my-vllm-polling-model",
+      "path": "s3://my-bucket/my-vllm-pooling-model",
       "image": "vllm/vllm-openai:latest",
-      "model_name": "vllm-polling-model"
+      "model_name": "vllm-pooling-model"
     }
 }

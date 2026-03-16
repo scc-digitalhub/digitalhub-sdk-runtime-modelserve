@@ -7,7 +7,7 @@ from __future__ import annotations
 from digitalhub_runtime_modelserve.entities.run.vllmserve_run.status import RunStatusVllmserveRun
 
 
-class RunStatusVllmservepollingRun(RunStatusVllmserveRun):
+class RunStatusVllmservepoolingRun(RunStatusVllmserveRun):
     """
-    RunStatusVllmservepollingRun status.
+    RunStatusVllmservepoolingRun status.
     """

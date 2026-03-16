@@ -46,9 +46,9 @@ class EntityKinds(Enum):
     TASK_VLLMSERVESPEECH_SERVE = "vllmserve-speech+serve"
     RUN_VLLMSERVESPEECH_SERVE = "vllmserve-speech+serve:run"
 
-    FUNCTION_VLLMSERVEPOLLING = "vllmserve-polling"
-    TASK_VLLMSERVEPOLLING_SERVE = "vllmserve-polling+serve"
-    RUN_VLLMSERVEPOLLING_SERVE = "vllmserve-polling+serve:run"
+    FUNCTION_VLLMSERVEPOOLING = "vllmserve-pooling"
+    TASK_VLLMSERVEPOOLING_SERVE = "vllmserve-pooling+serve"
+    RUN_VLLMSERVEPOOLING_SERVE = "vllmserve-pooling+serve:run"
 
     FUNCTION_VLLMSERVETEXT = "vllmserve-text"
     TASK_VLLMSERVETEXT_SERVE = "vllmserve-text+serve"

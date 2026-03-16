@@ -7,7 +7,7 @@ from __future__ import annotations
 from digitalhub_runtime_modelserve.entities.function.vllmserve.status import FunctionStatusVllmserve
 
 
-class FunctionStatusVllmservepolling(FunctionStatusVllmserve):
+class FunctionStatusVllmservepooling(FunctionStatusVllmserve):
     """
-    FunctionStatusVllmservepolling status.
+    FunctionStatusVllmservepooling status.
     """

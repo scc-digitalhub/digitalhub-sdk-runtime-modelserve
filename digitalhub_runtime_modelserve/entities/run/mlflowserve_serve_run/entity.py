@@ -6,6 +6,8 @@ from __future__ import annotations
 
 import typing
 
+import requests
+
 from digitalhub_runtime_modelserve.entities.run.modelserve_run.entity import RunModelserveRun
 
 if typing.TYPE_CHECKING:
@@ -23,3 +25,48 @@ class RunMlflowserveServeRun(RunModelserveRun):
 
         self.spec: RunSpecMlflowserveServeRun
         self.status: RunStatusMlflowserveServeRun
+
+    def invoke(
+        self,
+        model_name: str | None = None,
+        method: str = "POST",
+        url: str | None = None,
+        **kwargs,
+    ) -> requests.Response:
+        """
+        Invoke served model. By default it exposes infer v2 endpoint
+        (http://<service_url>/v2/models/{model_name}/infer).
+        The method defaults to "POST" if data or json is provided in kwargs,
+        otherwise it defaults to "GET". The function returns a requests.Response
+        object.
+
+        Parameters
+        ----------
+        model_name : str
+            Name of the model to build the URL for.
+        method : str
+            Method of the request (e.g., "GET", "POST").
+        url : str
+            URL to invoke. If specified, it must start with the service URL
+            (http:// or https:// prefixes are required and stripped before comparison).
+        **kwargs : dict
+            Keyword arguments to pass to the request.
+
+        Returns
+        -------
+        requests.Response
+            Response from the request.
+        """
+        self._check_service()
+        base_url: str = self._get_base_url()
+
+        if url is None:
+            model_name = model_name if model_name is not None else "model"
+            url = f"http://{base_url}/v2/models/{model_name}/infer"
+        else:
+            self._eval_url(url, base_url)
+
+        if "data" not in kwargs and "json" not in kwargs:
+            method = "GET"
+
+        return requests.request(method=method, url=url, **kwargs)

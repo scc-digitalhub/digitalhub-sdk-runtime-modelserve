@@ -7,7 +7,6 @@ from __future__ import annotations
 import time
 import typing
 
-import requests
 from digitalhub.entities._commons.enums import State
 from digitalhub.entities.run._base.entity import Run
 from digitalhub.factory.entity import entity_factory
@@ -81,49 +80,12 @@ class RunModelserveRun(Run):
 
         return super().wait(log_info=log_info)
 
-    def invoke(
-        self,
-        model_name: str | None = None,
-        method: str = "POST",
-        url: str | None = None,
-        **kwargs,
-    ) -> requests.Response:
+    def _check_service(self) -> None:
         """
-        Invoke served model. By default it exposes infer v2 endpoint
-        (http://<service_url>/v2/models/{model_name}/infer).
-        The method defaults to "POST" if data or json is provided in kwargs,
-        otherwise it defaults to "GET". The function returns a requests.Response
-        object.
-
-        Parameters
-        ----------
-        model_name : str
-            Name of the model to build the URL for.
-        method : str
-            Method of the request (e.g., "GET", "POST").
-        url : str
-            URL to invoke. If specified, it must start with the service URL
-            (http:// or https:// prefixes are required and stripped before comparison).
-        **kwargs : dict
-            Keyword arguments to pass to the request.
-
-        Returns
-        -------
-        requests.Response
-            Response from the request.
+        Check if the service is available.
         """
-        base_url: str = self._get_base_url()
-
-        if url is None:
-            model_name = model_name if model_name is not None else "model"
-            url = f"http://{base_url}/v2/models/{model_name}/infer"
-        else:
-            self._eval_url(url, base_url)
-
-        if "data" not in kwargs and "json" not in kwargs:
-            method = "GET"
-
-        return requests.request(method=method, url=url, **kwargs)
+        if self.status.service is None:
+            raise RuntimeError("Service is not available for this run.")
 
     def _get_base_url(self) -> str:
         """
@@ -136,7 +98,7 @@ class RunModelserveRun(Run):
         """
         try:
             base_url: str = self.status.service.get("url")
-            return self._strip_https(base_url)
+            return self._strip_http(base_url)
         except AttributeError:
             raise EntityError(
                 "Url not specified and service not found on run status."
@@ -159,12 +121,12 @@ class RunModelserveRun(Run):
         EntityError
             If URL does not start with base URL.
         """
-        stripped_url = self._strip_https(url)
+        stripped_url = self._strip_http(url)
         if not stripped_url.startswith(base_url):
             raise EntityError(f"Invalid URL: {stripped_url}. It must start with the service URL: {base_url}")
 
     @staticmethod
-    def _strip_https(url: str) -> str:
+    def _strip_http(url: str) -> str:
         """
         Strip http:// or https:// from URL.
 
@@ -179,3 +141,22 @@ class RunModelserveRun(Run):
             Stripped URL.
         """
         return url.removeprefix("http://").removeprefix("https://")
+
+    @staticmethod
+    def _prepend_http(url: str) -> str:
+        """
+        Prepend http:// to URL if it does not start with http:// or https://.
+
+        Parameters
+        ----------
+        url : str
+            URL to prepend.
+
+        Returns
+        -------
+        str
+            URL with http:// prepended if it was not already present.
+        """
+        if not url.startswith("http://") and not url.startswith("https://"):
+            return f"http://{url}"
+        return url

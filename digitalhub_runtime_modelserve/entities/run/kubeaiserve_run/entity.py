@@ -53,12 +53,12 @@ class RunKubeaiserveRun(RunModelserveRun):
         requests.Response
             Response from the request.
         """
+        self._check_service()
         base_url: str = self._get_base_url()
 
         if url is None:
             url = self.status.service.get("urls")[0]
-            if not url.startswith("http://") and not url.startswith("https://"):
-                url = f"http://{url}"
+            url = self._prepend_http(url)
         else:
             self._eval_url(url, base_url)
 
@@ -66,3 +66,16 @@ class RunKubeaiserveRun(RunModelserveRun):
             method = "GET"
 
         return requests.request(method=method, url=url, **kwargs)
+
+    def list_endpoints(self) -> list[str]:
+        """
+        List all available endpoints for the served model.
+
+        Returns
+        -------
+        list[str]
+            List of available endpoints.
+        """
+        self._check_service()
+        urls = self.status.service.get("urls", [])
+        return [self._prepend_http(url) for url in urls]

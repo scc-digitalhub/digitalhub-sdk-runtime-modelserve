@@ -4,25 +4,12 @@
 
 from __future__ import annotations
 
-from pydantic import Field
 
 from digitalhub_runtime_modelserve.entities.run.modelserve_run.spec import (
     RunSpecModelserveRun,
     RunValidatorModelserveRun,
 )
 from digitalhub_runtime_modelserve.entities.task.huggingfaceserve_serve.models import Backend, Dtype, HuggingfaceTask
-
-path_regex = (
-    r"^(store://([^/]+)/model/huggingface/.*)"
-    + r"|"
-    + r".*\/$"
-    + r"|"
-    + r".*\.zip$"
-    + r"|"
-    + r"^huggingface?://.*$"
-    + r"|"
-    + r"^hf?://.*$"
-)
 
 
 class RunSpecHuggingfaceserveRun(RunSpecModelserveRun):
@@ -54,6 +41,8 @@ class RunSpecHuggingfaceserveRun(RunSpecModelserveRun):
         tensor_input_names: list[str] | None = None,
         return_token_type_ids: bool | None = None,
         return_probabilities: bool | None = None,
+        disable_log_requests: bool | None = None,
+        max_log_len: int | None = None,
         args: list[str] | None = None,
         **kwargs,
     ) -> None:
@@ -84,6 +73,8 @@ class RunSpecHuggingfaceserveRun(RunSpecModelserveRun):
         self.tensor_input_names = tensor_input_names
         self.return_token_type_ids = return_token_type_ids
         self.return_probabilities = return_probabilities
+        self.disable_log_requests = disable_log_requests
+        self.max_log_len = max_log_len
         self.args = args
 
 
@@ -109,5 +100,5 @@ class RunValidatorHuggingfaceserveRun(RunValidatorModelserveRun):
     args: list[str] = None
     """Arguments for the huggingface serve command."""
 
-    path: str | None = Field(default=None, pattern=path_regex)
-    "Path to the model files"
+    path: str | None = None
+    """Path to the model files"""

@@ -35,6 +35,8 @@ class TaskSpecHuggingfaceserveServe(TaskSpecModelserveServe):
         tensor_input_names: list[str] | None = None,
         return_token_type_ids: bool | None = None,
         return_probabilities: bool | None = None,
+        disable_log_requests: bool | None = None,
+        max_log_len: int | None = None,
         **kwargs,
     ) -> None:
         super().__init__(
@@ -57,6 +59,8 @@ class TaskSpecHuggingfaceserveServe(TaskSpecModelserveServe):
         self.tensor_input_names = tensor_input_names
         self.return_token_type_ids = return_token_type_ids
         self.return_probabilities = return_probabilities
+        self.disable_log_requests = disable_log_requests
+        self.max_log_len = max_log_len
 
 
 class TaskValidatorHuggingfaceserveServe(TaskValidatorModelserveServe):

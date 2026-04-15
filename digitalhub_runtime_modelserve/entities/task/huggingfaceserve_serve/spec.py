@@ -40,12 +40,12 @@ class TaskSpecHuggingfaceserveServe(TaskSpecModelserveServe):
         **kwargs,
     ) -> None:
         super().__init__(
-            function,
-            volumes,
-            resources,
-            envs,
-            secrets,
-            profile,
+            function=function,
+            volumes=volumes,
+            resources=resources,
+            envs=envs,
+            secrets=secrets,
+            profile=profile,
             **kwargs,
         )
         self.huggingface_task = huggingface_task

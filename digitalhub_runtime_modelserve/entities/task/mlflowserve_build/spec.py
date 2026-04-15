@@ -30,15 +30,15 @@ class TaskSpecMlflowserveBuild(TaskSpecModelserveServe):
         **kwargs,
     ) -> None:
         super().__init__(
-            function,
-            volumes,
-            resources,
-            envs,
-            secrets,
-            profile,
-            replicas,
-            service_type,
-            service_name,
+            function=function,
+            volumes=volumes,
+            resources=resources,
+            envs=envs,
+            secrets=secrets,
+            profile=profile,
+            replicas=replicas,
+            service_type=service_type,
+            service_name=service_name,
             **kwargs,
         )
         self.instructions = instructions

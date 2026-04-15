@@ -4,14 +4,10 @@
 
 from __future__ import annotations
 
-from pydantic import Field
-
 from digitalhub_runtime_modelserve.entities.run.modelserve_run.spec import (
     RunSpecModelserveRun,
     RunValidatorModelserveRun,
 )
-
-path_regex = r"^(store://([^/]+)/model/sklearn/.*)|.*\.pkl$|.*\.joblib$"
 
 
 class RunSpecSklearnserveRun(RunSpecModelserveRun):
@@ -20,6 +16,3 @@ class RunSpecSklearnserveRun(RunSpecModelserveRun):
 
 class RunValidatorSklearnserveRun(RunValidatorModelserveRun):
     """RunValidatorSklearnserveRun validator."""
-
-    path: str | None = Field(default=None, pattern=path_regex)
-    "Path to the model files"

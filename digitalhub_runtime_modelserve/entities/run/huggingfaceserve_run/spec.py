@@ -4,7 +4,6 @@
 
 from __future__ import annotations
 
-
 from digitalhub_runtime_modelserve.entities.run.modelserve_run.spec import (
     RunSpecModelserveRun,
     RunValidatorModelserveRun,
@@ -29,6 +28,7 @@ class RunSpecHuggingfaceserveRun(RunSpecModelserveRun):
         profile: str | None = None,
         image: str | None = None,
         service_type: str | None = None,
+        service_name: str | None = None,
         replicas: int | None = None,
         huggingface_task: str | None = None,
         backend: str | None = None,
@@ -47,17 +47,18 @@ class RunSpecHuggingfaceserveRun(RunSpecModelserveRun):
         **kwargs,
     ) -> None:
         super().__init__(
-            task,
-            function,
-            workflow,
-            volumes,
-            resources,
-            envs,
-            secrets,
-            profile,
-            image,
-            service_type,
-            replicas,
+            task=task,
+            function=function,
+            workflow=workflow,
+            volumes=volumes,
+            resources=resources,
+            envs=envs,
+            secrets=secrets,
+            profile=profile,
+            image=image,
+            service_type=service_type,
+            service_name=service_name,
+            replicas=replicas,
             **kwargs,
         )
         self.path = path

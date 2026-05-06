@@ -4,19 +4,37 @@
 
 from __future__ import annotations
 
-from digitalhub_runtime_modelserve.entities.task.modelserve_serve.spec import (
-    TaskSpecModelserveServe,
-    TaskValidatorModelserveServe,
-)
+from digitalhub.entities.task._base.models import Env
+from digitalhub.entities.task._base.spec import TaskSpec, TaskValidator
 
 
-class TaskSpecKubeaiserveServe(TaskSpecModelserveServe):
+class TaskSpecKubeaiserveServe(TaskSpec):
     """
     TaskSpecKubeaiserveServe specifications.
     """
 
+    def __init__(
+        self,
+        function: str,
+        envs: list[dict] | None = None,
+        secrets: list[str] | None = None,
+        **kwargs,
+    ) -> None:
+        self.function = function
+        self.envs = envs
+        self.secrets = secrets
 
-class TaskValidatorKubeaiserveServe(TaskValidatorModelserveServe):
+
+class TaskValidatorKubeaiserveServe(TaskValidator):
     """
     TaskValidatorKubeaiserveServe validator.
     """
+
+    function: str
+    """The function string."""
+
+    envs: list[Env] | None
+    """The envs list of Env."""
+
+    secrets: list[str] | None
+    """The secrets list of string."""

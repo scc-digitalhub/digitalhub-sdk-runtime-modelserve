@@ -4,7 +4,7 @@
 
 from __future__ import annotations
 
-from digitalhub.entities.run._base.spec import RunSpec, RunValidator
+from digitalhub.entities._base.entity.spec import Spec, SpecValidator
 from pydantic import Field
 
 from digitalhub_runtime_modelserve.entities.run.kubeaiserve_run.models import KubeaiFile, Scaling
@@ -22,19 +22,15 @@ regexp = (
 )
 
 
-class RunSpecKubeaiserveRun(RunSpec):
+class RunSpecKubeaiserveRun(Spec):
     """RunSpecKubeaiserveRun specifications."""
 
     def __init__(
         self,
         task: str,
         function: str | None = None,
-        workflow: str | None = None,
-        volumes: list[dict] | None = None,
-        resources: dict | None = None,
         envs: list[dict] | None = None,
         secrets: list[str] | None = None,
-        profile: str | None = None,
         model_name: str | None = None,
         url: str | None = None,
         image: str | None = None,
@@ -50,12 +46,8 @@ class RunSpecKubeaiserveRun(RunSpec):
         super().__init__(
             task=task,
             function=function,
-            workflow=workflow,
-            volumes=volumes,
-            resources=resources,
             envs=envs,
             secrets=secrets,
-            profile=profile,
             **kwargs,
         )
         self.model_name = model_name
@@ -70,14 +62,22 @@ class RunSpecKubeaiserveRun(RunSpec):
         self.files = files
 
 
-class RunValidatorKubeaiserveRun(RunValidator):
+class RunValidatorKubeaiserveRun(SpecValidator):
     """RunValidatorKubeaiserveRun validator."""
+
+    # Task parameters
+    function: str | None = None
+    envs: list[dict] | None = None
+    secrets: list[str] | None = None
 
     # Function parameters
     image: str | None = None
     adapters: list[dict] | None = None
 
     # Run parameters
+    task: str
+    """The task string associated with the run."""
+
     url: str | None = Field(pattern=regexp, default=None)
     "Model URL."
 

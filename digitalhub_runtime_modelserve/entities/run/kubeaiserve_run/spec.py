@@ -31,6 +31,7 @@ class RunSpecKubeaiserveRun(Spec):
         function: str | None = None,
         envs: list[dict] | None = None,
         secrets: list[str] | None = None,
+        profile: str | None = None,
         model_name: str | None = None,
         url: str | None = None,
         image: str | None = None,
@@ -48,6 +49,7 @@ class RunSpecKubeaiserveRun(Spec):
             function=function,
             envs=envs,
             secrets=secrets,
+            profile=profile,
             **kwargs,
         )
         self.model_name = model_name
@@ -69,6 +71,7 @@ class RunValidatorKubeaiserveRun(SpecValidator):
     function: str | None = None
     envs: list[dict] | None = None
     secrets: list[str] | None = None
+    profile: str | None = None
 
     # Function parameters
     image: str | None = None

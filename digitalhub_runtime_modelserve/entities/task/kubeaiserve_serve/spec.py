@@ -18,11 +18,13 @@ class TaskSpecKubeaiserveServe(TaskSpec):
         function: str,
         envs: list[dict] | None = None,
         secrets: list[str] | None = None,
+        profile: str | None = None,
         **kwargs,
     ) -> None:
         self.function = function
         self.envs = envs
         self.secrets = secrets
+        self.profile = profile
 
 
 class TaskValidatorKubeaiserveServe(TaskValidator):
@@ -38,3 +40,6 @@ class TaskValidatorKubeaiserveServe(TaskValidator):
 
     secrets: list[str] | None = None
     """The secrets list of string."""
+
+    profile: str | None = None
+    """The profile string."""

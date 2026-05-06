@@ -20,6 +20,10 @@
       "resources": {
         "cpu": "1",
         "mem": "1Gi"
-      }
+      },
+      "envs": [],
+      "instructions": [],
+      "secrets": [],
+      "volumes": []
     }
 }

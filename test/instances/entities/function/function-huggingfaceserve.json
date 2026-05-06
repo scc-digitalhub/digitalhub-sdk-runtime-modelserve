@@ -14,7 +14,7 @@
     "project": "demo-etl",
     "spec": {
       "path": "hf://facebook/bart-large-cnn",
-      "image": "ghcr.io/huggingface/text-generation-inference:latest",
+      "image": "kserve/huggingfaceserver:latest",
       "model_name": "hf-model"
     }
 }

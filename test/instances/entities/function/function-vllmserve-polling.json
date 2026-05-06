@@ -13,8 +13,9 @@
     "name": "func7-c9ce6d88-87bf-4c5b-a1cb-1beef4bfe791",
     "project": "demo-etl",
     "spec": {
-      "url": "s3://my-bucket/my-vllm-pooling-model",
+      "url": "store://demo-etl/model/huggingface/vllm-pooling-model",
       "image": "vllm/vllm-openai:latest",
-      "model_name": "vllm-pooling-model"
+      "model_name": "vllm-pooling-model",
+      "adapters": []
     }
 }

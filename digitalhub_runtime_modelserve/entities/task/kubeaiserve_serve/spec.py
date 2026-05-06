@@ -33,8 +33,8 @@ class TaskValidatorKubeaiserveServe(TaskValidator):
     function: str
     """The function string."""
 
-    envs: list[Env] | None
+    envs: list[Env] | None = None
     """The envs list of Env."""
 
-    secrets: list[str] | None
+    secrets: list[str] | None = None
     """The secrets list of string."""

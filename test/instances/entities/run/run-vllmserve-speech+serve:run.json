@@ -22,12 +22,15 @@
     },
     "profile": "1xa100",
     "path": "s3://my-bucket/my-vllm-speech-model",
+    "url": "store://demo-etl/model/huggingface/vllm-speech-model",
     "model_name": "vllm-speech-model",
     "image": "vllm/vllm-openai:latest",
     "service_type": "NodePort",
     "replicas": 1,
     "enable_telemetry": true,
     "use_cpu_image": true
+
+    ,"args": []
   },
   "status": {
     "state": "RUNNING"

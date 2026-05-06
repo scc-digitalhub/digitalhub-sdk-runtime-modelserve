@@ -21,6 +21,10 @@
         "cpu": "2",
         "mem": "4Gi",
         "gpu": "1"
-      }
+      },
+      "envs": [],
+      "secrets": [],
+      "service_name": "",
+      "volumes": []
     }
 }

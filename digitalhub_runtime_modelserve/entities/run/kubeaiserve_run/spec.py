@@ -9,18 +9,6 @@ from pydantic import Field
 
 from digitalhub_runtime_modelserve.entities.run.kubeaiserve_run.models import KubeaiFile, Scaling
 
-regexp = (
-    r"^(store://([^/]+)/model/huggingface/.*)"
-    + r"|"
-    + r"^pvc?://.*$"
-    + r"|"
-    + r"^s3?://.*$"
-    + r"|"
-    + r"^ollama?://.*$"
-    + r"|"
-    + r"^hf?://.*$"
-)
-
 
 class RunSpecKubeaiserveRun(Spec):
     """RunSpecKubeaiserveRun specifications."""
@@ -81,7 +69,7 @@ class RunValidatorKubeaiserveRun(SpecValidator):
     task: str
     """The task string associated with the run."""
 
-    url: str | None = Field(pattern=regexp, default=None)
+    url: str | None = None
     "Model URL."
 
     model_name: str | None = None

@@ -32,14 +32,12 @@ class RunSpecKubeaiserveRun(Spec):
         files: list[dict] | None = None,
         **kwargs,
     ) -> None:
-        super().__init__(
-            task=task,
-            function=function,
-            envs=envs,
-            secrets=secrets,
-            profile=profile,
-            **kwargs,
-        )
+        super().__init__()
+        self.task = task
+        self.function = function
+        self.envs = envs
+        self.secrets = secrets
+        self.profile = profile
         self.model_name = model_name
         self.url = url
         self.image = image

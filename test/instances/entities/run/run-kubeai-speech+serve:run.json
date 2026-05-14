@@ -34,7 +34,9 @@
       "target_request": 100,
       "scale_down_delay_seconds": 30
     },
-    "files": []
+    "files": [],
+    "url": "hf://test-url",
+    "cache_profile": "cache_profile_1"
   },
   "status": {
     "state": "RUNNING"

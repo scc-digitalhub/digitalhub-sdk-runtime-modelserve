@@ -12,6 +12,10 @@ class EntityKinds(Enum):
     Entity kinds.
     """
 
+    MODEL_HUGGINGFACE = "huggingface"
+    MODEL_MLFLOW = "mlflow"
+    MODEL_SKLEARN = "sklearn"
+
     FUNCTION_HUGGINGFACESERVE = "huggingfaceserve"
     TASK_HUGGINGFACESERVE_SERVE = "huggingfaceserve+serve"
     RUN_HUGGINGFACESERVE_SERVE = "huggingfaceserve+serve:run"

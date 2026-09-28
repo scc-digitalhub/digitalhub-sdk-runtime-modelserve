@@ -22,12 +22,11 @@
       "mem": "2Gi",
       "gpu": "1"
     },
-    "envs": [],
+    "envs": {},
     "secrets": [],
     "model_name": "kubeai-text-model",
     "image": "substratusai/kubeai:latest",
     "processors": 1,
-    "env": {},
     "args": [],
     "scaling": {
       "replicas": 1,

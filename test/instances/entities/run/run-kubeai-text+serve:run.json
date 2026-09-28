@@ -25,7 +25,7 @@
     "model_name": "kubeai-text-model",
     "image": "substratusai/kubeai:latest",
     "processors": 1,
-    "envs": [{"a": "b"}],
+    "envs": {"a": "b"},
     "args": [],
     "scaling": {
       "replicas": 1,

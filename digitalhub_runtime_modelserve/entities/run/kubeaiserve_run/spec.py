@@ -17,7 +17,7 @@ class RunSpecKubeaiserveRun(Spec):
         self,
         task: str,
         function: str | None = None,
-        envs: list[dict] | None = None,
+        envs: dict | None = None,
         secrets: list[str] | None = None,
         profile: str | None = None,
         model_name: str | None = None,
@@ -55,7 +55,7 @@ class RunValidatorKubeaiserveRun(SpecValidator):
 
     # Task parameters
     function: str | None = None
-    envs: list[dict] | None = None
+    envs: dict | None = None
     secrets: list[str] | None = None
     profile: str | None = None
 
@@ -75,9 +75,6 @@ class RunValidatorKubeaiserveRun(SpecValidator):
 
     processors: int | None = Field(default=None, ge=1)
     "Number of processors."
-
-    env: dict | None = None
-    """Environment variables."""
 
     args: list[str] | None = None
     """Arguments."""

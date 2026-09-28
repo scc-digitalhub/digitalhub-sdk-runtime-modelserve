@@ -4,7 +4,6 @@
 
 from __future__ import annotations
 
-from digitalhub.entities.task._base.models import Env
 from digitalhub.entities.task._base.spec import TaskSpec, TaskValidator
 
 
@@ -16,7 +15,7 @@ class TaskSpecKubeaiserveServe(TaskSpec):
     def __init__(
         self,
         function: str,
-        envs: list[dict] | None = None,
+        envs: dict | None = None,
         secrets: list[str] | None = None,
         profile: str | None = None,
         **kwargs,
@@ -35,8 +34,8 @@ class TaskValidatorKubeaiserveServe(TaskValidator):
     function: str
     """The function string."""
 
-    envs: list[Env] | None = None
-    """The envs list of Env."""
+    envs: dict | None = None
+    """The envs dictionary."""
 
     secrets: list[str] | None = None
     """The secrets list of string."""

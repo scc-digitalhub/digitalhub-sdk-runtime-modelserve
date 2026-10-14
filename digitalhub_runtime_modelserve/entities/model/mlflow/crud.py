@@ -66,9 +66,11 @@ def log_mlflow(
     model_config : dict, optional
         MLflow model configuration.
     input_datasets : list[Dataset], optional
-        Datasets used as model inputs.
+        Datasets used as model inputs. Each dataset can include ``name``,
+        ``digest``, ``profile``, ``dataset_schema``, ``source``, and
+        ``source_type``.
     signature : Signature, optional
-        MLflow model signature.
+        MLflow model signature with ``inputs``, ``outputs``, and ``params``.
     **kwargs : dict
         Additional model specification parameters.
 
@@ -151,9 +153,11 @@ def register_mlflow(
     model_config : dict, optional
         MLflow model configuration.
     input_datasets : list[Dataset], optional
-        Datasets used as model inputs.
+        Datasets used as model inputs. Each dataset can include ``name``,
+        ``digest``, ``profile``, ``dataset_schema``, ``source``, and
+        ``source_type``.
     signature : Signature, optional
-        MLflow model signature.
+        MLflow model signature with ``inputs``, ``outputs``, and ``params``.
     **kwargs : dict
         Additional model specification parameters.
 

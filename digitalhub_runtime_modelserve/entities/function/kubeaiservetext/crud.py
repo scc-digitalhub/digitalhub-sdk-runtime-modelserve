@@ -29,7 +29,25 @@ def new_function_kubeaiservetext(
     labels: list[str] | None = None,
     embedded: bool = False,
 ) -> FunctionKubeaiserveText:
-    """Create a KubeAI text function entity."""
+    """
+    Create a KubeAI text function entity.
+
+    Examples
+    --------
+    Create a text-generation function using KubeAI:
+
+    ```python
+    import digitalhub as dh
+
+    function = dh.new_function_kubeaiservetext(
+        project="my-project",
+        name="text-generation",
+        url="hf://microsoft/DialoGPT-medium",
+        features=["TextGeneration"],
+        engine="VLLM",
+    )
+    ```
+    """
     return new_function(
         project=project,
         name=name,

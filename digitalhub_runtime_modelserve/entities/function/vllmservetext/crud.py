@@ -27,7 +27,23 @@ def new_function_vllmservetext(
     labels: list[str] | None = None,
     embedded: bool = False,
 ) -> FunctionVllmservetext:
-    """Create a VLLM text function entity."""
+    """
+    Create a VLLM text function entity.
+
+    Examples
+    --------
+    Create a text-generation service from a Hugging Face model:
+
+    ```python
+    import digitalhub as dh
+
+    function = dh.new_function_vllmservetext(
+        project="my-project",
+        name="text-generation-service",
+        url="hf://meta-llama/Meta-Llama-3-8B-Instruct",
+    )
+    ```
+    """
     return new_function(
         project=project,
         name=name,

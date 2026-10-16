@@ -27,7 +27,23 @@ def new_function_vllmservepooling(
     labels: list[str] | None = None,
     embedded: bool = False,
 ) -> FunctionVllmservepooling:
-    """Create a VLLM pooling function entity."""
+    """
+    Create a VLLM pooling function entity.
+
+    Examples
+    --------
+    Create a pooling service for a Hugging Face embedding model:
+
+    ```python
+    import digitalhub as dh
+
+    function = dh.new_function_vllmservepooling(
+        project="my-project",
+        name="embedding-service",
+        url="hf://BAAI/bge-base-en-v1.5",
+    )
+    ```
+    """
     return new_function(
         project=project,
         name=name,

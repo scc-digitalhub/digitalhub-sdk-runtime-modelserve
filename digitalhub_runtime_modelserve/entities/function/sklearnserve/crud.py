@@ -26,7 +26,23 @@ def new_function_sklearnserve(
     labels: list[str] | None = None,
     embedded: bool = False,
 ) -> FunctionSklearnserve:
-    """Create a scikit-learn serving function entity."""
+    """
+    Create a scikit-learn serving function entity.
+
+    Examples
+    --------
+    Create a serving function for a stored scikit-learn model:
+
+    ```python
+    import digitalhub as dh
+
+    function = dh.new_function_sklearnserve(
+        project="my-project",
+        name="churn-classifier-service",
+        path="store://my-project/model/sklearn/churn-classifier:123e4567-e89b-42d3-a456-426614174000",
+    )
+    ```
+    """
     return new_function(
         project=project,
         name=name,

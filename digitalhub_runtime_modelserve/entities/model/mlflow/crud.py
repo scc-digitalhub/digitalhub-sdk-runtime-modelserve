@@ -78,6 +78,21 @@ def log_mlflow(
     -------
     ModelMlflow
         Created MLflow model entity with uploaded files.
+
+    Examples
+    --------
+    Log an MLflow model from a local MLflow artifact directory:
+
+    ```python
+    import digitalhub as dh
+
+    model = dh.log_mlflow(
+        project="my-project",
+        name="fraud-detector",
+        source="./mlruns/0/abc123/artifacts/model",
+        flavor="sklearn",
+    )
+    ```
     """
     return log_base_model(
         project=project,
@@ -165,6 +180,21 @@ def register_mlflow(
     -------
     ModelMlflow
         Registered MLflow model entity.
+
+    Examples
+    --------
+    Register an MLflow model that already exists in remote storage:
+
+    ```python
+    import digitalhub as dh
+
+    model = dh.register_mlflow(
+        project="my-project",
+        name="registered-fraud-detector",
+        source="s3://my-bucket/models/fraud-detector",
+        flavor="sklearn",
+    )
+    ```
     """
     return register_base_model(
         project=project,

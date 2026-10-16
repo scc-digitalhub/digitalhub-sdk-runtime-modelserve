@@ -26,7 +26,23 @@ def new_function_mlflowserve(
     labels: list[str] | None = None,
     embedded: bool = False,
 ) -> FunctionMlflowserve:
-    """Create an MLflow serving function entity."""
+    """
+    Create an MLflow serving function entity.
+
+    Examples
+    --------
+    Create a serving function for an MLflow model:
+
+    ```python
+    import digitalhub as dh
+
+    function = dh.new_function_mlflowserve(
+        project="my-project",
+        name="fraud-detector-service",
+        path="store://my-project/model/mlflow/fraud-detector:123e4567-e89b-42d3-a456-426614174000",
+    )
+    ```
+    """
     return new_function(
         project=project,
         name=name,

@@ -31,7 +31,23 @@ def new_function_kubeaiservespeechtotext(
     labels: list[str] | None = None,
     embedded: bool = False,
 ) -> FunctionKubeaiserveSpeechtotext:
-    """Create a KubeAI speech-to-text function entity."""
+    """
+    Create a KubeAI speech-to-text function entity.
+
+    Examples
+    --------
+    Create a speech-to-text function using a Hugging Face model URL:
+
+    ```python
+    import digitalhub as dh
+
+    function = dh.new_function_kubeaiservespeechtotext(
+        project="my-project",
+        name="speech-transcription",
+        url="hf://openai/whisper-large-v3",
+    )
+    ```
+    """
     return new_function(
         project=project,
         name=name,

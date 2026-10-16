@@ -26,7 +26,24 @@ def new_function_huggingfaceserve(
     labels: list[str] | None = None,
     embedded: bool = False,
 ) -> FunctionHuggingfaceserve:
-    """Create a Hugging Face serving function entity."""
+    """
+    Create a Hugging Face serving function entity.
+
+    Examples
+    --------
+    Create a serving function for a stored Hugging Face model:
+
+    ```python
+    import digitalhub as dh
+
+    function = dh.new_function_huggingfaceserve(
+        project="my-project",
+        name="huggingface-service",
+        path="store://my-project/model/huggingface/text-classifier:123e4567-e89b-42d3-a456-426614174000",
+        model_name="text-classifier",
+    )
+    ```
+    """
     return new_function(
         project=project,
         name=name,

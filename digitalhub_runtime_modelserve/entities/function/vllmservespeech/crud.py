@@ -27,7 +27,23 @@ def new_function_vllmservespeech(
     labels: list[str] | None = None,
     embedded: bool = False,
 ) -> FunctionVllmservespeech:
-    """Create a VLLM speech function entity."""
+    """
+    Create a VLLM speech function entity.
+
+    Examples
+    --------
+    Create a speech service for a Hugging Face model:
+
+    ```python
+    import digitalhub as dh
+
+    function = dh.new_function_vllmservespeech(
+        project="my-project",
+        name="speech-service",
+        url="hf://openai/whisper-large-v3",
+    )
+    ```
+    """
     return new_function(
         project=project,
         name=name,

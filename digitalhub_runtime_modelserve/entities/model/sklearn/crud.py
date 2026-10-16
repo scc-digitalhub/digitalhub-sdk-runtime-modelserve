@@ -63,6 +63,21 @@ def log_sklearn(
     -------
     ModelSklearn
         Created scikit-learn model entity with uploaded files.
+
+    Examples
+    --------
+    Log a scikit-learn model from a local artifact file:
+
+    ```python
+    import digitalhub as dh
+
+    model = dh.log_sklearn(
+        project="my-project",
+        name="churn-classifier",
+        source="./models/churn-classifier.joblib",
+        algorithm="RandomForestClassifier",
+    )
+    ```
     """
     return log_base_model(
         project=project,
@@ -132,6 +147,21 @@ def register_sklearn(
     -------
     ModelSklearn
         Registered scikit-learn model entity.
+
+    Examples
+    --------
+    Register a scikit-learn model that already exists in remote storage:
+
+    ```python
+    import digitalhub as dh
+
+    model = dh.register_sklearn(
+        project="my-project",
+        name="registered-churn-classifier",
+        source="s3://my-bucket/models/churn-classifier.joblib",
+        algorithm="RandomForestClassifier",
+    )
+    ```
     """
     return register_base_model(
         project=project,

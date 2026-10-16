@@ -72,6 +72,23 @@ def log_huggingface(
     -------
     ModelHuggingface
         Created Hugging Face model entity with uploaded files.
+
+    Examples
+    --------
+    Log a local fine-tuned Hugging Face model:
+
+    ```python
+    import digitalhub as dh
+
+    model = dh.log_huggingface(
+        project="my-project",
+        name="text-classifier",
+        source="./models/text-classifier",
+        base_model="distilbert-base-uncased",
+        model_id="my-org/text-classifier",
+        model_revision="main",
+    )
+    ```
     """
     return log_base_model(
         project=project,
@@ -153,6 +170,23 @@ def register_huggingface(
     -------
     ModelHuggingface
         Registered Hugging Face model entity.
+
+    Examples
+    --------
+    Register a Hugging Face model that already exists in remote storage:
+
+    ```python
+    import digitalhub as dh
+
+    model = dh.register_huggingface(
+        project="my-project",
+        name="registered-text-classifier",
+        source="s3://my-bucket/models/text-classifier",
+        base_model="distilbert-base-uncased",
+        model_id="my-org/text-classifier",
+        model_revision="main",
+    )
+    ```
     """
     return register_base_model(
         project=project,

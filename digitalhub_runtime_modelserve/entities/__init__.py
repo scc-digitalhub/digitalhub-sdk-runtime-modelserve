@@ -25,7 +25,7 @@ from digitalhub_runtime_modelserve.entities.function.vllmservespeech.crud import
 from digitalhub_runtime_modelserve.entities.function.vllmservetext.builder import FunctionVllmservetextBuilder
 from digitalhub_runtime_modelserve.entities.function.vllmservetext.crud import new_function_vllmservetext
 from digitalhub_runtime_modelserve.entities.model.huggingface.builder import ModelHuggingfaceBuilder
-from digitalhub_runtime_modelserve.entities.model.huggingface.crud import log_huggingface, register_huggingface
+from digitalhub_runtime_modelserve.entities.model.huggingface.crud import register_huggingface
 from digitalhub_runtime_modelserve.entities.model.mlflow.builder import ModelMlflowBuilder
 from digitalhub_runtime_modelserve.entities.model.mlflow.crud import log_mlflow, register_mlflow
 from digitalhub_runtime_modelserve.entities.model.sklearn.builder import ModelSklearnBuilder
@@ -87,7 +87,7 @@ function_vllmserve_text_plugin = EntityPlugin(
 )
 model_huggingface_plugin = EntityPlugin(
     builder=ModelHuggingfaceBuilder,
-    shortcuts=(CrudPlugin(log_huggingface), CrudPlugin(register_huggingface)),
+    shortcuts=(CrudPlugin(register_huggingface),),
 )
 model_mlflow_plugin = EntityPlugin(
     builder=ModelMlflowBuilder,

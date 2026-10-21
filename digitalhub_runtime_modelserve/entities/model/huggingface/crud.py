@@ -6,108 +6,14 @@ from __future__ import annotations
 
 import typing
 
-from digitalhub.entities.model._base.crud import log_base_model, register_base_model
+from digitalhub.entities.model._base.crud import register_base_model
+from digitalhub.utils.uri_utils import has_hf_scheme
 from digitalhub.utils.types import SourcesOrListOfSources
 
 from digitalhub_runtime_modelserve.entities._commons.enums import EntityKinds
 
 if typing.TYPE_CHECKING:
     from digitalhub_runtime_modelserve.entities.model.huggingface.entity import ModelHuggingface
-
-
-def log_huggingface(
-    project: str,
-    source: SourcesOrListOfSources,
-    name: str | None = None,
-    drop_existing: bool = False,
-    path: str | None = None,
-    description: str | None = None,
-    labels: list[str] | None = None,
-    version: str | None = None,
-    framework: str | None = None,
-    algorithm: str | None = None,
-    parameters: dict | None = None,
-    base_model: str | None = None,
-    model_id: str | None = None,
-    model_revision: str | None = None,
-    **kwargs,
-) -> ModelHuggingface:
-    """
-    Create and upload a Hugging Face model entity.
-
-    Parameters
-    ----------
-    project : str
-        Project name.
-    name : str, optional
-        Entity name. If omitted, it is inferred from ``source``.
-    source : SourcesOrListOfSources
-        Local model source path or paths.
-    drop_existing : bool, default=False
-        Whether to drop existing entity with the same name.
-    path : str, optional
-        Destination path. If omitted, it is generated.
-    description : str, optional
-        Human-readable entity description.
-    labels : list[str], optional
-        Entity labels.
-    version : str, optional
-        Entity version.
-    framework : str, optional
-        Model framework.
-    algorithm : str, optional
-        Model algorithm.
-    parameters : dict, optional
-        Model parameters.
-    base_model : str, optional
-        Base model identifier.
-    model_id : str, optional
-        Hugging Face model identifier.
-    model_revision : str, optional
-        Hugging Face model revision.
-    **kwargs : dict
-        Additional model specification parameters.
-
-    Returns
-    -------
-    ModelHuggingface
-        Created Hugging Face model entity with uploaded files.
-
-    Examples
-    --------
-    Log a local fine-tuned Hugging Face model:
-
-    ```python
-    import digitalhub as dh
-
-    model = dh.log_huggingface(
-        project="my-project",
-        name="text-classifier",
-        source="./models/text-classifier",
-        base_model="distilbert-base-uncased",
-        model_id="my-org/text-classifier",
-        model_revision="main",
-    )
-    ```
-    """
-    return log_base_model(
-        project=project,
-        name=name,
-        kind=EntityKinds.MODEL_HUGGINGFACE.value,
-        source=source,
-        drop_existing=drop_existing,
-        path=path,
-        description=description,
-        labels=labels,
-        version=version,
-        framework=framework,
-        algorithm=algorithm,
-        parameters=parameters,
-        base_model=base_model,
-        model_id=model_id,
-        model_revision=model_revision,
-        **kwargs,
-    )
 
 
 def register_huggingface(
@@ -136,7 +42,7 @@ def register_huggingface(
     project : str
         Project name.
     source : SourcesOrListOfSources
-        Path or URI of the existing model.
+        Hugging Face URI of the existing model.
     name : str, optional
         Entity name. If omitted, it is inferred from ``source``.
     uuid : str, optional
@@ -181,13 +87,17 @@ def register_huggingface(
     model = dh.register_huggingface(
         project="my-project",
         name="registered-text-classifier",
-        source="s3://my-bucket/models/text-classifier",
+        source="hf://my-org/text-classifier",
         base_model="distilbert-base-uncased",
         model_id="my-org/text-classifier",
         model_revision="main",
     )
     ```
     """
+    source_uri = source[0] if isinstance(source, list) and len(source) == 1 else source
+    if isinstance(source_uri, str) and not has_hf_scheme(source_uri):
+        raise ValueError("register_huggingface requires a Hugging Face source URI (scheme 'hf' or 'huggingface').")
+
     return register_base_model(
         project=project,
         source=source,

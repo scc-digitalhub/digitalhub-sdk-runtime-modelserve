@@ -22,12 +22,14 @@ class FunctionSpecVllmserve(FunctionSpecModelserve):
         image: str | None = None,
         adapters: list[dict] | None = None,
         url: str | None = None,
+        use_cpu_image: bool | None = None,
     ) -> None:
         super().__init__()
         self.model_name = model_name
         self.image = image
         self.adapters = adapters
         self.url = url
+        self.use_cpu_image = use_cpu_image
 
 
 class FunctionValidatorVllmserve(FunctionValidatorModelserve):
@@ -46,3 +48,6 @@ class FunctionValidatorVllmserve(FunctionValidatorModelserve):
 
     url: str | None = None
     """URL of the model to be served."""
+
+    use_cpu_image: bool | None = None
+    """Whether to use a CPU image for the VLLMServe function."""

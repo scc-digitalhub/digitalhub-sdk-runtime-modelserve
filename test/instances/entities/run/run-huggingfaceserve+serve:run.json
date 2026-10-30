@@ -25,8 +25,25 @@
     "model_name": "hf-model",
     "image": "kserve/huggingfaceserver:latest",
     "service_type": "NodePort",
+    "service_name": "huggingface-serve",
     "replicas": 1,
-    "args": []
+    "args": [],
+    "envs": [],
+    "secrets": [],
+    "volumes": [],
+    "backend": "AUTO",
+    "huggingface_task": "text2text_generation",
+    "tokenizer_revision": "main",
+    "max_length": 512,
+    "disable_lower_case": false,
+    "disable_special_tokens": false,
+    "dtype": "AUTO",
+    "trust_remote_code": false,
+    "tensor_input_names": [],
+    "return_token_type_ids": false,
+    "return_probabilities": false,
+    "disable_log_requests": false,
+    "max_log_len": 1000
   },
   "status": {
     "state": "RUNNING"

@@ -28,9 +28,13 @@
     "service_type": "NodePort",
     "replicas": 1,
     "enable_telemetry": true,
-    "use_cpu_image": true
-
-    ,"args": []
+    "use_cpu_image": true,
+    "args": [],
+    "adapters": [],
+    "envs": [],
+    "secrets": [],
+    "service_name": "vllm-pooling-serve",
+    "volumes": []
   },
   "status": {
     "state": "RUNNING"

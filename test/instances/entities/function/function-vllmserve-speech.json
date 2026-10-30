@@ -16,6 +16,7 @@
       "url": "store://demo-etl/model/huggingface/vllm-speech-model",
       "image": "vllm/vllm-openai:latest",
       "model_name": "vllm-speech-model",
-      "adapters": []
+      "adapters": [],
+      "use_cpu_image": false
     }
 }

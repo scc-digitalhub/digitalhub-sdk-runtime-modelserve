@@ -47,6 +47,7 @@
     "model_name": "model1",
     "image": "seldonio/mlserver:img-mlflow",
     "service_type": "NodePort",
+    "service_name": "mlflow-serve",
     "replicas": 3
   },
   "status": {

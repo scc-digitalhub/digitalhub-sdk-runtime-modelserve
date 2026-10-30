@@ -13,6 +13,12 @@ from digitalhub_runtime_modelserve.entities.run.modelserve_run.spec import (
 class RunSpecMlflowserveBuildRun(RunSpecModelserveRun):
     """RunSpecMlflowserveBuildRun specifications."""
 
+    def __init__(self, *args, instructions: list[str] | None = None, **kwargs) -> None:
+        super().__init__(*args, **kwargs)
+        self.instructions = instructions
+
 
 class RunValidatorMlflowserveBuildRun(RunValidatorModelserveRun):
     """RunValidatorMlflowserveBuildRun validator."""
+
+    instructions: list[str] | None = None

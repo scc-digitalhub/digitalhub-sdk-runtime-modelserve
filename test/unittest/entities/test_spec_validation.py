@@ -12,9 +12,11 @@ from digitalhub_runtime_modelserve.entities.model.mlflow.builder import ModelMlf
 from digitalhub_runtime_modelserve.entities.run.huggingfaceserve_run.spec import RunSpecHuggingfaceserveRun
 from digitalhub_runtime_modelserve.entities.run.kubeaiserve_run.builder import RunKubeaiserveRunBuilder
 from digitalhub_runtime_modelserve.entities.run.kubeaiserve_run.models import KubeaiFile, Scaling
+from digitalhub_runtime_modelserve.entities.run.mlflowserve_build_run.spec import RunSpecMlflowserveBuildRun
 from digitalhub_runtime_modelserve.entities.run.vllmserve_run.spec import RunSpecVllmserveRun
 from digitalhub_runtime_modelserve.entities.task.huggingfaceserve_serve.builder import TaskHuggingfaceserveServeBuilder
 from digitalhub_runtime_modelserve.entities.task.kubeaiservetext_serve.builder import TaskKubeaiserveTextServeBuilder
+from digitalhub_runtime_modelserve.entities.task.mlflowserve_build.spec import TaskSpecMlflowserveBuild
 
 
 def test_function_spec_validates_nested_adapters() -> None:
@@ -36,22 +38,47 @@ def test_task_spec_preserves_replica_constraint() -> None:
         builder.build_spec(function="function", replicas=0)
 
 
-def test_run_spec_rejects_task_service_fields_and_preserves_run_fields() -> None:
-    spec = build_spec(RunSpecVllmserveRun, task="task", path="model", args=["--port", "8000"])
+def test_mlflow_build_specs_do_not_inherit_serve_fields() -> None:
+    task = build_spec(TaskSpecMlflowserveBuild, function="function", instructions=["pip install mlflow"])
+    run = build_spec(
+        RunSpecMlflowserveBuildRun,
+        task="task",
+        instructions=["pip install mlflow"],
+    )
+
+    assert task.instructions == ["pip install mlflow"]
+    assert run.instructions == ["pip install mlflow"]
+
+    with pytest.raises(TypeError, match="replicas"):
+        build_spec(TaskSpecMlflowserveBuild, function="function", replicas=1)
+
+    with pytest.raises(TypeError, match="replicas"):
+        build_spec(RunSpecMlflowserveBuildRun, task="task", replicas=1)
+
+
+def test_run_spec_merges_action_fields_and_preserves_run_fields() -> None:
+    spec = build_spec(
+        RunSpecVllmserveRun,
+        task="task",
+        path="model",
+        args=["--port", "8000"],
+        replicas=2,
+        service_type="ClusterIP",
+    )
 
     assert spec.path == "model"
     assert spec.args == ["--port", "8000"]
     assert spec.enable_telemetry is True
     assert spec.use_cpu_image is True
+    assert spec.replicas == 2
+    assert spec.service_type == "ClusterIP"
 
-    with pytest.raises(TypeError, match="replicas"):
-        build_spec(RunSpecVllmserveRun, task="task", replicas=1)
-
-    with pytest.raises(TypeError, match="service_type"):
-        build_spec(RunSpecVllmserveRun, task="task", service_type="ClusterIP")
-
-    with pytest.raises(TypeError, match="huggingface_task"):
-        build_spec(RunSpecHuggingfaceserveRun, task="task", huggingface_task="text_generation")
+    huggingface_run = build_spec(
+        RunSpecHuggingfaceserveRun,
+        task="task",
+        huggingface_task="text_generation",
+    )
+    assert huggingface_run.huggingface_task == "text_generation"
 
 
 def test_kubeai_run_spec_preserves_constraint_and_nested_models() -> None:

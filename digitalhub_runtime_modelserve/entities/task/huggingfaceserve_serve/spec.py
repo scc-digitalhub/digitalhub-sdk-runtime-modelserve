@@ -4,17 +4,15 @@
 
 from __future__ import annotations
 
+from digitalhub.entities._base.entity.spec import Spec
+
 from digitalhub_runtime_modelserve.entities.task.huggingfaceserve_serve.models import Backend, Dtype, HuggingfaceTask
 from digitalhub_runtime_modelserve.entities.task.modelserve_serve.spec import (
     TaskSpecModelserveServe,
 )
 
 
-class TaskSpecHuggingfaceserveServe(TaskSpecModelserveServe):
-    """
-    TaskSpecHuggingfaceserveServe specifications.
-    """
-
+class HuggingfaceServeSpecMixin(Spec):
     huggingface_task: HuggingfaceTask | None = None
     backend: Backend | None = None
     tokenizer_revision: str | None = None
@@ -28,3 +26,9 @@ class TaskSpecHuggingfaceserveServe(TaskSpecModelserveServe):
     return_probabilities: bool | None = None
     disable_log_requests: bool | None = None
     max_log_len: int | None = None
+
+
+class TaskSpecHuggingfaceserveServe(TaskSpecModelserveServe, HuggingfaceServeSpecMixin):
+    """
+    TaskSpecHuggingfaceserveServe specifications.
+    """

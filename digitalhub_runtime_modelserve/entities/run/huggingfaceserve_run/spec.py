@@ -7,9 +7,17 @@ from __future__ import annotations
 from digitalhub_runtime_modelserve.entities.run.modelserve_run.spec import (
     RunSpecModelserveRun,
 )
+from digitalhub_runtime_modelserve.entities.task.huggingfaceserve_serve.spec import (
+    HuggingfaceServeSpecMixin,
+)
+from digitalhub_runtime_modelserve.entities.task.modelserve_serve.spec import ModelserveServeSpecMixin
 
 
-class RunSpecHuggingfaceserveRun(RunSpecModelserveRun):
+class RunSpecHuggingfaceserveRun(
+    RunSpecModelserveRun,
+    ModelserveServeSpecMixin,
+    HuggingfaceServeSpecMixin,
+):
     """RunSpecHuggingfaceserveRun specifications."""
 
     args: list[str] | None = None

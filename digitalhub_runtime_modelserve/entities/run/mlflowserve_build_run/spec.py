@@ -4,10 +4,12 @@
 
 from __future__ import annotations
 
+from digitalhub.entities.task._base.spec import BuildSpecMixin
+
 from digitalhub_runtime_modelserve.entities.run.modelserve_run.spec import (
     RunSpecModelserveRun,
 )
 
 
-class RunSpecMlflowserveBuildRun(RunSpecModelserveRun):
+class RunSpecMlflowserveBuildRun(RunSpecModelserveRun, BuildSpecMixin):
     """RunSpecMlflowserveBuildRun specifications."""

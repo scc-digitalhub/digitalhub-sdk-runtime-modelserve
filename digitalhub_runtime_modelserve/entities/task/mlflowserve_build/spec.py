@@ -4,14 +4,10 @@
 
 from __future__ import annotations
 
-from digitalhub_runtime_modelserve.entities.task.modelserve_serve.spec import (
-    TaskSpecModelserveServe,
-)
+from digitalhub.entities.task._base.spec import BuildSpecMixin, TaskSpecFunction
 
 
-class TaskSpecMlflowserveBuild(TaskSpecModelserveServe):
+class TaskSpecMlflowserveBuild(TaskSpecFunction, BuildSpecMixin):
     """
     TaskSpecMlflowserveBuild specifications.
     """
-
-    instructions: list[str] | None = None

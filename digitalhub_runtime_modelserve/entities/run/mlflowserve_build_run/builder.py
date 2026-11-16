@@ -11,7 +11,6 @@ from digitalhub_runtime_modelserve.entities._commons.enums import EntityKinds
 from digitalhub_runtime_modelserve.entities.run.mlflowserve_build_run.entity import RunMlflowserveBuildRun
 from digitalhub_runtime_modelserve.entities.run.mlflowserve_build_run.spec import (
     RunSpecMlflowserveBuildRun,
-    RunValidatorMlflowserveBuildRun,
 )
 from digitalhub_runtime_modelserve.entities.run.mlflowserve_build_run.status import RunStatusMlflowserveBuildRun
 
@@ -23,6 +22,5 @@ class RunMlflowserveBuildRunBuilder(RunBuilder, RuntimeEntityBuilderMlflowserve)
 
     ENTITY_CLASS = RunMlflowserveBuildRun
     ENTITY_SPEC_CLASS = RunSpecMlflowserveBuildRun
-    ENTITY_SPEC_VALIDATOR = RunValidatorMlflowserveBuildRun
     ENTITY_STATUS_CLASS = RunStatusMlflowserveBuildRun
     ENTITY_KIND = EntityKinds.RUN_MLFLOWSERVE_BUILD.value

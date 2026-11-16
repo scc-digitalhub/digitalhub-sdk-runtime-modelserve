@@ -25,15 +25,12 @@
     "url": "store://demo-etl/model/huggingface/vllm-pooling-model",
     "model_name": "vllm-pooling-model",
     "image": "vllm/vllm-openai:latest",
-    "service_type": "NodePort",
-    "replicas": 1,
     "enable_telemetry": true,
     "use_cpu_image": true,
     "args": [],
     "adapters": [],
     "envs": [],
     "secrets": [],
-    "service_name": "vllm-pooling-serve",
     "volumes": []
   },
   "status": {

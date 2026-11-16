@@ -4,12 +4,8 @@
 
 from __future__ import annotations
 
-from digitalhub.entities.model._base.spec import ModelSpec, ModelValidator
+from digitalhub.entities.model._base.spec import ModelSpec
 
 
 class ModelSpecSklearn(ModelSpec):
     """ModelSpecSklearn specifications."""
-
-
-class ModelValidatorSklearn(ModelValidator):
-    """ModelValidatorSklearn validator."""

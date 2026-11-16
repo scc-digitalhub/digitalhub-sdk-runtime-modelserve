@@ -11,7 +11,6 @@ from digitalhub_runtime_modelserve.entities._commons.enums import EntityKinds
 from digitalhub_runtime_modelserve.entities.task.huggingfaceserve_serve.entity import TaskHuggingfaceserveServe
 from digitalhub_runtime_modelserve.entities.task.huggingfaceserve_serve.spec import (
     TaskSpecHuggingfaceserveServe,
-    TaskValidatorHuggingfaceserveServe,
 )
 from digitalhub_runtime_modelserve.entities.task.huggingfaceserve_serve.status import TaskStatusHuggingfaceserveServe
 
@@ -23,6 +22,5 @@ class TaskHuggingfaceserveServeBuilder(TaskBuilder, RuntimeEntityBuilderHuggingf
 
     ENTITY_CLASS = TaskHuggingfaceserveServe
     ENTITY_SPEC_CLASS = TaskSpecHuggingfaceserveServe
-    ENTITY_SPEC_VALIDATOR = TaskValidatorHuggingfaceserveServe
     ENTITY_STATUS_CLASS = TaskStatusHuggingfaceserveServe
     ENTITY_KIND = EntityKinds.TASK_HUGGINGFACESERVE_SERVE.value

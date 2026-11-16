@@ -11,7 +11,6 @@ from digitalhub_runtime_modelserve.entities._commons.enums import EntityKinds
 from digitalhub_runtime_modelserve.entities.function.mlflowserve.entity import FunctionMlflowserve
 from digitalhub_runtime_modelserve.entities.function.mlflowserve.spec import (
     FunctionSpecMlflowserve,
-    FunctionValidatorMlflowserve,
 )
 from digitalhub_runtime_modelserve.entities.function.mlflowserve.status import FunctionStatusMlflowserve
 
@@ -23,6 +22,5 @@ class FunctionMlflowserveBuilder(FunctionBuilder, RuntimeEntityBuilderMlflowserv
 
     ENTITY_CLASS = FunctionMlflowserve
     ENTITY_SPEC_CLASS = FunctionSpecMlflowserve
-    ENTITY_SPEC_VALIDATOR = FunctionValidatorMlflowserve
     ENTITY_STATUS_CLASS = FunctionStatusMlflowserve
     ENTITY_KIND = EntityKinds.FUNCTION_MLFLOWSERVE.value

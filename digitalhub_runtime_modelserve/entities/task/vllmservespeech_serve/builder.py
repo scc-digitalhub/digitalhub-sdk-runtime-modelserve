@@ -11,7 +11,6 @@ from digitalhub_runtime_modelserve.entities._commons.enums import EntityKinds
 from digitalhub_runtime_modelserve.entities.task.vllmservespeech_serve.entity import TaskVllmservespeechServe
 from digitalhub_runtime_modelserve.entities.task.vllmservespeech_serve.spec import (
     TaskSpecVllmservespeechServe,
-    TaskValidatorVllmservespeechServe,
 )
 from digitalhub_runtime_modelserve.entities.task.vllmservespeech_serve.status import TaskStatusVllmservespeechServe
 
@@ -23,6 +22,5 @@ class TaskVllmservespeechServeBuilder(TaskBuilder, RuntimeEntityBuilderVllmserve
 
     ENTITY_CLASS = TaskVllmservespeechServe
     ENTITY_SPEC_CLASS = TaskSpecVllmservespeechServe
-    ENTITY_SPEC_VALIDATOR = TaskValidatorVllmservespeechServe
     ENTITY_STATUS_CLASS = TaskStatusVllmservespeechServe
     ENTITY_KIND = EntityKinds.TASK_VLLMSERVESPEECH_SERVE.value

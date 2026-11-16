@@ -25,15 +25,12 @@
     "url": "store://demo-etl/model/huggingface/vllm-speech-model",
     "model_name": "vllm-speech-model",
     "image": "vllm/vllm-openai:latest",
-    "service_type": "NodePort",
-    "replicas": 1,
     "enable_telemetry": true,
     "use_cpu_image": true,
     "args": [],
     "adapters": [],
     "envs": [],
     "secrets": [],
-    "service_name": "vllm-speech-serve",
     "volumes": []
   },
   "status": {

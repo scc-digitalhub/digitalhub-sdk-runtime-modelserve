@@ -11,7 +11,6 @@ from digitalhub_runtime_modelserve.entities._commons.enums import EntityKinds
 from digitalhub_runtime_modelserve.entities.run.kubeaiserve_run.entity import RunKubeaiserveRun
 from digitalhub_runtime_modelserve.entities.run.kubeaiserve_run.spec import (
     RunSpecKubeaiserveRun,
-    RunValidatorKubeaiserveRun,
 )
 from digitalhub_runtime_modelserve.entities.run.kubeaiserve_run.status import RunStatusKubeaiserveRun
 
@@ -23,6 +22,5 @@ class RunKubeaiserveRunBuilder(RunBuilder, RuntimeEntityBuilderKubeaiserve):
 
     ENTITY_CLASS = RunKubeaiserveRun
     ENTITY_SPEC_CLASS = RunSpecKubeaiserveRun
-    ENTITY_SPEC_VALIDATOR = RunValidatorKubeaiserveRun
     ENTITY_STATUS_CLASS = RunStatusKubeaiserveRun
     ENTITY_KIND = EntityKinds.RUN_KUBEAISERVE_SERVE.value

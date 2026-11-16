@@ -6,17 +6,10 @@ from __future__ import annotations
 
 from digitalhub_runtime_modelserve.entities.task.vllmserve_serve.spec import (
     TaskSpecVllmserveServe,
-    TaskValidatorVllmserveServe,
 )
 
 
 class TaskSpecVllmservespeechServe(TaskSpecVllmserveServe):
     """
     TaskSpecVllmservespeechServe specifications.
-    """
-
-
-class TaskValidatorVllmservespeechServe(TaskValidatorVllmserveServe):
-    """
-    TaskValidatorVllmservespeechServe validator.
     """

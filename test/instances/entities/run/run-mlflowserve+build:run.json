@@ -23,10 +23,7 @@
     "path": "s3://my-bucket/my-model/",
     "model_name": "model1",
     "image": "ghcr.io/mlflow/mlflow:latest",
-    "service_type": "NodePort",
-    "replicas": 1,
     "envs": [],
-    "instructions": [],
     "secrets": [],
     "volumes": []
   },

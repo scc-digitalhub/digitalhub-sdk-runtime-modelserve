@@ -6,7 +6,6 @@ from __future__ import annotations
 
 from digitalhub_runtime_modelserve.entities.function.modelserve.spec import (
     FunctionSpecModelserve,
-    FunctionValidatorModelserve,
 )
 from digitalhub_runtime_modelserve.entities.function.vllmserve.models import VLLMAdapter
 
@@ -16,38 +15,6 @@ class FunctionSpecVllmserve(FunctionSpecModelserve):
     FunctionSpecVllmserve specifications.
     """
 
-    def __init__(
-        self,
-        model_name: str | None = None,
-        image: str | None = None,
-        adapters: list[dict] | None = None,
-        url: str | None = None,
-        use_cpu_image: bool | None = None,
-    ) -> None:
-        super().__init__()
-        self.model_name = model_name
-        self.image = image
-        self.adapters = adapters
-        self.url = url
-        self.use_cpu_image = use_cpu_image
-
-
-class FunctionValidatorVllmserve(FunctionValidatorModelserve):
-    """
-    FunctionValidatorVllmserve validator.
-    """
-
-    model_name: str | None = None
-    """Name of the model to be used."""
-
-    image: str | None = None
-    """Docker image to use for the VLLMServe function."""
-
     adapters: list[VLLMAdapter] | None = None
-    """List of adapters configurations."""
-
     url: str | None = None
-    """URL of the model to be served."""
-
     use_cpu_image: bool | None = None
-    """Whether to use a CPU image for the VLLMServe function."""

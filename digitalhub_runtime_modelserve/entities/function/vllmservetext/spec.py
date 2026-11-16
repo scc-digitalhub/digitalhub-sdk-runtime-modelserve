@@ -6,17 +6,10 @@ from __future__ import annotations
 
 from digitalhub_runtime_modelserve.entities.function.vllmserve.spec import (
     FunctionSpecVllmserve,
-    FunctionValidatorVllmserve,
 )
 
 
 class FunctionSpecVllmservetext(FunctionSpecVllmserve):
     """
     FunctionSpecVllmservetext specifications.
-    """
-
-
-class FunctionValidatorVllmservetext(FunctionValidatorVllmserve):
-    """
-    FunctionValidatorVllmservetext validator.
     """

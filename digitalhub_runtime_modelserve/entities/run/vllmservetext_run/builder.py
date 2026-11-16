@@ -11,7 +11,6 @@ from digitalhub_runtime_modelserve.entities._commons.enums import EntityKinds
 from digitalhub_runtime_modelserve.entities.run.vllmservetext_run.entity import RunVllmservetextRun
 from digitalhub_runtime_modelserve.entities.run.vllmservetext_run.spec import (
     RunSpecVllmservetextRun,
-    RunValidatorVllmservetextRun,
 )
 from digitalhub_runtime_modelserve.entities.run.vllmservetext_run.status import RunStatusVllmservetextRun
 
@@ -23,6 +22,5 @@ class RunVllmservetextRunBuilder(RunBuilder, RuntimeEntityBuilderVllmserveText):
 
     ENTITY_CLASS = RunVllmservetextRun
     ENTITY_SPEC_CLASS = RunSpecVllmservetextRun
-    ENTITY_SPEC_VALIDATOR = RunValidatorVllmservetextRun
     ENTITY_STATUS_CLASS = RunStatusVllmservetextRun
     ENTITY_KIND = EntityKinds.RUN_VLLMSERVETEXT_SERVE.value

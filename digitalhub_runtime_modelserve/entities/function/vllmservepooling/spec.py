@@ -6,17 +6,10 @@ from __future__ import annotations
 
 from digitalhub_runtime_modelserve.entities.function.vllmserve.spec import (
     FunctionSpecVllmserve,
-    FunctionValidatorVllmserve,
 )
 
 
 class FunctionSpecVllmservepooling(FunctionSpecVllmserve):
     """
     FunctionSpecVllmservepooling specifications.
-    """
-
-
-class FunctionValidatorVllmservepooling(FunctionValidatorVllmserve):
-    """
-    FunctionValidatorVllmservepooling validator.
     """

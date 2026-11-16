@@ -11,7 +11,6 @@ from digitalhub_runtime_modelserve.entities._commons.enums import EntityKinds
 from digitalhub_runtime_modelserve.entities.function.vllmservetext.entity import FunctionVllmservetext
 from digitalhub_runtime_modelserve.entities.function.vllmservetext.spec import (
     FunctionSpecVllmservetext,
-    FunctionValidatorVllmservetext,
 )
 from digitalhub_runtime_modelserve.entities.function.vllmservetext.status import FunctionStatusVllmservetext
 
@@ -23,6 +22,5 @@ class FunctionVllmservetextBuilder(FunctionBuilder, RuntimeEntityBuilderVllmserv
 
     ENTITY_CLASS = FunctionVllmservetext
     ENTITY_SPEC_CLASS = FunctionSpecVllmservetext
-    ENTITY_SPEC_VALIDATOR = FunctionValidatorVllmservetext
     ENTITY_STATUS_CLASS = FunctionStatusVllmservetext
     ENTITY_KIND = EntityKinds.FUNCTION_VLLMSERVETEXT.value

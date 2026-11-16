@@ -45,10 +45,7 @@
     "profile": "1xa6000",
     "path": "s3://my-bucket/model1/model/",
     "model_name": "model1",
-    "image": "seldonio/mlserver:img-mlflow",
-    "service_type": "NodePort",
-    "service_name": "mlflow-serve",
-    "replicas": 3
+    "image": "seldonio/mlserver:img-mlflow"
   },
   "status": {
     "transitions": [

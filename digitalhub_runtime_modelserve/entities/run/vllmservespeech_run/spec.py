@@ -6,13 +6,8 @@ from __future__ import annotations
 
 from digitalhub_runtime_modelserve.entities.run.vllmserve_run.spec import (
     RunSpecVllmserveRun,
-    RunValidatorVllmserveRun,
 )
 
 
 class RunSpecVllmservespeechRun(RunSpecVllmserveRun):
     """RunSpecVllmservespeechRun specifications."""
-
-
-class RunValidatorVllmservespeechRun(RunValidatorVllmserveRun):
-    """RunValidatorVllmservespeechRun validator."""

@@ -11,7 +11,6 @@ from digitalhub_runtime_modelserve.entities._commons.enums import EntityKinds
 from digitalhub_runtime_modelserve.entities.task.kubeaiservetext_serve.entity import TaskKubeaiserveTextServe
 from digitalhub_runtime_modelserve.entities.task.kubeaiservetext_serve.spec import (
     TaskSpecKubeaiserveTextServe,
-    TaskValidatorKubeaiserveTextServe,
 )
 from digitalhub_runtime_modelserve.entities.task.kubeaiservetext_serve.status import TaskStatusKubeaiserveTextServe
 
@@ -23,6 +22,5 @@ class TaskKubeaiserveTextServeBuilder(TaskBuilder, RuntimeEntityBuilderKubeaiser
 
     ENTITY_CLASS = TaskKubeaiserveTextServe
     ENTITY_SPEC_CLASS = TaskSpecKubeaiserveTextServe
-    ENTITY_SPEC_VALIDATOR = TaskValidatorKubeaiserveTextServe
     ENTITY_STATUS_CLASS = TaskStatusKubeaiserveTextServe
     ENTITY_KIND = EntityKinds.TASK_KUBEAISERVETEXT_SERVE.value

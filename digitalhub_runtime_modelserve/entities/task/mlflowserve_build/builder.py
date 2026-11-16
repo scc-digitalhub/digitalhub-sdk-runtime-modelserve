@@ -11,7 +11,6 @@ from digitalhub_runtime_modelserve.entities._commons.enums import EntityKinds
 from digitalhub_runtime_modelserve.entities.task.mlflowserve_build.entity import TaskMlflowserveBuild
 from digitalhub_runtime_modelserve.entities.task.mlflowserve_build.spec import (
     TaskSpecMlflowserveBuild,
-    TaskValidatorMlflowserveBuild,
 )
 from digitalhub_runtime_modelserve.entities.task.mlflowserve_build.status import TaskStatusMlflowserveBuild
 
@@ -23,6 +22,5 @@ class TaskMlflowserveBuildBuilder(TaskBuilder, RuntimeEntityBuilderMlflowserve):
 
     ENTITY_CLASS = TaskMlflowserveBuild
     ENTITY_SPEC_CLASS = TaskSpecMlflowserveBuild
-    ENTITY_SPEC_VALIDATOR = TaskValidatorMlflowserveBuild
     ENTITY_STATUS_CLASS = TaskStatusMlflowserveBuild
     ENTITY_KIND = EntityKinds.TASK_MLFLOWSERVE_BUILD.value

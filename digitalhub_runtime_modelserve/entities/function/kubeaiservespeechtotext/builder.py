@@ -15,7 +15,6 @@ from digitalhub_runtime_modelserve.entities.function.kubeaiservespeechtotext.ent
 )
 from digitalhub_runtime_modelserve.entities.function.kubeaiservespeechtotext.spec import (
     FunctionSpecKubeaiserveSpeechtotext,
-    FunctionValidatorKubeaiserveSpeechtotext,
 )
 from digitalhub_runtime_modelserve.entities.function.kubeaiservespeechtotext.status import (
     FunctionStatusKubeaiserveSpeechtotext,
@@ -29,6 +28,5 @@ class FunctionKubeaiserveSpeechtotextBuilder(FunctionBuilder, RuntimeEntityBuild
 
     ENTITY_CLASS = FunctionKubeaiserveSpeechtotext
     ENTITY_SPEC_CLASS = FunctionSpecKubeaiserveSpeechtotext
-    ENTITY_SPEC_VALIDATOR = FunctionValidatorKubeaiserveSpeechtotext
     ENTITY_STATUS_CLASS = FunctionStatusKubeaiserveSpeechtotext
     ENTITY_KIND = EntityKinds.FUNCTION_KUBEAISERVESPEECHTOTEXT.value

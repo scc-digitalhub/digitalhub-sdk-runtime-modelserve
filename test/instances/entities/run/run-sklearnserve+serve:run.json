@@ -45,10 +45,7 @@
     "profile": "1xa100",
     "path": "s3://my-bucket/my-model.pkl",
     "model_name": "model1",
-    "image": "seldonio/mlserver:scikit-sklearn",
-    "service_type": "NodePort",
-    "service_name": "sklearn-serve",
-    "replicas": 2
+    "image": "seldonio/mlserver:scikit-sklearn"
   },
   "status": {
     "state": "ERROR",

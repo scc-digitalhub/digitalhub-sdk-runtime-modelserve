@@ -4,41 +4,21 @@
 
 from __future__ import annotations
 
-from digitalhub.entities.task._base.spec import TaskSpec, TaskValidator
+from pydantic import Field
+
+from digitalhub_runtime_modelserve.entities.run.kubeaiserve_run.models import KubeaiFile, Scaling
+from digitalhub_runtime_modelserve.entities.task.modelserve_serve.spec import TaskSpecModelserveServe
 
 
-class TaskSpecKubeaiserveServe(TaskSpec):
+class TaskSpecKubeaiserveServe(TaskSpecModelserveServe):
     """
     TaskSpecKubeaiserveServe specifications.
     """
 
-    def __init__(
-        self,
-        function: str,
-        envs: dict | None = None,
-        secrets: list[str] | None = None,
-        profile: str | None = None,
-        **kwargs,
-    ) -> None:
-        self.function = function
-        self.envs = envs
-        self.secrets = secrets
-        self.profile = profile
-
-
-class TaskValidatorKubeaiserveServe(TaskValidator):
-    """
-    TaskValidatorKubeaiserveServe validator.
-    """
-
-    function: str
-    """The function string."""
-
     envs: dict | None = None
-    """The envs dictionary."""
-
-    secrets: list[str] | None = None
-    """The secrets list of string."""
-
-    profile: str | None = None
-    """The profile string."""
+    image: str | None = None
+    model_name: str | None = None
+    args: list[str] | None = None
+    processors: int | None = Field(default=None, ge=1)
+    files: list[KubeaiFile] | None = None
+    scaling: Scaling | None = None

@@ -11,7 +11,6 @@ from digitalhub_runtime_modelserve.entities._commons.enums import EntityKinds
 from digitalhub_runtime_modelserve.entities.run.huggingfaceserve_run.entity import RunHuggingfaceserveRun
 from digitalhub_runtime_modelserve.entities.run.huggingfaceserve_run.spec import (
     RunSpecHuggingfaceserveRun,
-    RunValidatorHuggingfaceserveRun,
 )
 from digitalhub_runtime_modelserve.entities.run.huggingfaceserve_run.status import RunStatusHuggingfaceserveRun
 
@@ -23,6 +22,5 @@ class RunHuggingfaceserveRunBuilder(RunBuilder, RuntimeEntityBuilderHuggingfaces
 
     ENTITY_CLASS = RunHuggingfaceserveRun
     ENTITY_SPEC_CLASS = RunSpecHuggingfaceserveRun
-    ENTITY_SPEC_VALIDATOR = RunValidatorHuggingfaceserveRun
     ENTITY_STATUS_CLASS = RunStatusHuggingfaceserveRun
     ENTITY_KIND = EntityKinds.RUN_HUGGINGFACESERVE_SERVE.value

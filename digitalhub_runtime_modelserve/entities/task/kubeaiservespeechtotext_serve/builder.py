@@ -15,7 +15,6 @@ from digitalhub_runtime_modelserve.entities.task.kubeaiservespeechtotext_serve.e
 )
 from digitalhub_runtime_modelserve.entities.task.kubeaiservespeechtotext_serve.spec import (
     TaskSpecKubeaiserveSpeechtotextServe,
-    TaskValidatorKubeaiserveSpeechtotextServe,
 )
 from digitalhub_runtime_modelserve.entities.task.kubeaiservespeechtotext_serve.status import (
     TaskStatusKubeaiserveSpeechtotextServe,
@@ -29,6 +28,5 @@ class TaskKubeaiserveSpeechtotextServeBuilder(TaskBuilder, RuntimeEntityBuilderK
 
     ENTITY_CLASS = TaskKubeaiserveSpeechtotextServe
     ENTITY_SPEC_CLASS = TaskSpecKubeaiserveSpeechtotextServe
-    ENTITY_SPEC_VALIDATOR = TaskValidatorKubeaiserveSpeechtotextServe
     ENTITY_STATUS_CLASS = TaskStatusKubeaiserveSpeechtotextServe
     ENTITY_KIND = EntityKinds.TASK_KUBEAISERVESPEECHTOTEXT_SERVE.value

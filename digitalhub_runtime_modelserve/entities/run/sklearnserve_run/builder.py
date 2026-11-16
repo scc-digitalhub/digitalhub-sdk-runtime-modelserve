@@ -11,7 +11,6 @@ from digitalhub_runtime_modelserve.entities._commons.enums import EntityKinds
 from digitalhub_runtime_modelserve.entities.run.sklearnserve_run.entity import RunSklearnserveRun
 from digitalhub_runtime_modelserve.entities.run.sklearnserve_run.spec import (
     RunSpecSklearnserveRun,
-    RunValidatorSklearnserveRun,
 )
 from digitalhub_runtime_modelserve.entities.run.sklearnserve_run.status import RunStatusSklearnserveRun
 
@@ -23,6 +22,5 @@ class RunSklearnserveRunBuilder(RunBuilder, RuntimeEntityBuilderSklearnserve):
 
     ENTITY_CLASS = RunSklearnserveRun
     ENTITY_SPEC_CLASS = RunSpecSklearnserveRun
-    ENTITY_SPEC_VALIDATOR = RunValidatorSklearnserveRun
     ENTITY_STATUS_CLASS = RunStatusSklearnserveRun
     ENTITY_KIND = EntityKinds.RUN_SKLEARNSERVE_SERVE.value

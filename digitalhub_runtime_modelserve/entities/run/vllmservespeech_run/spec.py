@@ -8,6 +8,4 @@ from digitalhub_runtime_modelserve.entities.run.vllmserve_run.spec import (
     RunSpecVllmserveRun,
 )
 
-
-class RunSpecVllmservespeechRun(RunSpecVllmserveRun):
-    """RunSpecVllmservespeechRun specifications."""
+RunSpecVllmservespeechRun = RunSpecVllmserveRun

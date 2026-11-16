@@ -8,8 +8,4 @@ from digitalhub_runtime_modelserve.entities.task.vllmserve_serve.spec import (
     TaskSpecVllmserveServe,
 )
 
-
-class TaskSpecVllmservetextServe(TaskSpecVllmserveServe):
-    """
-    TaskSpecVllmservetextServe specifications.
-    """
+TaskSpecVllmservetextServe = TaskSpecVllmserveServe

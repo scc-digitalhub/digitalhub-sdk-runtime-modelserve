@@ -8,8 +8,4 @@ from digitalhub_runtime_modelserve.entities.task.kubeaiserve_serve.spec import (
     TaskSpecKubeaiserveServe,
 )
 
-
-class TaskSpecKubeaiserveTextServe(TaskSpecKubeaiserveServe):
-    """
-    TaskSpecKubeaiserveTextServe specifications.
-    """
+TaskSpecKubeaiserveTextServe = TaskSpecKubeaiserveServe

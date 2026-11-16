@@ -8,8 +8,4 @@ from digitalhub_runtime_modelserve.entities.task.modelserve_serve.spec import (
     TaskSpecModelserveServe,
 )
 
-
-class TaskSpecSklearnserveServe(TaskSpecModelserveServe):
-    """
-    TaskSpecSklearnserveServe specifications.
-    """
+TaskSpecSklearnserveServe = TaskSpecModelserveServe

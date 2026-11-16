@@ -8,6 +8,4 @@ from digitalhub_runtime_modelserve.entities.run.kubeaiserve_run.spec import (
     RunSpecKubeaiserveRun,
 )
 
-
-class RunSpecKubeaiserveSpeechtotextRun(RunSpecKubeaiserveRun):
-    """RunSpecKubeaiserveSpeechtotextRun specifications."""
+RunSpecKubeaiserveSpeechtotextRun = RunSpecKubeaiserveRun

@@ -6,8 +6,4 @@ from __future__ import annotations
 
 from digitalhub_runtime_modelserve.entities.run.vllmserve_run.status import RunStatusVllmserveRun
 
-
-class RunStatusVllmservespeechRun(RunStatusVllmserveRun):
-    """
-    RunStatusVllmservespeechRun status.
-    """
+RunStatusVllmservespeechRun = RunStatusVllmserveRun

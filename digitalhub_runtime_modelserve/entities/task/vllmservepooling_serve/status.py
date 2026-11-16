@@ -6,8 +6,4 @@ from __future__ import annotations
 
 from digitalhub_runtime_modelserve.entities.task.vllmserve_serve.status import TaskStatusVllmserveServe
 
-
-class TaskStatusVllmservepoolingServe(TaskStatusVllmserveServe):
-    """
-    TaskStatusVllmservepoolingServe status.
-    """
+TaskStatusVllmservepoolingServe = TaskStatusVllmserveServe

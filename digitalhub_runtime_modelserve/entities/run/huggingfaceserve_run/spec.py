@@ -4,9 +4,8 @@
 
 from __future__ import annotations
 
-from digitalhub_runtime_modelserve.entities.run.modelserve_run.spec import (
-    RunSpecModelserveRun,
-)
+from digitalhub.entities.run._base.spec import RunSpec
+
 from digitalhub_runtime_modelserve.entities.task.huggingfaceserve_serve.spec import (
     HuggingfaceServeSpecMixin,
 )
@@ -14,10 +13,11 @@ from digitalhub_runtime_modelserve.entities.task.modelserve_serve.spec import Mo
 
 
 class RunSpecHuggingfaceserveRun(
-    RunSpecModelserveRun,
+    RunSpec,
     ModelserveServeSpecMixin,
     HuggingfaceServeSpecMixin,
 ):
     """RunSpecHuggingfaceserveRun specifications."""
 
+    path: str | None = None
     args: list[str] | None = None

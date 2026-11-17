@@ -13,7 +13,8 @@ from digitalhub_runtime_modelserve.entities.model.mlflow.models import Dataset, 
 class ModelSpecMlflow(ModelSpec):
     """ModelSpecMlflow specifications."""
 
+    parameters: dict | None = Field(default_factory=dict)
     flavor: str | None = None
-    placeholder_cfg_: dict = Field(default=None, alias="model_config")
+    placeholder_cfg_: dict[str, str] | None = Field(default=None, alias="model_config")
     input_datasets: list[Dataset] | None = None
     signature: Signature | None = None

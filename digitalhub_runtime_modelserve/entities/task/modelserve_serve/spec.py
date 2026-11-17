@@ -11,8 +11,8 @@ from pydantic import Field
 
 
 class ModelserveServeSpecMixin(Spec):
-    replicas: int | None = Field(default=None, ge=1)
-    service_type: CoreServiceType | None = None
+    replicas: int | None = Field(default=None, ge=0)
+    service_type: CoreServiceType | None = CoreServiceType.CLUSTER_IP
     service_name: str | None = None
 
 

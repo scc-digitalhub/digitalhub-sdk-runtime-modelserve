@@ -4,11 +4,12 @@
 
 from __future__ import annotations
 
-from digitalhub_runtime_modelserve.entities.run.modelserve_run.spec import (
-    RunSpecModelserveRun,
-)
+from digitalhub.entities.run._base.spec import RunSpec
+
 from digitalhub_runtime_modelserve.entities.task.modelserve_serve.spec import ModelserveServeSpecMixin
 
 
-class RunSpecSklearnserveRun(RunSpecModelserveRun, ModelserveServeSpecMixin):
+class RunSpecSklearnserveRun(RunSpec, ModelserveServeSpecMixin):
     """RunSpecSklearnserveRun specifications."""
+
+    path: str | None = None

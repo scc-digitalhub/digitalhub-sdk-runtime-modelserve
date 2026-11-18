@@ -9,8 +9,9 @@ import typing
 from digitalhub_runtime_modelserve.entities.function.vllmserve.entity import FunctionVllmserve
 
 if typing.TYPE_CHECKING:
-    from digitalhub_runtime_modelserve.entities.function.vllmservepooling.spec import FunctionSpecVllmservepooling
-    from digitalhub_runtime_modelserve.entities.function.vllmservepooling.status import FunctionStatusVllmservepooling
+    from digitalhub.entities._base.entity.status import Status
+
+    from digitalhub_runtime_modelserve.entities.function.vllmserve.spec import FunctionSpecVllmserve
 
 
 class FunctionVllmservepooling(FunctionVllmserve):
@@ -21,5 +22,5 @@ class FunctionVllmservepooling(FunctionVllmserve):
     def __init__(self, *args, **kwargs) -> None:
         super().__init__(*args, **kwargs)
 
-        self.spec: FunctionSpecVllmservepooling
-        self.status: FunctionStatusVllmservepooling
+        self.spec: FunctionSpecVllmserve
+        self.status: Status

@@ -10,7 +10,7 @@ from digitalhub_runtime_modelserve.entities.run.kubeaiserve_run.entity import Ru
 
 if typing.TYPE_CHECKING:
     from digitalhub_runtime_modelserve.entities.run.kubeaiservetext_run.spec import RunSpecKubeaiserveTextRun
-    from digitalhub_runtime_modelserve.entities.run.kubeaiservetext_run.status import RunStatusKubeaiserveTextRun
+    from digitalhub_runtime_modelserve.entities.run.modelserve_run.status import RunStatusModelserveRun
 
 
 class RunKubeaiserveTextRun(RunKubeaiserveRun):
@@ -22,4 +22,4 @@ class RunKubeaiserveTextRun(RunKubeaiserveRun):
         super().__init__(*args, **kwargs)
 
         self.spec: RunSpecKubeaiserveTextRun
-        self.status: RunStatusKubeaiserveTextRun
+        self.status: RunStatusModelserveRun

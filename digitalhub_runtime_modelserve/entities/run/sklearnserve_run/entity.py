@@ -11,8 +11,8 @@ import requests
 from digitalhub_runtime_modelserve.entities.run.modelserve_run.entity import RunModelserveRun
 
 if typing.TYPE_CHECKING:
+    from digitalhub_runtime_modelserve.entities.run.modelserve_run.status import RunStatusModelserveRun
     from digitalhub_runtime_modelserve.entities.run.sklearnserve_run.spec import RunSpecSklearnserveRun
-    from digitalhub_runtime_modelserve.entities.run.sklearnserve_run.status import RunStatusSklearnserveRun
 
 
 class RunSklearnserveRun(RunModelserveRun):
@@ -24,7 +24,7 @@ class RunSklearnserveRun(RunModelserveRun):
         super().__init__(*args, **kwargs)
 
         self.spec: RunSpecSklearnserveRun
-        self.status: RunStatusSklearnserveRun
+        self.status: RunStatusModelserveRun
 
     def invoke(
         self,

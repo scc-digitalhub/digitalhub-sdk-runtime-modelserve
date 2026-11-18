@@ -4,13 +4,13 @@
 
 from __future__ import annotations
 
-from digitalhub.entities.function._base.spec import FunctionSpec
+from digitalhub.entities._base.entity.spec import Spec
 from pydantic import Field
 
 from digitalhub_runtime_modelserve.entities.function.vllmserve.models import VLLMAdapter
 
 
-class FunctionSpecVllmserve(FunctionSpec):
+class FunctionSpecVllmserve(Spec):
     """
     FunctionSpecVllmserve specifications.
     """

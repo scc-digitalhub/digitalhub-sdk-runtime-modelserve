@@ -9,12 +9,9 @@ import typing
 from digitalhub_runtime_modelserve.entities.function.modelserve.entity import FunctionModelserve
 
 if typing.TYPE_CHECKING:
-    from digitalhub_runtime_modelserve.entities.function.kubeaiservespeechtotext.spec import (
-        FunctionSpecKubeaiserveSpeechtotext,
-    )
-    from digitalhub_runtime_modelserve.entities.function.kubeaiservespeechtotext.status import (
-        FunctionStatusKubeaiserveSpeechtotext,
-    )
+    from digitalhub.entities._base.entity.status import Status
+
+    from digitalhub_runtime_modelserve.entities.function.kubeaiserve.spec import FunctionSpecKubeaiserve
 
 
 class FunctionKubeaiserveSpeechtotext(FunctionModelserve):
@@ -25,5 +22,5 @@ class FunctionKubeaiserveSpeechtotext(FunctionModelserve):
     def __init__(self, *args, **kwargs) -> None:
         super().__init__(*args, **kwargs)
 
-        self.spec: FunctionSpecKubeaiserveSpeechtotext
-        self.status: FunctionStatusKubeaiserveSpeechtotext
+        self.spec: FunctionSpecKubeaiserve
+        self.status: Status

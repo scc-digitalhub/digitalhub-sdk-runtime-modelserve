@@ -9,8 +9,9 @@ import typing
 from digitalhub.entities.model._base.entity import Model
 
 if typing.TYPE_CHECKING:
+    from digitalhub.entities.model._base.status import ModelStatus
+
     from digitalhub_runtime_modelserve.entities.model.huggingface.spec import ModelSpecHuggingface
-    from digitalhub_runtime_modelserve.entities.model.huggingface.status import ModelStatusHuggingface
 
 
 class ModelHuggingface(Model):
@@ -20,4 +21,4 @@ class ModelHuggingface(Model):
         super().__init__(*args, **kwargs)
 
         self.spec: ModelSpecHuggingface
-        self.status: ModelStatusHuggingface
+        self.status: ModelStatus

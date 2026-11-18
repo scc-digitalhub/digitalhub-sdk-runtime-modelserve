@@ -9,8 +9,9 @@ import typing
 from digitalhub_runtime_modelserve.entities.function.modelserve.entity import FunctionModelserve
 
 if typing.TYPE_CHECKING:
-    from digitalhub_runtime_modelserve.entities.function.huggingfaceserve.spec import FunctionSpecHuggingfaceserve
-    from digitalhub_runtime_modelserve.entities.function.huggingfaceserve.status import FunctionStatusHuggingfaceserve
+    from digitalhub.entities._base.entity.status import Status
+
+    from digitalhub_runtime_modelserve.entities.function.modelserve.spec import FunctionSpecModelserve
 
 
 class FunctionHuggingfaceserve(FunctionModelserve):
@@ -21,5 +22,5 @@ class FunctionHuggingfaceserve(FunctionModelserve):
     def __init__(self, *args, **kwargs) -> None:
         super().__init__(*args, **kwargs)
 
-        self.spec: FunctionSpecHuggingfaceserve
-        self.status: FunctionStatusHuggingfaceserve
+        self.spec: FunctionSpecModelserve
+        self.status: Status

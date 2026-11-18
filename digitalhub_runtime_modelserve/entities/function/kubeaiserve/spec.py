@@ -4,12 +4,12 @@
 
 from __future__ import annotations
 
-from digitalhub.entities.function._base.spec import FunctionSpec
+from digitalhub.entities._base.entity.spec import Spec
 
 from digitalhub_runtime_modelserve.entities.function.kubeaiserve.models import KubeaiAdapter
 
 
-class FunctionSpecKubeaiserve(FunctionSpec):
+class FunctionSpecKubeaiserve(Spec):
     """
     FunctionSpecKubeaiserve specifications.
     """

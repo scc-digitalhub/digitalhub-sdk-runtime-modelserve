@@ -4,6 +4,7 @@
 
 from __future__ import annotations
 
+from digitalhub.entities._base.entity.status import Status
 from digitalhub.entities.function._base.builder import FunctionBuilder
 
 from digitalhub_runtime_modelserve.entities._base.runtime_entity.builder import RuntimeEntityBuilderVllmserve
@@ -12,7 +13,6 @@ from digitalhub_runtime_modelserve.entities.function.vllmserve.entity import Fun
 from digitalhub_runtime_modelserve.entities.function.vllmserve.spec import (
     FunctionSpecVllmserve,
 )
-from digitalhub_runtime_modelserve.entities.function.vllmserve.status import FunctionStatusVllmserve
 
 
 class FunctionVllmserveBuilder(FunctionBuilder, RuntimeEntityBuilderVllmserve):
@@ -22,5 +22,5 @@ class FunctionVllmserveBuilder(FunctionBuilder, RuntimeEntityBuilderVllmserve):
 
     ENTITY_CLASS = FunctionVllmserve
     ENTITY_SPEC_CLASS = FunctionSpecVllmserve
-    ENTITY_STATUS_CLASS = FunctionStatusVllmserve
+    ENTITY_STATUS_CLASS = Status
     ENTITY_KIND = EntityKinds.FUNCTION_VLLMSERVE.value

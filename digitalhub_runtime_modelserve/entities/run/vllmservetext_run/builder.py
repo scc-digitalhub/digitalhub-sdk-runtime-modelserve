@@ -8,11 +8,9 @@ from digitalhub.entities.run._base.builder import RunBuilder
 
 from digitalhub_runtime_modelserve.entities._base.runtime_entity.builder import RuntimeEntityBuilderVllmserveText
 from digitalhub_runtime_modelserve.entities._commons.enums import EntityKinds
+from digitalhub_runtime_modelserve.entities.run.vllmserve_run.spec import RunSpecVllmserveRun
+from digitalhub_runtime_modelserve.entities.run.vllmserve_run.status import RunStatusVllmserveRun
 from digitalhub_runtime_modelserve.entities.run.vllmservetext_run.entity import RunVllmservetextRun
-from digitalhub_runtime_modelserve.entities.run.vllmservetext_run.spec import (
-    RunSpecVllmservetextRun,
-)
-from digitalhub_runtime_modelserve.entities.run.vllmservetext_run.status import RunStatusVllmservetextRun
 
 
 class RunVllmservetextRunBuilder(RunBuilder, RuntimeEntityBuilderVllmserveText):
@@ -21,6 +19,6 @@ class RunVllmservetextRunBuilder(RunBuilder, RuntimeEntityBuilderVllmserveText):
     """
 
     ENTITY_CLASS = RunVllmservetextRun
-    ENTITY_SPEC_CLASS = RunSpecVllmservetextRun
-    ENTITY_STATUS_CLASS = RunStatusVllmservetextRun
+    ENTITY_SPEC_CLASS = RunSpecVllmserveRun
+    ENTITY_STATUS_CLASS = RunStatusVllmserveRun
     ENTITY_KIND = EntityKinds.RUN_VLLMSERVETEXT_SERVE.value

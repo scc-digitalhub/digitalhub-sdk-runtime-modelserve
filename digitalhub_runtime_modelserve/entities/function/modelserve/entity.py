@@ -9,8 +9,9 @@ import typing
 from digitalhub.entities.function._base.entity import Function
 
 if typing.TYPE_CHECKING:
+    from digitalhub.entities._base.entity.status import Status
+
     from digitalhub_runtime_modelserve.entities.function.modelserve.spec import FunctionSpecModelserve
-    from digitalhub_runtime_modelserve.entities.function.modelserve.status import FunctionStatusModelserve
 
 
 class FunctionModelserve(Function):
@@ -22,4 +23,4 @@ class FunctionModelserve(Function):
         super().__init__(*args, **kwargs)
 
         self.spec: FunctionSpecModelserve
-        self.status: FunctionStatusModelserve
+        self.status: Status

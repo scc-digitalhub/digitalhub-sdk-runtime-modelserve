@@ -4,12 +4,12 @@
 
 from __future__ import annotations
 
-from digitalhub.entities.function._base.spec import FunctionSpec
+from digitalhub.entities._base.entity.spec import Spec
 
 from digitalhub_runtime_modelserve.entities.function.vllmserve.models import VLLMAdapter
 
 
-class FunctionSpecSglangserve(FunctionSpec):
+class FunctionSpecSglangserve(Spec):
     """FunctionSpecSglangserve specifications."""
 
     image: str | None = None

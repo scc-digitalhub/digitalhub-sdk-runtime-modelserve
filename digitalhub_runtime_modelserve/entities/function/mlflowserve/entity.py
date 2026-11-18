@@ -10,8 +10,9 @@ from digitalhub_runtime_modelserve.entities._commons.enums import Actions
 from digitalhub_runtime_modelserve.entities.function.modelserve.entity import FunctionModelserve
 
 if typing.TYPE_CHECKING:
-    from digitalhub_runtime_modelserve.entities.function.mlflowserve.spec import FunctionSpecMlflowserve
-    from digitalhub_runtime_modelserve.entities.function.mlflowserve.status import FunctionStatusMlflowserve
+    from digitalhub.entities._base.entity.status import Status
+
+    from digitalhub_runtime_modelserve.entities.function.modelserve.spec import FunctionSpecModelserve
 
 
 class FunctionMlflowserve(FunctionModelserve):
@@ -22,8 +23,8 @@ class FunctionMlflowserve(FunctionModelserve):
     def __init__(self, *args, **kwargs) -> None:
         super().__init__(*args, **kwargs)
 
-        self.spec: FunctionSpecMlflowserve
-        self.status: FunctionStatusMlflowserve
+        self.spec: FunctionSpecModelserve
+        self.status: Status
 
     def build(
         self,

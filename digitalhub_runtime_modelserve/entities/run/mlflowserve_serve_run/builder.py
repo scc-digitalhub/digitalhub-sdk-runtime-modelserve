@@ -12,7 +12,7 @@ from digitalhub_runtime_modelserve.entities.run.mlflowserve_serve_run.entity imp
 from digitalhub_runtime_modelserve.entities.run.mlflowserve_serve_run.spec import (
     RunSpecMlflowserveServeRun,
 )
-from digitalhub_runtime_modelserve.entities.run.mlflowserve_serve_run.status import RunStatusMlflowserveServeRun
+from digitalhub_runtime_modelserve.entities.run.modelserve_run.status import RunStatusModelserveRun
 
 
 class RunMlflowserveServeRunBuilder(RunBuilder, RuntimeEntityBuilderMlflowserve):
@@ -22,5 +22,5 @@ class RunMlflowserveServeRunBuilder(RunBuilder, RuntimeEntityBuilderMlflowserve)
 
     ENTITY_CLASS = RunMlflowserveServeRun
     ENTITY_SPEC_CLASS = RunSpecMlflowserveServeRun
-    ENTITY_STATUS_CLASS = RunStatusMlflowserveServeRun
+    ENTITY_STATUS_CLASS = RunStatusModelserveRun
     ENTITY_KIND = EntityKinds.RUN_MLFLOWSERVE_SERVE.value

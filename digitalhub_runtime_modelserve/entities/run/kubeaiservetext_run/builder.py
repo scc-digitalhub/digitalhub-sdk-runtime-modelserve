@@ -12,7 +12,7 @@ from digitalhub_runtime_modelserve.entities.run.kubeaiservetext_run.entity impor
 from digitalhub_runtime_modelserve.entities.run.kubeaiservetext_run.spec import (
     RunSpecKubeaiserveTextRun,
 )
-from digitalhub_runtime_modelserve.entities.run.kubeaiservetext_run.status import RunStatusKubeaiserveTextRun
+from digitalhub_runtime_modelserve.entities.run.modelserve_run.status import RunStatusModelserveRun
 
 
 class RunKubeaiserveTextRunBuilder(RunBuilder, RuntimeEntityBuilderKubeaiserveText):
@@ -22,5 +22,5 @@ class RunKubeaiserveTextRunBuilder(RunBuilder, RuntimeEntityBuilderKubeaiserveTe
 
     ENTITY_CLASS = RunKubeaiserveTextRun
     ENTITY_SPEC_CLASS = RunSpecKubeaiserveTextRun
-    ENTITY_STATUS_CLASS = RunStatusKubeaiserveTextRun
+    ENTITY_STATUS_CLASS = RunStatusModelserveRun
     ENTITY_KIND = EntityKinds.RUN_KUBEAISERVETEXT_SERVE.value

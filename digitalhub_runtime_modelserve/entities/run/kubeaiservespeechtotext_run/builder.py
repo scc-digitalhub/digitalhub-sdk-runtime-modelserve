@@ -10,13 +10,9 @@ from digitalhub_runtime_modelserve.entities._base.runtime_entity.builder import 
     RuntimeEntityBuilderKubeaiserveSpeechtotext,
 )
 from digitalhub_runtime_modelserve.entities._commons.enums import EntityKinds
+from digitalhub_runtime_modelserve.entities.run.kubeaiserve_run.spec import RunSpecKubeaiserveRun
 from digitalhub_runtime_modelserve.entities.run.kubeaiservespeechtotext_run.entity import RunKubeaiserveSpeechtotextRun
-from digitalhub_runtime_modelserve.entities.run.kubeaiservespeechtotext_run.spec import (
-    RunSpecKubeaiserveSpeechtotextRun,
-)
-from digitalhub_runtime_modelserve.entities.run.kubeaiservespeechtotext_run.status import (
-    RunStatusKubeaiserveSpeechtotextRun,
-)
+from digitalhub_runtime_modelserve.entities.run.modelserve_run.status import RunStatusModelserveRun
 
 
 class RunKubeaiserveSpeechtotextRunBuilder(RunBuilder, RuntimeEntityBuilderKubeaiserveSpeechtotext):
@@ -25,6 +21,6 @@ class RunKubeaiserveSpeechtotextRunBuilder(RunBuilder, RuntimeEntityBuilderKubea
     """
 
     ENTITY_CLASS = RunKubeaiserveSpeechtotextRun
-    ENTITY_SPEC_CLASS = RunSpecKubeaiserveSpeechtotextRun
-    ENTITY_STATUS_CLASS = RunStatusKubeaiserveSpeechtotextRun
+    ENTITY_SPEC_CLASS = RunSpecKubeaiserveRun
+    ENTITY_STATUS_CLASS = RunStatusModelserveRun
     ENTITY_KIND = EntityKinds.RUN_KUBEAISERVESPEECHTOTEXT_SERVE.value

@@ -4,10 +4,10 @@
 
 from __future__ import annotations
 
-from digitalhub.entities.function._base.spec import FunctionSpec
+from digitalhub.entities._base.entity.spec import Spec
 
 
-class FunctionSpecOllamaserve(FunctionSpec):
+class FunctionSpecOllamaserve(Spec):
     """FunctionSpecOllamaserve specifications."""
 
     image: str | None = None

@@ -4,6 +4,7 @@
 
 from __future__ import annotations
 
+from digitalhub.entities._base.entity.status import Status
 from digitalhub.entities.function._base.builder import FunctionBuilder
 
 from digitalhub_runtime_modelserve.entities._base.runtime_entity.builder import RuntimeEntityBuilderKubeaiserve
@@ -12,7 +13,6 @@ from digitalhub_runtime_modelserve.entities.function.kubeaiserve.entity import F
 from digitalhub_runtime_modelserve.entities.function.kubeaiserve.spec import (
     FunctionSpecKubeaiserve,
 )
-from digitalhub_runtime_modelserve.entities.function.kubeaiserve.status import FunctionStatusKubeaiserve
 
 
 class FunctionKubeaiserveBuilder(FunctionBuilder, RuntimeEntityBuilderKubeaiserve):
@@ -22,5 +22,5 @@ class FunctionKubeaiserveBuilder(FunctionBuilder, RuntimeEntityBuilderKubeaiserv
 
     ENTITY_CLASS = FunctionKubeaiserve
     ENTITY_SPEC_CLASS = FunctionSpecKubeaiserve
-    ENTITY_STATUS_CLASS = FunctionStatusKubeaiserve
+    ENTITY_STATUS_CLASS = Status
     ENTITY_KIND = EntityKinds.FUNCTION_KUBEAISERVE.value

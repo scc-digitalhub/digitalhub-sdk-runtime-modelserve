@@ -12,7 +12,7 @@ from digitalhub_runtime_modelserve.entities.run.huggingfaceserve_run.entity impo
 from digitalhub_runtime_modelserve.entities.run.huggingfaceserve_run.spec import (
     RunSpecHuggingfaceserveRun,
 )
-from digitalhub_runtime_modelserve.entities.run.huggingfaceserve_run.status import RunStatusHuggingfaceserveRun
+from digitalhub_runtime_modelserve.entities.run.modelserve_run.status import RunStatusModelserveRun
 
 
 class RunHuggingfaceserveRunBuilder(RunBuilder, RuntimeEntityBuilderHuggingfaceserve):
@@ -22,5 +22,5 @@ class RunHuggingfaceserveRunBuilder(RunBuilder, RuntimeEntityBuilderHuggingfaces
 
     ENTITY_CLASS = RunHuggingfaceserveRun
     ENTITY_SPEC_CLASS = RunSpecHuggingfaceserveRun
-    ENTITY_STATUS_CLASS = RunStatusHuggingfaceserveRun
+    ENTITY_STATUS_CLASS = RunStatusModelserveRun
     ENTITY_KIND = EntityKinds.RUN_HUGGINGFACESERVE_SERVE.value

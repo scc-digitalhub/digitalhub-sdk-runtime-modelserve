@@ -9,8 +9,9 @@ import typing
 from digitalhub.entities.model._base.entity import Model
 
 if typing.TYPE_CHECKING:
+    from digitalhub.entities.model._base.status import ModelStatus
+
     from digitalhub_runtime_modelserve.entities.model.mlflow.spec import ModelSpecMlflow
-    from digitalhub_runtime_modelserve.entities.model.mlflow.status import ModelStatusMlflow
 
 
 class ModelMlflow(Model):
@@ -20,4 +21,4 @@ class ModelMlflow(Model):
         super().__init__(*args, **kwargs)
 
         self.spec: ModelSpecMlflow
-        self.status: ModelStatusMlflow
+        self.status: ModelStatus

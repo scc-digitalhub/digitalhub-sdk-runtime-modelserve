@@ -12,7 +12,7 @@ from digitalhub_runtime_modelserve.entities.run.modelserve_run.entity import Run
 
 if typing.TYPE_CHECKING:
     from digitalhub_runtime_modelserve.entities.run.mlflowserve_serve_run.spec import RunSpecMlflowserveServeRun
-    from digitalhub_runtime_modelserve.entities.run.mlflowserve_serve_run.status import RunStatusMlflowserveServeRun
+    from digitalhub_runtime_modelserve.entities.run.modelserve_run.status import RunStatusModelserveRun
 
 
 class RunMlflowserveServeRun(RunModelserveRun):
@@ -24,7 +24,7 @@ class RunMlflowserveServeRun(RunModelserveRun):
         super().__init__(*args, **kwargs)
 
         self.spec: RunSpecMlflowserveServeRun
-        self.status: RunStatusMlflowserveServeRun
+        self.status: RunStatusModelserveRun
 
     def invoke(
         self,

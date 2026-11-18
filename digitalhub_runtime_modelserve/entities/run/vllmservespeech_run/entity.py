@@ -9,8 +9,8 @@ import typing
 from digitalhub_runtime_modelserve.entities.run.vllmserve_run.entity import RunVllmserveRun
 
 if typing.TYPE_CHECKING:
-    from digitalhub_runtime_modelserve.entities.run.vllmservespeech_run.spec import RunSpecVllmservespeechRun
-    from digitalhub_runtime_modelserve.entities.run.vllmservespeech_run.status import RunStatusVllmservespeechRun
+    from digitalhub_runtime_modelserve.entities.run.vllmserve_run.spec import RunSpecVllmserveRun
+    from digitalhub_runtime_modelserve.entities.run.vllmserve_run.status import RunStatusVllmserveRun
 
 
 class RunVllmservespeechRun(RunVllmserveRun):
@@ -21,5 +21,5 @@ class RunVllmservespeechRun(RunVllmserveRun):
     def __init__(self, *args, **kwargs) -> None:
         super().__init__(*args, **kwargs)
 
-        self.spec: RunSpecVllmservespeechRun
-        self.status: RunStatusVllmservespeechRun
+        self.spec: RunSpecVllmserveRun
+        self.status: RunStatusVllmserveRun

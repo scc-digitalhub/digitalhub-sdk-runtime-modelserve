@@ -8,11 +8,9 @@ from digitalhub.entities.run._base.builder import RunBuilder
 
 from digitalhub_runtime_modelserve.entities._base.runtime_entity.builder import RuntimeEntityBuilderVllmservePooling
 from digitalhub_runtime_modelserve.entities._commons.enums import EntityKinds
+from digitalhub_runtime_modelserve.entities.run.vllmserve_run.spec import RunSpecVllmserveRun
+from digitalhub_runtime_modelserve.entities.run.vllmserve_run.status import RunStatusVllmserveRun
 from digitalhub_runtime_modelserve.entities.run.vllmservepooling_run.entity import RunVllmservepoolingRun
-from digitalhub_runtime_modelserve.entities.run.vllmservepooling_run.spec import (
-    RunSpecVllmservepoolingRun,
-)
-from digitalhub_runtime_modelserve.entities.run.vllmservepooling_run.status import RunStatusVllmservepoolingRun
 
 
 class RunVllmservepoolingRunBuilder(RunBuilder, RuntimeEntityBuilderVllmservePooling):
@@ -21,6 +19,6 @@ class RunVllmservepoolingRunBuilder(RunBuilder, RuntimeEntityBuilderVllmservePoo
     """
 
     ENTITY_CLASS = RunVllmservepoolingRun
-    ENTITY_SPEC_CLASS = RunSpecVllmservepoolingRun
-    ENTITY_STATUS_CLASS = RunStatusVllmservepoolingRun
+    ENTITY_SPEC_CLASS = RunSpecVllmserveRun
+    ENTITY_STATUS_CLASS = RunStatusVllmserveRun
     ENTITY_KIND = EntityKinds.RUN_VLLMSERVEPOOLING_SERVE.value

@@ -4,9 +4,14 @@
 
 from __future__ import annotations
 
+from enum import Enum
+
 from pydantic import BaseModel
 
-from digitalhub_runtime_modelserve.entities.run.kubeaiserve_run.enums import LoadBalancingStrategy
+
+class LoadBalancingStrategy(Enum):
+    LEAST_LOAD = "LeastLoad"
+    PREFIX_HASH = "PrefixHash"
 
 
 class KubeaiPrefixHash(BaseModel):

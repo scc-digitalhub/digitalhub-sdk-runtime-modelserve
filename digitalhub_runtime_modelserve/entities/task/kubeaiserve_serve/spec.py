@@ -4,21 +4,8 @@
 
 from __future__ import annotations
 
-from digitalhub.entities._base.entity.spec import Spec
-from pydantic import Field
-
-from digitalhub_runtime_modelserve.entities.run.kubeaiserve_run.models import KubeaiFile, Scaling
+from digitalhub_runtime_modelserve.entities._mixin.execution.spec import KubeaiServeSpecMixin
 from digitalhub_runtime_modelserve.entities.task.modelserve_serve.spec import TaskSpecModelserveServe
-
-
-class KubeaiServeSpecMixin(Spec):
-    envs: dict | None = None
-    image: str | None = None
-    model_name: str | None = None
-    args: list[str] | None = None
-    processors: int | None = Field(default=None, ge=1)
-    files: list[KubeaiFile] | None = None
-    scaling: Scaling | None = None
 
 
 class TaskSpecKubeaiserveServe(TaskSpecModelserveServe, KubeaiServeSpecMixin):

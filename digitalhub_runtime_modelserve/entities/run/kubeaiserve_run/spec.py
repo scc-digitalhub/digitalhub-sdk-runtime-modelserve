@@ -4,13 +4,12 @@
 
 from __future__ import annotations
 
-from digitalhub.entities.run._base.spec import RunSpec
+from digitalhub.entities.run._base.spec import RunSpecFunction
 
-from digitalhub_runtime_modelserve.entities.task.kubeaiserve_serve.spec import KubeaiServeSpecMixin
-from digitalhub_runtime_modelserve.entities.task.modelserve_serve.spec import ModelserveServeSpecMixin
+from digitalhub_runtime_modelserve.entities._mixin.execution.spec import KubeaiServeSpecMixin, ModelserveServeSpecMixin
 
 
-class RunSpecKubeaiserveRun(RunSpec, ModelserveServeSpecMixin, KubeaiServeSpecMixin):
+class RunSpecKubeaiserveRun(RunSpecFunction, ModelserveServeSpecMixin, KubeaiServeSpecMixin):
     """RunSpecKubeaiserveRun specifications."""
 
     adapters: list[dict] | None = None

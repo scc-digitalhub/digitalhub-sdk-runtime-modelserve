@@ -4,12 +4,9 @@
 
 from __future__ import annotations
 
-from digitalhub.entities.task._base.models import CoreServiceType
-from digitalhub.entities.task._base.spec import ServeSpecMixin, TaskSpecFunction
+from digitalhub.entities.task._base.spec import TaskSpecFunction
 
-
-class ModelserveServeSpecMixin(ServeSpecMixin):
-    service_type: CoreServiceType | None = CoreServiceType.CLUSTER_IP
+from digitalhub_runtime_modelserve.entities._mixin.execution.spec import ModelserveServeSpecMixin
 
 
 class TaskSpecModelserveServe(TaskSpecFunction, ModelserveServeSpecMixin):

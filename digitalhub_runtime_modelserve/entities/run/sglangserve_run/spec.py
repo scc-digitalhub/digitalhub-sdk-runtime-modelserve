@@ -4,14 +4,14 @@
 
 from __future__ import annotations
 
-from digitalhub.entities.run._base.spec import RunSpec
+from digitalhub.entities.run._base.spec import RunSpecFunction
 from pydantic import Field
 
+from digitalhub_runtime_modelserve.entities._mixin.execution.spec import ModelserveServeSpecMixin
 from digitalhub_runtime_modelserve.entities.function.vllmserve.models import VLLMAdapter
-from digitalhub_runtime_modelserve.entities.task.modelserve_serve.spec import ModelserveServeSpecMixin
 
 
-class RunSpecSglangserveRun(RunSpec, ModelserveServeSpecMixin):
+class RunSpecSglangserveRun(RunSpecFunction, ModelserveServeSpecMixin):
     """RunSpecSglangserveRun specifications."""
 
     path: str | None = None

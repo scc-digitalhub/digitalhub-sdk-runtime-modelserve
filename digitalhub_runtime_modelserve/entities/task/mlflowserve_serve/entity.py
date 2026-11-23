@@ -9,8 +9,9 @@ import typing
 from digitalhub_runtime_modelserve.entities.task.modelserve_serve.entity import TaskModelserveServe
 
 if typing.TYPE_CHECKING:
-    from digitalhub_runtime_modelserve.entities.task.mlflowserve_serve.spec import TaskSpecMlflowserveServe
-    from digitalhub_runtime_modelserve.entities.task.mlflowserve_serve.status import TaskStatusMlflowserveServe
+    from digitalhub.entities._base.entity.status import Status
+
+    from digitalhub_runtime_modelserve.entities.task.modelserve_serve.spec import TaskSpecModelserveServe
 
 
 class TaskMlflowserveServe(TaskModelserveServe):
@@ -21,5 +22,5 @@ class TaskMlflowserveServe(TaskModelserveServe):
     def __init__(self, *args, **kwargs) -> None:
         super().__init__(*args, **kwargs)
 
-        self.spec: TaskSpecMlflowserveServe
-        self.status: TaskStatusMlflowserveServe
+        self.spec: TaskSpecModelserveServe
+        self.status: Status

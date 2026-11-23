@@ -4,15 +4,13 @@
 
 from __future__ import annotations
 
+from digitalhub.entities._base.entity.status import Status
 from digitalhub.entities.task._base.builder import TaskBuilder
 
 from digitalhub_runtime_modelserve.entities._base.runtime_entity.builder import RuntimeEntityBuilderSklearnserve
 from digitalhub_runtime_modelserve.entities._commons.enums import EntityKinds
+from digitalhub_runtime_modelserve.entities.task.modelserve_serve.spec import TaskSpecModelserveServe
 from digitalhub_runtime_modelserve.entities.task.sklearnserve_serve.entity import TaskSklearnserveServe
-from digitalhub_runtime_modelserve.entities.task.sklearnserve_serve.spec import (
-    TaskSpecSklearnserveServe,
-)
-from digitalhub_runtime_modelserve.entities.task.sklearnserve_serve.status import TaskStatusSklearnserveServe
 
 
 class TaskSklearnserveServeBuilder(TaskBuilder, RuntimeEntityBuilderSklearnserve):
@@ -21,6 +19,6 @@ class TaskSklearnserveServeBuilder(TaskBuilder, RuntimeEntityBuilderSklearnserve
     """
 
     ENTITY_CLASS = TaskSklearnserveServe
-    ENTITY_SPEC_CLASS = TaskSpecSklearnserveServe
-    ENTITY_STATUS_CLASS = TaskStatusSklearnserveServe
+    ENTITY_SPEC_CLASS = TaskSpecModelserveServe
+    ENTITY_STATUS_CLASS = Status
     ENTITY_KIND = EntityKinds.TASK_SKLEARNSERVE_SERVE.value

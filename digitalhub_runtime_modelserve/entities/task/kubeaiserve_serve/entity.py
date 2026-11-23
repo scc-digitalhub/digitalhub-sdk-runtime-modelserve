@@ -9,8 +9,9 @@ import typing
 from digitalhub_runtime_modelserve.entities.task.modelserve_serve.entity import TaskModelserveServe
 
 if typing.TYPE_CHECKING:
+    from digitalhub.entities._base.entity.status import Status
+
     from digitalhub_runtime_modelserve.entities.task.kubeaiserve_serve.spec import TaskSpecKubeaiserveServe
-    from digitalhub_runtime_modelserve.entities.task.kubeaiserve_serve.status import TaskStatusKubeaiserveServe
 
 
 class TaskKubeaiserveServe(TaskModelserveServe):
@@ -22,4 +23,4 @@ class TaskKubeaiserveServe(TaskModelserveServe):
         super().__init__(*args, **kwargs)
 
         self.spec: TaskSpecKubeaiserveServe
-        self.status: TaskStatusKubeaiserveServe
+        self.status: Status

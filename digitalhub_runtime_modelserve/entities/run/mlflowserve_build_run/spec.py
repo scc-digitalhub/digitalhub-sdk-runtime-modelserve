@@ -4,11 +4,11 @@
 
 from __future__ import annotations
 
-from digitalhub.entities.run._base.spec import RunSpec
-from digitalhub.entities.task._base.spec import BuildSpecMixin
+from digitalhub.entities._mixin.execution.spec import BuildSpecMixin
+from digitalhub.entities.run._base.spec import RunSpecFunction
 
 
-class RunSpecMlflowserveBuildRun(RunSpec, BuildSpecMixin):
+class RunSpecMlflowserveBuildRun(RunSpecFunction, BuildSpecMixin):
     """RunSpecMlflowserveBuildRun specifications."""
 
     path: str | None = None

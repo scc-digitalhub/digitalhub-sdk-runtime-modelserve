@@ -4,10 +4,10 @@
 
 from __future__ import annotations
 
-from digitalhub.entities.run._base.spec import RunSpec
+from digitalhub.entities.run._base.spec import RunSpecFunction
 
 
-class RunSpecModelserveRun(RunSpec):
+class RunSpecModelserveRun(RunSpecFunction):
     """RunSpecModelserveRun specifications."""
 
     path: str | None = None

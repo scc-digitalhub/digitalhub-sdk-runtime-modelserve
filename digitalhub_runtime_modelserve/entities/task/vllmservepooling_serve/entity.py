@@ -9,10 +9,9 @@ import typing
 from digitalhub_runtime_modelserve.entities.task.vllmserve_serve.entity import TaskVllmserveServe
 
 if typing.TYPE_CHECKING:
-    from digitalhub_runtime_modelserve.entities.task.vllmservepooling_serve.spec import TaskSpecVllmservepoolingServe
-    from digitalhub_runtime_modelserve.entities.task.vllmservepooling_serve.status import (
-        TaskStatusVllmservepoolingServe,
-    )
+    from digitalhub.entities._base.entity.status import Status
+
+    from digitalhub_runtime_modelserve.entities.task.modelserve_serve.spec import TaskSpecModelserveServe
 
 
 class TaskVllmservepoolingServe(TaskVllmserveServe):
@@ -23,5 +22,5 @@ class TaskVllmservepoolingServe(TaskVllmserveServe):
     def __init__(self, *args, **kwargs) -> None:
         super().__init__(*args, **kwargs)
 
-        self.spec: TaskSpecVllmservepoolingServe
-        self.status: TaskStatusVllmservepoolingServe
+        self.spec: TaskSpecModelserveServe
+        self.status: Status

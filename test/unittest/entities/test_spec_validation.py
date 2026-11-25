@@ -3,27 +3,25 @@
 # SPDX-License-Identifier: Apache-2.0
 
 import pytest
+from digitalhub.factory.registry import registry
 from digitalhub.plugins import CoreServiceType, ModelSpec, build_spec
 from pydantic import ValidationError
 
+from digitalhub_runtime_modelserve.entities._commons.enums import EntityKinds
 from digitalhub_runtime_modelserve.entities._commons.models import KubeaiFile, Scaling
 from digitalhub_runtime_modelserve.entities.function.ollamaserve.spec import FunctionSpecOllamaserve
 from digitalhub_runtime_modelserve.entities.function.sglangserve.spec import FunctionSpecSglangserve
 from digitalhub_runtime_modelserve.entities.function.teiserve.spec import FunctionSpecTeiserve
 from digitalhub_runtime_modelserve.entities.function.vllmserve.models import VLLMAdapter
 from digitalhub_runtime_modelserve.entities.function.vllmserve.spec import FunctionSpecVllmserve
-from digitalhub_runtime_modelserve.entities.model.mlflow.builder import ModelMlflowBuilder
 from digitalhub_runtime_modelserve.entities.model.sklearn.spec import ModelSpecSklearn
-from digitalhub_runtime_modelserve.entities.run.kubeaiservetext_run.builder import RunKubeaiserveTextRunBuilder
 from digitalhub_runtime_modelserve.entities.run.mlflowserve_build_run.spec import RunSpecMlflowserveBuildRun
 from digitalhub_runtime_modelserve.entities.run.ollamaserve_run.spec import RunSpecOllamaserveRun
 from digitalhub_runtime_modelserve.entities.run.sglangserve_run.spec import RunSpecSglangserveRun
 from digitalhub_runtime_modelserve.entities.run.teiserve_run.spec import RunSpecTeiserveRun
 from digitalhub_runtime_modelserve.entities.run.vllmserve_run.spec import RunSpecVllmserveRun
-from digitalhub_runtime_modelserve.entities.task.kubeaiservetext_serve.builder import TaskKubeaiserveTextServeBuilder
 from digitalhub_runtime_modelserve.entities.task.mlflowserve_build.spec import TaskSpecMlflowserveBuild
 from digitalhub_runtime_modelserve.entities.task.modelserve_serve.spec import TaskSpecModelserveServe
-from digitalhub_runtime_modelserve.entities.task.sklearnserve_serve.builder import TaskSklearnserveServeBuilder
 
 
 def test_function_spec_validates_nested_adapters() -> None:
@@ -46,7 +44,7 @@ def test_function_spec_validates_nested_adapters() -> None:
 
 
 def test_task_spec_preserves_replica_constraint() -> None:
-    builder = TaskSklearnserveServeBuilder()
+    builder = registry.get_entity_builder(EntityKinds.TASK_SKLEARNSERVE_SERVE.value)
 
     spec = builder.build_spec(function="function", replicas=0)
     assert spec.replicas == 0
@@ -97,7 +95,7 @@ def test_run_spec_merges_action_fields_and_preserves_run_fields() -> None:
 
 
 def test_kubeai_run_spec_preserves_constraint_and_nested_models() -> None:
-    builder = RunKubeaiserveTextRunBuilder()
+    builder = registry.get_entity_builder(EntityKinds.RUN_KUBEAISERVETEXT_SERVE.value)
     spec = builder.build_spec(
         function="function",
         task="task",
@@ -116,7 +114,7 @@ def test_kubeai_run_spec_preserves_constraint_and_nested_models() -> None:
 
 
 def test_kubeai_task_spec_validates_runtime_and_service_fields() -> None:
-    builder = TaskKubeaiserveTextServeBuilder()
+    builder = registry.get_entity_builder(EntityKinds.TASK_KUBEAISERVETEXT_SERVE.value)
     spec = builder.build_spec(
         function="function",
         args=["--model"],
@@ -139,7 +137,7 @@ def test_kubeai_task_spec_validates_runtime_and_service_fields() -> None:
 
 
 def test_mlflow_model_spec_uses_aliased_and_nested_fields() -> None:
-    spec = ModelMlflowBuilder().build_spec(
+    spec = registry.get_entity_builder(EntityKinds.MODEL_MLFLOW.value).build_spec(
         path="model",
         model_config={"artifact_path": "model"},
         input_datasets=[{"name": "training"}],

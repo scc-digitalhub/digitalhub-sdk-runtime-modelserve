@@ -8,7 +8,7 @@ import typing
 
 from digitalhub.entities.function.crud import new_function
 
-from digitalhub_runtime_modelserve.entities.function.vllmservetext.builder import FunctionVllmservetextBuilder
+from digitalhub_runtime_modelserve.entities._commons.enums import EntityKinds
 
 if typing.TYPE_CHECKING:
     from digitalhub_runtime_modelserve.entities.function.vllmservetext.entity import FunctionVllmservetext
@@ -47,7 +47,7 @@ def new_function_vllmservetext(
     return new_function(
         project=project,
         name=name,
-        kind=FunctionVllmservetextBuilder.ENTITY_KIND,
+        kind=EntityKinds.FUNCTION_VLLMSERVETEXT.value,
         uuid=uuid,
         version=version,
         description=description,

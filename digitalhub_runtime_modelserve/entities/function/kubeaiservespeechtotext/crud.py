@@ -8,9 +8,7 @@ import typing
 
 from digitalhub.entities.function.crud import new_function
 
-from digitalhub_runtime_modelserve.entities.function.kubeaiservespeechtotext.builder import (
-    FunctionKubeaiserveSpeechtotextBuilder,
-)
+from digitalhub_runtime_modelserve.entities._commons.enums import EntityKinds
 
 if typing.TYPE_CHECKING:
     from digitalhub_runtime_modelserve.entities.function.kubeaiservespeechtotext.entity import (
@@ -51,7 +49,7 @@ def new_function_kubeaiservespeechtotext(
     return new_function(
         project=project,
         name=name,
-        kind=FunctionKubeaiserveSpeechtotextBuilder.ENTITY_KIND,
+        kind=EntityKinds.FUNCTION_KUBEAISERVESPEECHTOTEXT.value,
         uuid=uuid,
         version=version,
         description=description,

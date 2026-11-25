@@ -8,7 +8,7 @@ import typing
 
 from digitalhub.entities.function.crud import new_function
 
-from digitalhub_runtime_modelserve.entities.function.teiserve.builder import FunctionTeiserveBuilder
+from digitalhub_runtime_modelserve.entities._commons.enums import EntityKinds
 
 if typing.TYPE_CHECKING:
     from digitalhub_runtime_modelserve.entities.function.modelserve.entity import FunctionModelserve
@@ -46,7 +46,7 @@ def new_function_teiserve(
     return new_function(
         project=project,
         name=name,
-        kind=FunctionTeiserveBuilder.ENTITY_KIND,
+        kind=EntityKinds.FUNCTION_TEISERVE.value,
         uuid=uuid,
         version=version,
         description=description,

@@ -8,7 +8,7 @@ import typing
 
 from digitalhub.entities.function.crud import new_function
 
-from digitalhub_runtime_modelserve.entities.function.sklearnserve.builder import FunctionSklearnserveBuilder
+from digitalhub_runtime_modelserve.entities._commons.enums import EntityKinds
 
 if typing.TYPE_CHECKING:
     from digitalhub_runtime_modelserve.entities.function.sklearnserve.entity import FunctionSklearnserve
@@ -46,7 +46,7 @@ def new_function_sklearnserve(
     return new_function(
         project=project,
         name=name,
-        kind=FunctionSklearnserveBuilder.ENTITY_KIND,
+        kind=EntityKinds.FUNCTION_SKLEARNSERVE.value,
         uuid=uuid,
         version=version,
         description=description,

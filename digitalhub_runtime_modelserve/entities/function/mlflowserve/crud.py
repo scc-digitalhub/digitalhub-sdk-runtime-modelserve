@@ -8,7 +8,7 @@ import typing
 
 from digitalhub.entities.function.crud import new_function
 
-from digitalhub_runtime_modelserve.entities.function.mlflowserve.builder import FunctionMlflowserveBuilder
+from digitalhub_runtime_modelserve.entities._commons.enums import EntityKinds
 
 if typing.TYPE_CHECKING:
     from digitalhub_runtime_modelserve.entities.function.mlflowserve.entity import FunctionMlflowserve
@@ -46,7 +46,7 @@ def new_function_mlflowserve(
     return new_function(
         project=project,
         name=name,
-        kind=FunctionMlflowserveBuilder.ENTITY_KIND,
+        kind=EntityKinds.FUNCTION_MLFLOWSERVE.value,
         uuid=uuid,
         version=version,
         description=description,

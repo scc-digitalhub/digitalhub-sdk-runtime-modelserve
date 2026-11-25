@@ -8,7 +8,7 @@ import typing
 
 from digitalhub.entities.function.crud import new_function
 
-from digitalhub_runtime_modelserve.entities.function.vllmservepooling.builder import FunctionVllmservepoolingBuilder
+from digitalhub_runtime_modelserve.entities._commons.enums import EntityKinds
 
 if typing.TYPE_CHECKING:
     from digitalhub_runtime_modelserve.entities.function.vllmservepooling.entity import FunctionVllmservepooling
@@ -47,7 +47,7 @@ def new_function_vllmservepooling(
     return new_function(
         project=project,
         name=name,
-        kind=FunctionVllmservepoolingBuilder.ENTITY_KIND,
+        kind=EntityKinds.FUNCTION_VLLMSERVEPOOLING.value,
         uuid=uuid,
         version=version,
         description=description,

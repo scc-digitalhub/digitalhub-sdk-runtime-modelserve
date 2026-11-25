@@ -3,9 +3,7 @@
 # SPDX-License-Identifier: Apache-2.0
 
 import pytest
-from digitalhub.entities._constructors.spec import build_spec
-from digitalhub.entities._frameworks.k8s.models import CoreServiceType
-from digitalhub.entities.model._base.spec import ModelSpec
+from digitalhub.plugins import CoreServiceType, ModelSpec, build_spec
 from pydantic import ValidationError
 
 from digitalhub_runtime_modelserve.entities._commons.models import KubeaiFile, Scaling

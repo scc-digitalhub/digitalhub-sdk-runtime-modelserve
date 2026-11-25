@@ -6,7 +6,7 @@ from __future__ import annotations
 
 import typing
 
-from digitalhub.entities.model._base.crud import register_base_model
+from digitalhub.plugins import register_base_model
 
 from digitalhub_runtime_modelserve.entities._commons.enums import EntityKinds
 

@@ -4,9 +4,7 @@
 
 from __future__ import annotations
 
-from digitalhub.entities._base.entity.spec import Spec
-from digitalhub.entities._frameworks.k8s.models import CoreServiceType
-from digitalhub.entities._mixin.execution.spec import ServeSpecMixin
+from digitalhub.plugins import CoreServiceType, ServeSpecMixin, Spec
 from pydantic import Field
 
 from digitalhub_runtime_modelserve.entities._commons.models import KubeaiFile, Scaling

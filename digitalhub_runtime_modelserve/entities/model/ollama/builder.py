@@ -4,10 +4,8 @@
 
 from __future__ import annotations
 
-from digitalhub.entities.model._base.builder import ModelBuilder
-from digitalhub.entities.model._base.spec import ModelSpec
-from digitalhub.entities.model._base.status import ModelStatus
 from digitalhub.entities.model.model.entity import ModelModel
+from digitalhub.plugins import ModelBuilder, ModelSpec, ModelStatus
 
 from digitalhub_runtime_modelserve.entities._commons.enums import EntityKinds
 

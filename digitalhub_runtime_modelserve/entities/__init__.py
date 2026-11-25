@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
-from digitalhub.factory.plugins import CrudPlugin, EntityPlugin
+from digitalhub.plugins import CrudPlugin, EntityPlugin
 
 from digitalhub_runtime_modelserve.entities.function.kubeaiservespeechtotext.builder import (
     FunctionKubeaiserveSpeechtotextBuilder,
@@ -65,19 +65,19 @@ from digitalhub_runtime_modelserve.entities.task.vllmservetext_serve.builder imp
 
 # Imported on first use: the entities register even when the runtime cannot be
 # imported, and the import error is reported when a run executes locally.
-RUNTIME_BUILDER = "digitalhub_runtime_modelserve.runtimes.builder:RuntimeModelserveBuilder"
+RUNTIME_MODELSERVE_BUILDER = "digitalhub_runtime_modelserve.runtimes.builder:RuntimeModelserveBuilder"
 
 
 def _function(builder, *shortcuts) -> EntityPlugin:
     return EntityPlugin(
         builder=builder,
         shortcuts=tuple(CrudPlugin(shortcut) for shortcut in shortcuts),
-        runtime_builder=RUNTIME_BUILDER,
+        runtime_builder=RUNTIME_MODELSERVE_BUILDER,
     )
 
 
 def _executable(builder) -> EntityPlugin:
-    return EntityPlugin(builder=builder, runtime_builder=RUNTIME_BUILDER)
+    return EntityPlugin(builder=builder, runtime_builder=RUNTIME_MODELSERVE_BUILDER)
 
 
 def _model(builder, *shortcuts) -> EntityPlugin:

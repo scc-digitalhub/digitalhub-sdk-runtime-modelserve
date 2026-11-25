@@ -4,7 +4,7 @@
 
 from __future__ import annotations
 
-from digitalhub.entities.model._base.spec import ModelSpec
+from digitalhub.plugins import ModelSpec
 from pydantic import Field
 
 from digitalhub_runtime_modelserve.entities.model.mlflow.models import Dataset, Signature

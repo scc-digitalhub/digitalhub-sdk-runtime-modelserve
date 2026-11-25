@@ -4,7 +4,7 @@
 
 from __future__ import annotations
 
-from digitalhub.entities.run._base.spec import RunSpecFunction
+from digitalhub.plugins import RunSpecFunction
 from pydantic import Field
 
 from digitalhub_runtime_modelserve.entities._mixin.execution.spec import ModelserveServeSpecMixin

@@ -4,7 +4,7 @@
 
 from __future__ import annotations
 
-from digitalhub.entities.model._base.spec import ModelSpec
+from digitalhub.plugins import ModelSpec
 from pydantic import Field
 
 

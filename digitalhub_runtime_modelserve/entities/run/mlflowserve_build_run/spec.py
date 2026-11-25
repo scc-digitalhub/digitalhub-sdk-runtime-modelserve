@@ -4,8 +4,7 @@
 
 from __future__ import annotations
 
-from digitalhub.entities._mixin.execution.spec import BuildSpecMixin
-from digitalhub.entities.run._base.spec import RunSpecFunction
+from digitalhub.plugins import BuildSpecMixin, RunSpecFunction
 
 
 class RunSpecMlflowserveBuildRun(RunSpecFunction, BuildSpecMixin):

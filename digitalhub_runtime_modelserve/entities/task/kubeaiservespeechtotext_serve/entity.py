@@ -9,7 +9,7 @@ import typing
 from digitalhub_runtime_modelserve.entities.task.modelserve_serve.entity import TaskModelserveServe
 
 if typing.TYPE_CHECKING:
-    from digitalhub.entities._base.entity.status import Status
+    from digitalhub.plugins import Status
 
     from digitalhub_runtime_modelserve.entities.task.kubeaiserve_serve.spec import TaskSpecKubeaiserveServe
 

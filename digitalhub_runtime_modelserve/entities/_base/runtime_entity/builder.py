@@ -98,46 +98,6 @@ class RuntimeEntityBuilderVllmserveText(RuntimeEntityBuilder):
     )
 
 
-class RuntimeEntityBuilderHuggingfaceserve(RuntimeEntityBuilder):
-    EXECUTABLE_KIND = EntityKinds.FUNCTION_HUGGINGFACESERVE.value
-    TASKS_KINDS = map_actions(
-        [
-            (
-                EntityKinds.TASK_HUGGINGFACESERVE_SERVE.value,
-                Actions.SERVE.value,
-            ),
-        ]
-    )
-    RUN_KINDS = map_actions(
-        [
-            (
-                EntityKinds.RUN_HUGGINGFACESERVE_SERVE.value,
-                Actions.SERVE.value,
-            ),
-        ]
-    )
-
-
-class RuntimeEntityBuilderKubeaiserve(RuntimeEntityBuilder):
-    EXECUTABLE_KIND = EntityKinds.FUNCTION_KUBEAISERVE.value
-    TASKS_KINDS = map_actions(
-        [
-            (
-                EntityKinds.TASK_KUBEAISERVE_SERVE.value,
-                Actions.SERVE.value,
-            ),
-        ]
-    )
-    RUN_KINDS = map_actions(
-        [
-            (
-                EntityKinds.RUN_KUBEAISERVE_SERVE.value,
-                Actions.SERVE.value,
-            ),
-        ]
-    )
-
-
 class RuntimeEntityBuilderKubeaiserveSpeechtotext(RuntimeEntityBuilder):
     EXECUTABLE_KIND = EntityKinds.FUNCTION_KUBEAISERVESPEECHTOTEXT.value
     TASKS_KINDS = map_actions(
@@ -192,6 +152,66 @@ class RuntimeEntityBuilderSklearnserve(RuntimeEntityBuilder):
         [
             (
                 EntityKinds.RUN_SKLEARNSERVE_SERVE.value,
+                Actions.SERVE.value,
+            ),
+        ]
+    )
+
+
+class RuntimeEntityBuilderOllamaserve(RuntimeEntityBuilder):
+    EXECUTABLE_KIND = EntityKinds.FUNCTION_OLLAMASERVE.value
+    TASKS_KINDS = map_actions(
+        [
+            (
+                EntityKinds.TASK_OLLAMASERVE_SERVE.value,
+                Actions.SERVE.value,
+            ),
+        ]
+    )
+    RUN_KINDS = map_actions(
+        [
+            (
+                EntityKinds.RUN_OLLAMASERVE_SERVE.value,
+                Actions.SERVE.value,
+            ),
+        ]
+    )
+
+
+class RuntimeEntityBuilderSglangserve(RuntimeEntityBuilder):
+    EXECUTABLE_KIND = EntityKinds.FUNCTION_SGLANGSERVE.value
+    TASKS_KINDS = map_actions(
+        [
+            (
+                EntityKinds.TASK_SGLANGSERVE_SERVE.value,
+                Actions.SERVE.value,
+            ),
+        ]
+    )
+    RUN_KINDS = map_actions(
+        [
+            (
+                EntityKinds.RUN_SGLANGSERVE_SERVE.value,
+                Actions.SERVE.value,
+            ),
+        ]
+    )
+
+
+class RuntimeEntityBuilderTeiserve(RuntimeEntityBuilder):
+    EXECUTABLE_KIND = EntityKinds.FUNCTION_TEISERVE.value
+    TASKS_KINDS = map_actions(
+        [
+            (
+                EntityKinds.TASK_TEISERVE_SERVE.value,
+                Actions.SERVE.value,
+            ),
+        ]
+    )
+    RUN_KINDS = map_actions(
+        [
+            (
+                EntityKinds.RUN_TEISERVE_SERVE.value,
                 Actions.SERVE.value,
             ),
         ]

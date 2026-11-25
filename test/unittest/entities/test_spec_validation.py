@@ -16,17 +16,16 @@ from digitalhub_runtime_modelserve.entities.function.vllmserve.models import VLL
 from digitalhub_runtime_modelserve.entities.function.vllmserve.spec import FunctionSpecVllmserve
 from digitalhub_runtime_modelserve.entities.model.mlflow.builder import ModelMlflowBuilder
 from digitalhub_runtime_modelserve.entities.model.sklearn.spec import ModelSpecSklearn
-from digitalhub_runtime_modelserve.entities.run.huggingfaceserve_run.spec import RunSpecHuggingfaceserveRun
-from digitalhub_runtime_modelserve.entities.run.kubeaiserve_run.builder import RunKubeaiserveRunBuilder
+from digitalhub_runtime_modelserve.entities.run.kubeaiservetext_run.builder import RunKubeaiserveTextRunBuilder
 from digitalhub_runtime_modelserve.entities.run.mlflowserve_build_run.spec import RunSpecMlflowserveBuildRun
 from digitalhub_runtime_modelserve.entities.run.ollamaserve_run.spec import RunSpecOllamaserveRun
 from digitalhub_runtime_modelserve.entities.run.sglangserve_run.spec import RunSpecSglangserveRun
 from digitalhub_runtime_modelserve.entities.run.teiserve_run.spec import RunSpecTeiserveRun
 from digitalhub_runtime_modelserve.entities.run.vllmserve_run.spec import RunSpecVllmserveRun
-from digitalhub_runtime_modelserve.entities.task.huggingfaceserve_serve.builder import TaskHuggingfaceserveServeBuilder
 from digitalhub_runtime_modelserve.entities.task.kubeaiservetext_serve.builder import TaskKubeaiserveTextServeBuilder
 from digitalhub_runtime_modelserve.entities.task.mlflowserve_build.spec import TaskSpecMlflowserveBuild
 from digitalhub_runtime_modelserve.entities.task.modelserve_serve.spec import TaskSpecModelserveServe
+from digitalhub_runtime_modelserve.entities.task.sklearnserve_serve.builder import TaskSklearnserveServeBuilder
 
 
 def test_function_spec_validates_nested_adapters() -> None:
@@ -49,10 +48,9 @@ def test_function_spec_validates_nested_adapters() -> None:
 
 
 def test_task_spec_preserves_replica_constraint() -> None:
-    builder = TaskHuggingfaceserveServeBuilder()
+    builder = TaskSklearnserveServeBuilder()
 
-    spec = builder.build_spec(function="function", huggingface_task="text_generation", replicas=0)
-    assert spec.huggingface_task == "text_generation"
+    spec = builder.build_spec(function="function", replicas=0)
     assert spec.replicas == 0
     assert spec.service_type == CoreServiceType.CLUSTER_IP
 
@@ -99,17 +97,9 @@ def test_run_spec_merges_action_fields_and_preserves_run_fields() -> None:
     with pytest.raises(TypeError, match="use_cpu_image"):
         build_spec(RunSpecVllmserveRun, function="function", task="task", use_cpu_image=True)
 
-    huggingface_run = build_spec(
-        RunSpecHuggingfaceserveRun,
-        function="function",
-        task="task",
-        huggingface_task="text_generation",
-    )
-    assert huggingface_run.huggingface_task == "text_generation"
-
 
 def test_kubeai_run_spec_preserves_constraint_and_nested_models() -> None:
-    builder = RunKubeaiserveRunBuilder()
+    builder = RunKubeaiserveTextRunBuilder()
     spec = builder.build_spec(
         function="function",
         task="task",

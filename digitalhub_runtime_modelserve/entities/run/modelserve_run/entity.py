@@ -7,6 +7,7 @@ from __future__ import annotations
 import time
 import typing
 
+import requests
 from digitalhub.entities._commons.enums import State
 from digitalhub.entities.run._base.entity import Run
 from digitalhub.factory.entity import entity_factory
@@ -173,3 +174,63 @@ class RunModelserveRun(Run):
         if not url.startswith("http://") and not url.startswith("https://"):
             return f"http://{url}"
         return url
+
+
+class RunServiceUrlsRun(RunModelserveRun):
+    """
+    Serve run invoked through the URLs its service publishes.
+    """
+
+    def invoke(
+        self,
+        method: str = "POST",
+        url: str | None = None,
+        **kwargs,
+    ) -> requests.Response:
+        """
+        Invoke served model.
+        The method defaults to "POST" if data or json is provided in kwargs,
+        otherwise it defaults to "GET". The function returns a requests.Response
+        object.
+
+        Parameters
+        ----------
+        method : str
+            Method of the request (e.g., "GET", "POST").
+        url : str
+            URL to invoke. If specified, it must start with the service URL
+            (http:// or https:// prefixes are required and stripped before comparison).
+        **kwargs : dict
+            Keyword arguments to pass to the request.
+
+        Returns
+        -------
+        requests.Response
+            Response from the request.
+        """
+        self._check_service()
+        base_url: str = self._get_base_url()
+
+        if url is None:
+            url = self.status.service.get("urls")[0]
+            url = self._prepend_http(url)
+        else:
+            self._eval_url(url, base_url)
+
+        if "data" not in kwargs and "json" not in kwargs:
+            method = "GET"
+
+        return requests.request(method=method, url=url, **kwargs)
+
+    def list_endpoints(self) -> list[str]:
+        """
+        List all available endpoints for the served model.
+
+        Returns
+        -------
+        list[str]
+            List of available endpoints.
+        """
+        self._check_service()
+        urls = self.status.service.get("urls", [])
+        return [self._prepend_http(url) for url in urls]

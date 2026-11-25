@@ -4,8 +4,6 @@
 
 from digitalhub.factory.plugins import CrudPlugin, EntityPlugin
 
-from digitalhub_runtime_modelserve.entities.function.huggingfaceserve.builder import FunctionHuggingfaceserveBuilder
-from digitalhub_runtime_modelserve.entities.function.huggingfaceserve.crud import new_function_huggingfaceserve
 from digitalhub_runtime_modelserve.entities.function.kubeaiservespeechtotext.builder import (
     FunctionKubeaiserveSpeechtotextBuilder,
 )
@@ -16,8 +14,14 @@ from digitalhub_runtime_modelserve.entities.function.kubeaiservetext.builder imp
 from digitalhub_runtime_modelserve.entities.function.kubeaiservetext.crud import new_function_kubeaiservetext
 from digitalhub_runtime_modelserve.entities.function.mlflowserve.builder import FunctionMlflowserveBuilder
 from digitalhub_runtime_modelserve.entities.function.mlflowserve.crud import new_function_mlflowserve
+from digitalhub_runtime_modelserve.entities.function.ollamaserve.builder import FunctionOllamaserveBuilder
+from digitalhub_runtime_modelserve.entities.function.ollamaserve.crud import new_function_ollamaserve
+from digitalhub_runtime_modelserve.entities.function.sglangserve.builder import FunctionSglangserveBuilder
+from digitalhub_runtime_modelserve.entities.function.sglangserve.crud import new_function_sglangserve
 from digitalhub_runtime_modelserve.entities.function.sklearnserve.builder import FunctionSklearnserveBuilder
 from digitalhub_runtime_modelserve.entities.function.sklearnserve.crud import new_function_sklearnserve
+from digitalhub_runtime_modelserve.entities.function.teiserve.builder import FunctionTeiserveBuilder
+from digitalhub_runtime_modelserve.entities.function.teiserve.crud import new_function_teiserve
 from digitalhub_runtime_modelserve.entities.function.vllmservepooling.builder import FunctionVllmservepoolingBuilder
 from digitalhub_runtime_modelserve.entities.function.vllmservepooling.crud import new_function_vllmservepooling
 from digitalhub_runtime_modelserve.entities.function.vllmservespeech.builder import FunctionVllmservespeechBuilder
@@ -28,120 +32,93 @@ from digitalhub_runtime_modelserve.entities.model.huggingface.builder import Mod
 from digitalhub_runtime_modelserve.entities.model.huggingface.crud import register_huggingface
 from digitalhub_runtime_modelserve.entities.model.mlflow.builder import ModelMlflowBuilder
 from digitalhub_runtime_modelserve.entities.model.mlflow.crud import log_mlflow, register_mlflow
+from digitalhub_runtime_modelserve.entities.model.ollama.builder import ModelOllamaBuilder
+from digitalhub_runtime_modelserve.entities.model.ollama.crud import register_ollama
 from digitalhub_runtime_modelserve.entities.model.sklearn.builder import ModelSklearnBuilder
 from digitalhub_runtime_modelserve.entities.model.sklearn.crud import log_sklearn, register_sklearn
-from digitalhub_runtime_modelserve.entities.run.huggingfaceserve_run.builder import RunHuggingfaceserveRunBuilder
 from digitalhub_runtime_modelserve.entities.run.kubeaiservespeechtotext_run.builder import (
     RunKubeaiserveSpeechtotextRunBuilder,
 )
 from digitalhub_runtime_modelserve.entities.run.kubeaiservetext_run.builder import RunKubeaiserveTextRunBuilder
 from digitalhub_runtime_modelserve.entities.run.mlflowserve_build_run.builder import RunMlflowserveBuildRunBuilder
 from digitalhub_runtime_modelserve.entities.run.mlflowserve_serve_run.builder import RunMlflowserveServeRunBuilder
+from digitalhub_runtime_modelserve.entities.run.ollamaserve_run.builder import RunOllamaserveRunBuilder
+from digitalhub_runtime_modelserve.entities.run.sglangserve_run.builder import RunSglangserveRunBuilder
 from digitalhub_runtime_modelserve.entities.run.sklearnserve_run.builder import RunSklearnserveRunBuilder
+from digitalhub_runtime_modelserve.entities.run.teiserve_run.builder import RunTeiserveRunBuilder
 from digitalhub_runtime_modelserve.entities.run.vllmservepooling_run.builder import RunVllmservepoolingRunBuilder
 from digitalhub_runtime_modelserve.entities.run.vllmservespeech_run.builder import RunVllmservespeechRunBuilder
 from digitalhub_runtime_modelserve.entities.run.vllmservetext_run.builder import RunVllmservetextRunBuilder
-from digitalhub_runtime_modelserve.entities.task.huggingfaceserve_serve.builder import TaskHuggingfaceserveServeBuilder
 from digitalhub_runtime_modelserve.entities.task.kubeaiservespeechtotext_serve.builder import (
     TaskKubeaiserveSpeechtotextServeBuilder,
 )
 from digitalhub_runtime_modelserve.entities.task.kubeaiservetext_serve.builder import TaskKubeaiserveTextServeBuilder
 from digitalhub_runtime_modelserve.entities.task.mlflowserve_build.builder import TaskMlflowserveBuildBuilder
 from digitalhub_runtime_modelserve.entities.task.mlflowserve_serve.builder import TaskMlflowserveServeBuilder
+from digitalhub_runtime_modelserve.entities.task.ollamaserve_serve.builder import TaskOllamaserveServeBuilder
+from digitalhub_runtime_modelserve.entities.task.sglangserve_serve.builder import TaskSglangserveServeBuilder
 from digitalhub_runtime_modelserve.entities.task.sklearnserve_serve.builder import TaskSklearnserveServeBuilder
+from digitalhub_runtime_modelserve.entities.task.teiserve_serve.builder import TaskTeiserveServeBuilder
 from digitalhub_runtime_modelserve.entities.task.vllmservepooling_serve.builder import TaskVllmservepoolingServeBuilder
 from digitalhub_runtime_modelserve.entities.task.vllmservespeech_serve.builder import TaskVllmservespeechServeBuilder
 from digitalhub_runtime_modelserve.entities.task.vllmservetext_serve.builder import TaskVllmservetextServeBuilder
 
-try:
-    from digitalhub_runtime_modelserve.runtimes.builder import RuntimeModelserveBuilder
-except ImportError as e:
-    from digitalhub.utils.logger.logger import get_logger
+# Imported on first use: the entities register even when the runtime cannot be
+# imported, and the import error is reported when a run executes locally.
+RUNTIME_BUILDER = "digitalhub_runtime_modelserve.runtimes.builder:RuntimeModelserveBuilder"
 
-    get_logger(__name__).debug(f"Error importing runtime builder: {e}")
-    RuntimeModelserveBuilder = None
 
-function_huggingfaceserve_plugin = EntityPlugin(
-    builder=FunctionHuggingfaceserveBuilder,
-    shortcuts=(CrudPlugin(new_function_huggingfaceserve),),
-    runtime_builder=RuntimeModelserveBuilder,
-)
-function_kubeaiserve_speech_plugin = EntityPlugin(
-    builder=FunctionKubeaiserveSpeechtotextBuilder,
-    shortcuts=(CrudPlugin(new_function_kubeaiservespeechtotext),),
-    runtime_builder=RuntimeModelserveBuilder,
-)
-function_kubeaiserve_text_plugin = EntityPlugin(
-    builder=FunctionKubeaiserveTextBuilder,
-    shortcuts=(CrudPlugin(new_function_kubeaiservetext),),
-    runtime_builder=RuntimeModelserveBuilder,
-)
-function_mlflowserve_plugin = EntityPlugin(
-    builder=FunctionMlflowserveBuilder,
-    shortcuts=(CrudPlugin(new_function_mlflowserve),),
-    runtime_builder=RuntimeModelserveBuilder,
-)
-function_sklearnserve_plugin = EntityPlugin(
-    builder=FunctionSklearnserveBuilder,
-    shortcuts=(CrudPlugin(new_function_sklearnserve),),
-    runtime_builder=RuntimeModelserveBuilder,
-)
-function_vllmserve_pooling_plugin = EntityPlugin(
-    builder=FunctionVllmservepoolingBuilder,
-    shortcuts=(CrudPlugin(new_function_vllmservepooling),),
-    runtime_builder=RuntimeModelserveBuilder,
-)
-function_vllmserve_speech_plugin = EntityPlugin(
-    builder=FunctionVllmservespeechBuilder,
-    shortcuts=(CrudPlugin(new_function_vllmservespeech),),
-    runtime_builder=RuntimeModelserveBuilder,
-)
-function_vllmserve_text_plugin = EntityPlugin(
-    builder=FunctionVllmservetextBuilder,
-    shortcuts=(CrudPlugin(new_function_vllmservetext),),
-    runtime_builder=RuntimeModelserveBuilder,
-)
-model_huggingface_plugin = EntityPlugin(
-    builder=ModelHuggingfaceBuilder,
-    shortcuts=(CrudPlugin(register_huggingface),),
-)
-model_mlflow_plugin = EntityPlugin(
-    builder=ModelMlflowBuilder,
-    shortcuts=(CrudPlugin(log_mlflow), CrudPlugin(register_mlflow)),
-)
-model_sklearn_plugin = EntityPlugin(
-    builder=ModelSklearnBuilder,
-    shortcuts=(CrudPlugin(log_sklearn), CrudPlugin(register_sklearn)),
-)
+def _function(builder, *shortcuts) -> EntityPlugin:
+    return EntityPlugin(
+        builder=builder,
+        shortcuts=tuple(CrudPlugin(shortcut) for shortcut in shortcuts),
+        runtime_builder=RUNTIME_BUILDER,
+    )
+
+
+def _executable(builder) -> EntityPlugin:
+    return EntityPlugin(builder=builder, runtime_builder=RUNTIME_BUILDER)
+
+
+def _model(builder, *shortcuts) -> EntityPlugin:
+    return EntityPlugin(builder=builder, shortcuts=tuple(CrudPlugin(shortcut) for shortcut in shortcuts))
+
 
 entity_plugins = (
-    model_huggingface_plugin,
-    model_mlflow_plugin,
-    model_sklearn_plugin,
-    function_huggingfaceserve_plugin,
-    function_kubeaiserve_speech_plugin,
-    function_kubeaiserve_text_plugin,
-    function_mlflowserve_plugin,
-    function_sklearnserve_plugin,
-    function_vllmserve_pooling_plugin,
-    function_vllmserve_speech_plugin,
-    function_vllmserve_text_plugin,
-    EntityPlugin(builder=TaskHuggingfaceserveServeBuilder, runtime_builder=RuntimeModelserveBuilder),
-    EntityPlugin(builder=TaskKubeaiserveSpeechtotextServeBuilder, runtime_builder=RuntimeModelserveBuilder),
-    EntityPlugin(builder=TaskKubeaiserveTextServeBuilder, runtime_builder=RuntimeModelserveBuilder),
-    EntityPlugin(builder=TaskMlflowserveBuildBuilder, runtime_builder=RuntimeModelserveBuilder),
-    EntityPlugin(builder=TaskMlflowserveServeBuilder, runtime_builder=RuntimeModelserveBuilder),
-    EntityPlugin(builder=TaskSklearnserveServeBuilder, runtime_builder=RuntimeModelserveBuilder),
-    EntityPlugin(builder=TaskVllmservepoolingServeBuilder, runtime_builder=RuntimeModelserveBuilder),
-    EntityPlugin(builder=TaskVllmservespeechServeBuilder, runtime_builder=RuntimeModelserveBuilder),
-    EntityPlugin(builder=TaskVllmservetextServeBuilder, runtime_builder=RuntimeModelserveBuilder),
-    EntityPlugin(builder=RunHuggingfaceserveRunBuilder, runtime_builder=RuntimeModelserveBuilder),
-    EntityPlugin(builder=RunKubeaiserveSpeechtotextRunBuilder, runtime_builder=RuntimeModelserveBuilder),
-    EntityPlugin(builder=RunKubeaiserveTextRunBuilder, runtime_builder=RuntimeModelserveBuilder),
-    EntityPlugin(builder=RunMlflowserveBuildRunBuilder, runtime_builder=RuntimeModelserveBuilder),
-    EntityPlugin(builder=RunMlflowserveServeRunBuilder, runtime_builder=RuntimeModelserveBuilder),
-    EntityPlugin(builder=RunSklearnserveRunBuilder, runtime_builder=RuntimeModelserveBuilder),
-    EntityPlugin(builder=RunVllmservepoolingRunBuilder, runtime_builder=RuntimeModelserveBuilder),
-    EntityPlugin(builder=RunVllmservespeechRunBuilder, runtime_builder=RuntimeModelserveBuilder),
-    EntityPlugin(builder=RunVllmservetextRunBuilder, runtime_builder=RuntimeModelserveBuilder),
+    _model(ModelHuggingfaceBuilder, register_huggingface),
+    _model(ModelMlflowBuilder, log_mlflow, register_mlflow),
+    _model(ModelOllamaBuilder, register_ollama),
+    _model(ModelSklearnBuilder, log_sklearn, register_sklearn),
+    _function(FunctionKubeaiserveSpeechtotextBuilder, new_function_kubeaiservespeechtotext),
+    _function(FunctionKubeaiserveTextBuilder, new_function_kubeaiservetext),
+    _function(FunctionMlflowserveBuilder, new_function_mlflowserve),
+    _function(FunctionOllamaserveBuilder, new_function_ollamaserve),
+    _function(FunctionSglangserveBuilder, new_function_sglangserve),
+    _function(FunctionSklearnserveBuilder, new_function_sklearnserve),
+    _function(FunctionTeiserveBuilder, new_function_teiserve),
+    _function(FunctionVllmservepoolingBuilder, new_function_vllmservepooling),
+    _function(FunctionVllmservespeechBuilder, new_function_vllmservespeech),
+    _function(FunctionVllmservetextBuilder, new_function_vllmservetext),
+    _executable(TaskKubeaiserveSpeechtotextServeBuilder),
+    _executable(TaskKubeaiserveTextServeBuilder),
+    _executable(TaskMlflowserveBuildBuilder),
+    _executable(TaskMlflowserveServeBuilder),
+    _executable(TaskOllamaserveServeBuilder),
+    _executable(TaskSglangserveServeBuilder),
+    _executable(TaskSklearnserveServeBuilder),
+    _executable(TaskTeiserveServeBuilder),
+    _executable(TaskVllmservepoolingServeBuilder),
+    _executable(TaskVllmservespeechServeBuilder),
+    _executable(TaskVllmservetextServeBuilder),
+    _executable(RunKubeaiserveSpeechtotextRunBuilder),
+    _executable(RunKubeaiserveTextRunBuilder),
+    _executable(RunMlflowserveBuildRunBuilder),
+    _executable(RunMlflowserveServeRunBuilder),
+    _executable(RunOllamaserveRunBuilder),
+    _executable(RunSglangserveRunBuilder),
+    _executable(RunSklearnserveRunBuilder),
+    _executable(RunTeiserveRunBuilder),
+    _executable(RunVllmservepoolingRunBuilder),
+    _executable(RunVllmservespeechRunBuilder),
+    _executable(RunVllmservetextRunBuilder),
 )

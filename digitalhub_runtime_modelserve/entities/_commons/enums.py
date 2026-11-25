@@ -14,11 +14,8 @@ class EntityKinds(Enum):
 
     MODEL_HUGGINGFACE = "huggingface"
     MODEL_MLFLOW = "mlflow"
+    MODEL_OLLAMA = "ollama"
     MODEL_SKLEARN = "sklearn"
-
-    FUNCTION_HUGGINGFACESERVE = "huggingfaceserve"
-    TASK_HUGGINGFACESERVE_SERVE = "huggingfaceserve+serve"
-    RUN_HUGGINGFACESERVE_SERVE = "huggingfaceserve+serve:run"
 
     FUNCTION_MLFLOWSERVE = "mlflowserve"
     TASK_MLFLOWSERVE_BUILD = "mlflowserve+build"
@@ -30,9 +27,17 @@ class EntityKinds(Enum):
     TASK_SKLEARNSERVE_SERVE = "sklearnserve+serve"
     RUN_SKLEARNSERVE_SERVE = "sklearnserve+serve:run"
 
-    FUNCTION_KUBEAISERVE = "kubeaiserve"
-    TASK_KUBEAISERVE_SERVE = "kubeaiserve+serve"
-    RUN_KUBEAISERVE_SERVE = "kubeaiserve+serve:run"
+    FUNCTION_OLLAMASERVE = "ollamaserve"
+    TASK_OLLAMASERVE_SERVE = "ollamaserve+serve"
+    RUN_OLLAMASERVE_SERVE = "ollamaserve+serve:run"
+
+    FUNCTION_SGLANGSERVE = "sglangserve"
+    TASK_SGLANGSERVE_SERVE = "sglangserve+serve"
+    RUN_SGLANGSERVE_SERVE = "sglangserve+serve:run"
+
+    FUNCTION_TEISERVE = "teiserve"
+    TASK_TEISERVE_SERVE = "teiserve+serve"
+    RUN_TEISERVE_SERVE = "teiserve+serve:run"
 
     FUNCTION_KUBEAISERVETEXT = "kubeai-text"
     TASK_KUBEAISERVETEXT_SERVE = "kubeai-text+serve"
@@ -41,10 +46,6 @@ class EntityKinds(Enum):
     FUNCTION_KUBEAISERVESPEECHTOTEXT = "kubeai-speech"
     TASK_KUBEAISERVESPEECHTOTEXT_SERVE = "kubeai-speech+serve"
     RUN_KUBEAISERVESPEECHTOTEXT_SERVE = "kubeai-speech+serve:run"
-
-    FUNCTION_VLLMSERVE = "vllmserve"
-    TASK_VLLMSERVE_SERVE = "vllmserve+serve"
-    RUN_VLLMSERVE_SERVE = "vllmserve+serve:run"
 
     FUNCTION_VLLMSERVESPEECH = "vllmserve-speech"
     TASK_VLLMSERVESPEECH_SERVE = "vllmserve-speech+serve"

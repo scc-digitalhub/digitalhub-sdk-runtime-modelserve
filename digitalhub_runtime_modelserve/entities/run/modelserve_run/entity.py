@@ -9,7 +9,7 @@ import typing
 
 import requests
 from digitalhub.factory.entity import entity_factory
-from digitalhub.plugins import Run, State
+from digitalhub.plugins import EntityRef, Run, State
 from digitalhub.utils.exceptions import EntityError
 from digitalhub.utils.logger.logger import get_logger
 
@@ -55,7 +55,7 @@ class RunModelserveRun(Run):
         Run
             Run object.
         """
-        task_kind = self.spec.task.split("://")[0]
+        task_kind = EntityRef.parse(self.spec.task).kind
         action = entity_factory.get_action_from_task_kind(self.kind, task_kind)
 
         if action == Actions.SERVE.value:

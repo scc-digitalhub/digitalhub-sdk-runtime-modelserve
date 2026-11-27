@@ -12,7 +12,7 @@ from digitalhub.utils.types import SourcesOrListOfSources
 from digitalhub_runtime_modelserve.entities._commons.enums import EntityKinds
 
 if typing.TYPE_CHECKING:
-    from digitalhub_runtime_modelserve.entities.model.sklearn.entity import ModelSklearn
+    from digitalhub.plugins import Model
 
 
 def log_sklearn(
@@ -28,7 +28,7 @@ def log_sklearn(
     algorithm: str | None = None,
     parameters: dict | None = None,
     **kwargs,
-) -> ModelSklearn:
+) -> Model:
     """
     Create and upload a scikit-learn model entity.
 
@@ -61,7 +61,7 @@ def log_sklearn(
 
     Returns
     -------
-    ModelSklearn
+    Model
         Created scikit-learn model entity with uploaded files.
 
     Examples
@@ -110,7 +110,7 @@ def register_sklearn(
     algorithm: str | None = None,
     parameters: dict | None = None,
     **kwargs,
-) -> ModelSklearn:
+) -> Model:
     """
     Register a scikit-learn model entity for an existing source.
 
@@ -145,7 +145,7 @@ def register_sklearn(
 
     Returns
     -------
-    ModelSklearn
+    Model
         Registered scikit-learn model entity.
 
     Examples

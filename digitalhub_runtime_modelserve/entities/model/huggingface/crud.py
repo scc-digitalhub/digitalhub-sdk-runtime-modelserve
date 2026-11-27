@@ -13,7 +13,7 @@ from digitalhub.utils.uri_utils import has_hf_scheme
 from digitalhub_runtime_modelserve.entities._commons.enums import EntityKinds
 
 if typing.TYPE_CHECKING:
-    from digitalhub_runtime_modelserve.entities.model.huggingface.entity import ModelHuggingface
+    from digitalhub.plugins import Model
 
 
 def register_huggingface(
@@ -33,7 +33,7 @@ def register_huggingface(
     model_id: str | None = None,
     model_revision: str | None = None,
     **kwargs,
-) -> ModelHuggingface:
+) -> Model:
     """
     Register a Hugging Face model entity for an existing source.
 
@@ -74,7 +74,7 @@ def register_huggingface(
 
     Returns
     -------
-    ModelHuggingface
+    Model
         Registered Hugging Face model entity.
 
     Examples

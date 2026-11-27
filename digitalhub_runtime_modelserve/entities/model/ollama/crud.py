@@ -11,7 +11,7 @@ from digitalhub.plugins import register_base_model
 from digitalhub_runtime_modelserve.entities._commons.enums import EntityKinds
 
 if typing.TYPE_CHECKING:
-    from digitalhub.entities.model.model.entity import ModelModel
+    from digitalhub.plugins import Model
 
 OLLAMA_SCHEME = "ollama://"
 
@@ -30,7 +30,7 @@ def register_ollama(
     algorithm: str | None = None,
     parameters: dict | None = None,
     **kwargs,
-) -> ModelModel:
+) -> Model:
     """
     Register an Ollama model entity for a model in the Ollama library.
 
@@ -66,7 +66,7 @@ def register_ollama(
 
     Returns
     -------
-    ModelModel
+    Model
         Registered model entity.
 
     Examples

@@ -2,19 +2,21 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
-from digitalhub.entities.model.model.entity import ModelModel
 from digitalhub.plugins import (
     Action,
     BuilderDef,
+    BuildRun,
     CrudPlugin,
     ExecFamily,
     ExecutableActions,
     Function,
     FunctionBuilder,
+    Model,
     ModelBuilder,
     ModelSpec,
     ModelStatus,
     RunBuilder,
+    ServeRun,
     Status,
     Task,
     TaskBuilder,
@@ -42,22 +44,18 @@ from digitalhub_runtime_modelserve.entities.function.vllmservepooling.crud impor
 from digitalhub_runtime_modelserve.entities.function.vllmservespeech.crud import new_function_vllmservespeech
 from digitalhub_runtime_modelserve.entities.function.vllmservetext.crud import new_function_vllmservetext
 from digitalhub_runtime_modelserve.entities.model.huggingface.crud import register_huggingface
-from digitalhub_runtime_modelserve.entities.model.huggingface.entity import ModelHuggingface
 from digitalhub_runtime_modelserve.entities.model.huggingface.spec import ModelSpecHuggingface
 from digitalhub_runtime_modelserve.entities.model.mlflow.crud import log_mlflow, register_mlflow
-from digitalhub_runtime_modelserve.entities.model.mlflow.entity import ModelMlflow
 from digitalhub_runtime_modelserve.entities.model.mlflow.spec import ModelSpecMlflow
 from digitalhub_runtime_modelserve.entities.model.ollama.crud import register_ollama
 from digitalhub_runtime_modelserve.entities.model.sklearn.crud import log_sklearn, register_sklearn
-from digitalhub_runtime_modelserve.entities.model.sklearn.entity import ModelSklearn
 from digitalhub_runtime_modelserve.entities.model.sklearn.spec import ModelSpecSklearn
 from digitalhub_runtime_modelserve.entities.run.kubeaiserve_run.spec import RunSpecKubeaiserveRun
 from digitalhub_runtime_modelserve.entities.run.kubeaiservetext_run.spec import RunSpecKubeaiserveTextRun
-from digitalhub_runtime_modelserve.entities.run.mlflowserve_build_run.entity import RunMlflowserveBuildRun
 from digitalhub_runtime_modelserve.entities.run.mlflowserve_build_run.spec import RunSpecMlflowserveBuildRun
 from digitalhub_runtime_modelserve.entities.run.mlflowserve_build_run.status import RunStatusMlflowserveBuildRun
 from digitalhub_runtime_modelserve.entities.run.mlflowserve_serve_run.spec import RunSpecMlflowserveServeRun
-from digitalhub_runtime_modelserve.entities.run.modelserve_run.entity import RunModelserveRun, RunModelserveV2Run
+from digitalhub_runtime_modelserve.entities.run.modelserve_run.entity import RunModelserveV2Run
 from digitalhub_runtime_modelserve.entities.run.modelserve_run.status import RunStatusModelserveRun
 from digitalhub_runtime_modelserve.entities.run.ollamaserve_run.spec import RunSpecOllamaserveRun
 from digitalhub_runtime_modelserve.entities.run.sglangserve_run.spec import RunSpecSglangserveRun
@@ -93,7 +91,7 @@ kubeai_speech = ExecFamily(
             ),
             run=BuilderDef(
                 EntityKinds.RUN_KUBEAISERVESPEECHTOTEXT_SERVE,
-                RunModelserveRun,
+                ServeRun,
                 RunSpecKubeaiserveRun,
                 RunStatusModelserveRun,
                 base=RunBuilder,
@@ -123,7 +121,7 @@ kubeai_text = ExecFamily(
             ),
             run=BuilderDef(
                 EntityKinds.RUN_KUBEAISERVETEXT_SERVE,
-                RunModelserveRun,
+                ServeRun,
                 RunSpecKubeaiserveTextRun,
                 RunStatusModelserveRun,
                 base=RunBuilder,
@@ -169,7 +167,7 @@ mlflowserve = ExecFamily(
             ),
             run=BuilderDef(
                 EntityKinds.RUN_MLFLOWSERVE_BUILD,
-                RunMlflowserveBuildRun,
+                BuildRun,
                 RunSpecMlflowserveBuildRun,
                 RunStatusMlflowserveBuildRun,
                 base=RunBuilder,
@@ -199,7 +197,7 @@ ollamaserve = ExecFamily(
             ),
             run=BuilderDef(
                 EntityKinds.RUN_OLLAMASERVE_SERVE,
-                RunModelserveRun,
+                ServeRun,
                 RunSpecOllamaserveRun,
                 RunStatusModelserveRun,
                 base=RunBuilder,
@@ -229,7 +227,7 @@ sglangserve = ExecFamily(
             ),
             run=BuilderDef(
                 EntityKinds.RUN_SGLANGSERVE_SERVE,
-                RunModelserveRun,
+                ServeRun,
                 RunSpecSglangserveRun,
                 RunStatusModelserveRun,
                 base=RunBuilder,
@@ -283,7 +281,7 @@ teiserve = ExecFamily(
             task=BuilderDef(EntityKinds.TASK_TEISERVE_SERVE, Task, TaskSpecModelserveServe, Status, base=TaskBuilder),
             run=BuilderDef(
                 EntityKinds.RUN_TEISERVE_SERVE,
-                RunModelserveRun,
+                ServeRun,
                 RunSpecTeiserveRun,
                 RunStatusModelserveRun,
                 base=RunBuilder,
@@ -313,7 +311,7 @@ vllmserve_pooling = ExecFamily(
             ),
             run=BuilderDef(
                 EntityKinds.RUN_VLLMSERVEPOOLING_SERVE,
-                RunModelserveRun,
+                ServeRun,
                 RunSpecVllmserveRun,
                 RunStatusVllmserveRun,
                 base=RunBuilder,
@@ -343,7 +341,7 @@ vllmserve_speech = ExecFamily(
             ),
             run=BuilderDef(
                 EntityKinds.RUN_VLLMSERVESPEECH_SERVE,
-                RunModelserveRun,
+                ServeRun,
                 RunSpecVllmserveRun,
                 RunStatusVllmserveRun,
                 base=RunBuilder,
@@ -373,7 +371,7 @@ vllmserve_text = ExecFamily(
             ),
             run=BuilderDef(
                 EntityKinds.RUN_VLLMSERVETEXT_SERVE,
-                RunModelserveRun,
+                ServeRun,
                 RunSpecVllmserveRun,
                 RunStatusVllmserveRun,
                 base=RunBuilder,
@@ -386,7 +384,7 @@ vllmserve_text = ExecFamily(
 _models = (
     BuilderDef(
         EntityKinds.MODEL_HUGGINGFACE,
-        ModelHuggingface,
+        Model,
         ModelSpecHuggingface,
         ModelStatus,
         base=ModelBuilder,
@@ -394,7 +392,7 @@ _models = (
     ),
     BuilderDef(
         EntityKinds.MODEL_MLFLOW,
-        ModelMlflow,
+        Model,
         ModelSpecMlflow,
         ModelStatus,
         base=ModelBuilder,
@@ -405,7 +403,7 @@ _models = (
     ),
     BuilderDef(
         EntityKinds.MODEL_OLLAMA,
-        ModelModel,
+        Model,
         ModelSpec,
         ModelStatus,
         base=ModelBuilder,
@@ -413,7 +411,7 @@ _models = (
     ),
     BuilderDef(
         EntityKinds.MODEL_SKLEARN,
-        ModelSklearn,
+        Model,
         ModelSpecSklearn,
         ModelStatus,
         base=ModelBuilder,

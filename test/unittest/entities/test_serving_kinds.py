@@ -8,8 +8,7 @@ import pytest
 import requests
 from digitalhub.factory.entity import entity_factory
 from digitalhub.factory.registry import registry
-
-from digitalhub_runtime_modelserve.entities.run.modelserve_run.entity import RunModelserveRun
+from digitalhub.plugins import ServeRun
 
 SERVING_KINDS = ("ollamaserve", "sglangserve", "teiserve")
 
@@ -40,12 +39,12 @@ def test_serving_kind_has_a_complete_family(kind) -> None:
 
     assert function.spec.path == "store://my-project/model/ollama/llama3:1"
     assert task.kind == f"{kind}+serve"
-    assert isinstance(run, RunModelserveRun)
+    assert isinstance(run, ServeRun)
     assert entity_factory.get_action_from_task_kind(kind, f"{kind}+serve") == "serve"
     assert registry.get_shortcut(f"new_function_{kind}").__name__ == f"new_function_{kind}"
 
 
-def _running_service(kind: str) -> RunModelserveRun:
+def _running_service(kind: str) -> ServeRun:
     return entity_factory.build_entity_from_dict(
         _entity(
             f"{kind}+serve:run",

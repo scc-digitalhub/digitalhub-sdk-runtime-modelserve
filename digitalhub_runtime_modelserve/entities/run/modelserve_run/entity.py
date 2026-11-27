@@ -6,19 +6,13 @@ from __future__ import annotations
 
 import typing
 
-from digitalhub.plugins import Run, ServeRunMixin
+from digitalhub.plugins import ServeRun
 
 if typing.TYPE_CHECKING:
     from requests import Response
 
 
-class RunModelserveRun(ServeRunMixin, Run):
-    """
-    Serve run of a model.
-    """
-
-
-class RunModelserveV2Run(RunModelserveRun):
+class RunModelserveV2Run(ServeRun):
     """
     Serve run of a model exposed with the V2 inference protocol.
     """

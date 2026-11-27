@@ -12,7 +12,8 @@ from digitalhub.utils.types import SourcesOrListOfSources
 from digitalhub_runtime_modelserve.entities._commons.enums import EntityKinds
 
 if typing.TYPE_CHECKING:
-    from digitalhub_runtime_modelserve.entities.model.mlflow.entity import ModelMlflow
+    from digitalhub.plugins import Model
+
     from digitalhub_runtime_modelserve.entities.model.mlflow.models import Dataset, Signature
 
 
@@ -33,7 +34,7 @@ def log_mlflow(
     input_datasets: list[Dataset] | None = None,
     signature: Signature | None = None,
     **kwargs,
-) -> ModelMlflow:
+) -> Model:
     """
     Create and upload an MLflow model entity.
 
@@ -76,7 +77,7 @@ def log_mlflow(
 
     Returns
     -------
-    ModelMlflow
+    Model
         Created MLflow model entity with uploaded files.
 
     Examples
@@ -133,7 +134,7 @@ def register_mlflow(
     input_datasets: list[Dataset] | None = None,
     signature: Signature | None = None,
     **kwargs,
-) -> ModelMlflow:
+) -> Model:
     """
     Register an MLflow model entity for an existing source.
 
@@ -178,7 +179,7 @@ def register_mlflow(
 
     Returns
     -------
-    ModelMlflow
+    Model
         Registered MLflow model entity.
 
     Examples

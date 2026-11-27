@@ -66,4 +66,3 @@ class Actions(Enum):
     """
 
     SERVE = "serve"
-    BUILD = "build"

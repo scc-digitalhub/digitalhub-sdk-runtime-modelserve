@@ -8,6 +8,7 @@ from digitalhub.plugins import (
     BuilderDef,
     CrudPlugin,
     ExecFamily,
+    ExecutableActions,
     FunctionBuilder,
     ModelBuilder,
     ModelSpec,
@@ -169,7 +170,7 @@ mlflowserve = ExecFamily(
                 base=RunBuilder,
             ),
         ),
-        Actions.BUILD: Action(
+        ExecutableActions.BUILD: Action(
             task=BuilderDef(
                 EntityKinds.TASK_MLFLOWSERVE_BUILD,
                 Task,

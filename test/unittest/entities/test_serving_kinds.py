@@ -10,7 +10,6 @@ from digitalhub.factory.registry import registry
 
 import digitalhub_runtime_modelserve.entities.run.modelserve_run.entity as run_entity_module
 from digitalhub_runtime_modelserve.entities.run.modelserve_run.entity import RunServiceUrlsRun
-from digitalhub_runtime_modelserve.entities.run.vllmserve_run.entity import RunVllmserveRun
 
 SERVING_KINDS = ("ollamaserve", "sglangserve", "teiserve")
 
@@ -42,7 +41,6 @@ def test_serving_kind_has_a_complete_family(kind) -> None:
     assert function.spec.path == "store://my-project/model/ollama/llama3:1"
     assert task.kind == f"{kind}+serve"
     assert isinstance(run, RunServiceUrlsRun)
-    assert not isinstance(run, RunVllmserveRun)
     assert entity_factory.get_action_from_task_kind(kind, f"{kind}+serve") == "serve"
     assert registry.get_shortcut(f"new_function_{kind}").__name__ == f"new_function_{kind}"
 

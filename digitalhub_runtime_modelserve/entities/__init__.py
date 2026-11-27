@@ -14,6 +14,7 @@ from digitalhub.plugins import (
     ModelStatus,
     RunBuilder,
     Status,
+    Task,
     TaskBuilder,
 )
 
@@ -57,9 +58,8 @@ from digitalhub_runtime_modelserve.entities.model.ollama.crud import register_ol
 from digitalhub_runtime_modelserve.entities.model.sklearn.crud import log_sklearn, register_sklearn
 from digitalhub_runtime_modelserve.entities.model.sklearn.entity import ModelSklearn
 from digitalhub_runtime_modelserve.entities.model.sklearn.spec import ModelSpecSklearn
+from digitalhub_runtime_modelserve.entities.run.kubeaiserve_run.entity import RunKubeaiserveRun
 from digitalhub_runtime_modelserve.entities.run.kubeaiserve_run.spec import RunSpecKubeaiserveRun
-from digitalhub_runtime_modelserve.entities.run.kubeaiservespeechtotext_run.entity import RunKubeaiserveSpeechtotextRun
-from digitalhub_runtime_modelserve.entities.run.kubeaiservetext_run.entity import RunKubeaiserveTextRun
 from digitalhub_runtime_modelserve.entities.run.kubeaiservetext_run.spec import RunSpecKubeaiserveTextRun
 from digitalhub_runtime_modelserve.entities.run.mlflowserve_build_run.entity import RunMlflowserveBuildRun
 from digitalhub_runtime_modelserve.entities.run.mlflowserve_build_run.spec import RunSpecMlflowserveBuildRun
@@ -75,23 +75,9 @@ from digitalhub_runtime_modelserve.entities.run.sklearnserve_run.spec import Run
 from digitalhub_runtime_modelserve.entities.run.teiserve_run.spec import RunSpecTeiserveRun
 from digitalhub_runtime_modelserve.entities.run.vllmserve_run.spec import RunSpecVllmserveRun
 from digitalhub_runtime_modelserve.entities.run.vllmserve_run.status import RunStatusVllmserveRun
-from digitalhub_runtime_modelserve.entities.run.vllmservepooling_run.entity import RunVllmservepoolingRun
-from digitalhub_runtime_modelserve.entities.run.vllmservespeech_run.entity import RunVllmservespeechRun
-from digitalhub_runtime_modelserve.entities.run.vllmservetext_run.entity import RunVllmservetextRun
 from digitalhub_runtime_modelserve.entities.task.kubeaiserve_serve.spec import TaskSpecKubeaiserveServe
-from digitalhub_runtime_modelserve.entities.task.kubeaiservespeechtotext_serve.entity import (
-    TaskKubeaiserveSpeechtotextServe,
-)
-from digitalhub_runtime_modelserve.entities.task.kubeaiservetext_serve.entity import TaskKubeaiserveTextServe
-from digitalhub_runtime_modelserve.entities.task.mlflowserve_build.entity import TaskMlflowserveBuild
 from digitalhub_runtime_modelserve.entities.task.mlflowserve_build.spec import TaskSpecMlflowserveBuild
-from digitalhub_runtime_modelserve.entities.task.mlflowserve_serve.entity import TaskMlflowserveServe
-from digitalhub_runtime_modelserve.entities.task.modelserve_serve.entity import TaskModelserveServe
 from digitalhub_runtime_modelserve.entities.task.modelserve_serve.spec import TaskSpecModelserveServe
-from digitalhub_runtime_modelserve.entities.task.sklearnserve_serve.entity import TaskSklearnserveServe
-from digitalhub_runtime_modelserve.entities.task.vllmservepooling_serve.entity import TaskVllmservepoolingServe
-from digitalhub_runtime_modelserve.entities.task.vllmservespeech_serve.entity import TaskVllmservespeechServe
-from digitalhub_runtime_modelserve.entities.task.vllmservetext_serve.entity import TaskVllmservetextServe
 
 # Imported on first use: the entities register even when the runtime cannot be
 # imported, and the import error is reported when a run executes locally.
@@ -110,14 +96,14 @@ kubeai_speech = ExecFamily(
         Actions.SERVE: Action(
             task=BuilderDef(
                 EntityKinds.TASK_KUBEAISERVESPEECHTOTEXT_SERVE,
-                TaskKubeaiserveSpeechtotextServe,
+                Task,
                 TaskSpecKubeaiserveServe,
                 Status,
                 base=TaskBuilder,
             ),
             run=BuilderDef(
                 EntityKinds.RUN_KUBEAISERVESPEECHTOTEXT_SERVE,
-                RunKubeaiserveSpeechtotextRun,
+                RunKubeaiserveRun,
                 RunSpecKubeaiserveRun,
                 RunStatusModelserveRun,
                 base=RunBuilder,
@@ -140,14 +126,14 @@ kubeai_text = ExecFamily(
         Actions.SERVE: Action(
             task=BuilderDef(
                 EntityKinds.TASK_KUBEAISERVETEXT_SERVE,
-                TaskKubeaiserveTextServe,
+                Task,
                 TaskSpecKubeaiserveServe,
                 Status,
                 base=TaskBuilder,
             ),
             run=BuilderDef(
                 EntityKinds.RUN_KUBEAISERVETEXT_SERVE,
-                RunKubeaiserveTextRun,
+                RunKubeaiserveRun,
                 RunSpecKubeaiserveTextRun,
                 RunStatusModelserveRun,
                 base=RunBuilder,
@@ -170,7 +156,7 @@ mlflowserve = ExecFamily(
         Actions.SERVE: Action(
             task=BuilderDef(
                 EntityKinds.TASK_MLFLOWSERVE_SERVE,
-                TaskMlflowserveServe,
+                Task,
                 TaskSpecModelserveServe,
                 Status,
                 base=TaskBuilder,
@@ -186,7 +172,7 @@ mlflowserve = ExecFamily(
         Actions.BUILD: Action(
             task=BuilderDef(
                 EntityKinds.TASK_MLFLOWSERVE_BUILD,
-                TaskMlflowserveBuild,
+                Task,
                 TaskSpecMlflowserveBuild,
                 Status,
                 base=TaskBuilder,
@@ -216,7 +202,7 @@ ollamaserve = ExecFamily(
         Actions.SERVE: Action(
             task=BuilderDef(
                 EntityKinds.TASK_OLLAMASERVE_SERVE,
-                TaskModelserveServe,
+                Task,
                 TaskSpecModelserveServe,
                 Status,
                 base=TaskBuilder,
@@ -246,7 +232,7 @@ sglangserve = ExecFamily(
         Actions.SERVE: Action(
             task=BuilderDef(
                 EntityKinds.TASK_SGLANGSERVE_SERVE,
-                TaskModelserveServe,
+                Task,
                 TaskSpecModelserveServe,
                 Status,
                 base=TaskBuilder,
@@ -276,7 +262,7 @@ sklearnserve = ExecFamily(
         Actions.SERVE: Action(
             task=BuilderDef(
                 EntityKinds.TASK_SKLEARNSERVE_SERVE,
-                TaskSklearnserveServe,
+                Task,
                 TaskSpecModelserveServe,
                 Status,
                 base=TaskBuilder,
@@ -304,9 +290,7 @@ teiserve = ExecFamily(
     ),
     actions={
         Actions.SERVE: Action(
-            task=BuilderDef(
-                EntityKinds.TASK_TEISERVE_SERVE, TaskModelserveServe, TaskSpecModelserveServe, Status, base=TaskBuilder
-            ),
+            task=BuilderDef(EntityKinds.TASK_TEISERVE_SERVE, Task, TaskSpecModelserveServe, Status, base=TaskBuilder),
             run=BuilderDef(
                 EntityKinds.RUN_TEISERVE_SERVE,
                 RunServiceUrlsRun,
@@ -332,14 +316,14 @@ vllmserve_pooling = ExecFamily(
         Actions.SERVE: Action(
             task=BuilderDef(
                 EntityKinds.TASK_VLLMSERVEPOOLING_SERVE,
-                TaskVllmservepoolingServe,
+                Task,
                 TaskSpecModelserveServe,
                 Status,
                 base=TaskBuilder,
             ),
             run=BuilderDef(
                 EntityKinds.RUN_VLLMSERVEPOOLING_SERVE,
-                RunVllmservepoolingRun,
+                RunServiceUrlsRun,
                 RunSpecVllmserveRun,
                 RunStatusVllmserveRun,
                 base=RunBuilder,
@@ -362,14 +346,14 @@ vllmserve_speech = ExecFamily(
         Actions.SERVE: Action(
             task=BuilderDef(
                 EntityKinds.TASK_VLLMSERVESPEECH_SERVE,
-                TaskVllmservespeechServe,
+                Task,
                 TaskSpecModelserveServe,
                 Status,
                 base=TaskBuilder,
             ),
             run=BuilderDef(
                 EntityKinds.RUN_VLLMSERVESPEECH_SERVE,
-                RunVllmservespeechRun,
+                RunServiceUrlsRun,
                 RunSpecVllmserveRun,
                 RunStatusVllmserveRun,
                 base=RunBuilder,
@@ -392,14 +376,14 @@ vllmserve_text = ExecFamily(
         Actions.SERVE: Action(
             task=BuilderDef(
                 EntityKinds.TASK_VLLMSERVETEXT_SERVE,
-                TaskVllmservetextServe,
+                Task,
                 TaskSpecModelserveServe,
                 Status,
                 base=TaskBuilder,
             ),
             run=BuilderDef(
                 EntityKinds.RUN_VLLMSERVETEXT_SERVE,
-                RunVllmservetextRun,
+                RunServiceUrlsRun,
                 RunSpecVllmserveRun,
                 RunStatusVllmserveRun,
                 base=RunBuilder,

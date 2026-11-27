@@ -9,6 +9,7 @@ from digitalhub.plugins import (
     CrudPlugin,
     ExecFamily,
     ExecutableActions,
+    Function,
     FunctionBuilder,
     ModelBuilder,
     ModelSpec,
@@ -24,31 +25,22 @@ from digitalhub_runtime_modelserve.entities.function.kubeaiserve.spec import Fun
 from digitalhub_runtime_modelserve.entities.function.kubeaiservespeechtotext.crud import (
     new_function_kubeaiservespeechtotext,
 )
-from digitalhub_runtime_modelserve.entities.function.kubeaiservespeechtotext.entity import (
-    FunctionKubeaiserveSpeechtotext,
-)
 from digitalhub_runtime_modelserve.entities.function.kubeaiservetext.crud import new_function_kubeaiservetext
-from digitalhub_runtime_modelserve.entities.function.kubeaiservetext.entity import FunctionKubeaiserveText
 from digitalhub_runtime_modelserve.entities.function.kubeaiservetext.spec import FunctionSpecKubeaiserveText
 from digitalhub_runtime_modelserve.entities.function.mlflowserve.crud import new_function_mlflowserve
 from digitalhub_runtime_modelserve.entities.function.mlflowserve.entity import FunctionMlflowserve
-from digitalhub_runtime_modelserve.entities.function.modelserve.entity import FunctionModelserve
 from digitalhub_runtime_modelserve.entities.function.modelserve.spec import FunctionSpecModelserve
 from digitalhub_runtime_modelserve.entities.function.ollamaserve.crud import new_function_ollamaserve
 from digitalhub_runtime_modelserve.entities.function.ollamaserve.spec import FunctionSpecOllamaserve
 from digitalhub_runtime_modelserve.entities.function.sglangserve.crud import new_function_sglangserve
 from digitalhub_runtime_modelserve.entities.function.sglangserve.spec import FunctionSpecSglangserve
 from digitalhub_runtime_modelserve.entities.function.sklearnserve.crud import new_function_sklearnserve
-from digitalhub_runtime_modelserve.entities.function.sklearnserve.entity import FunctionSklearnserve
 from digitalhub_runtime_modelserve.entities.function.teiserve.crud import new_function_teiserve
 from digitalhub_runtime_modelserve.entities.function.teiserve.spec import FunctionSpecTeiserve
 from digitalhub_runtime_modelserve.entities.function.vllmserve.spec import FunctionSpecVllmserve
 from digitalhub_runtime_modelserve.entities.function.vllmservepooling.crud import new_function_vllmservepooling
-from digitalhub_runtime_modelserve.entities.function.vllmservepooling.entity import FunctionVllmservepooling
 from digitalhub_runtime_modelserve.entities.function.vllmservespeech.crud import new_function_vllmservespeech
-from digitalhub_runtime_modelserve.entities.function.vllmservespeech.entity import FunctionVllmservespeech
 from digitalhub_runtime_modelserve.entities.function.vllmservetext.crud import new_function_vllmservetext
-from digitalhub_runtime_modelserve.entities.function.vllmservetext.entity import FunctionVllmservetext
 from digitalhub_runtime_modelserve.entities.model.huggingface.crud import register_huggingface
 from digitalhub_runtime_modelserve.entities.model.huggingface.entity import ModelHuggingface
 from digitalhub_runtime_modelserve.entities.model.huggingface.spec import ModelSpecHuggingface
@@ -84,7 +76,7 @@ RUNTIME_MODELSERVE_BUILDER = "digitalhub_runtime_modelserve.runtimes.builder:Run
 kubeai_speech = ExecFamily(
     executable=BuilderDef(
         EntityKinds.FUNCTION_KUBEAISERVESPEECHTOTEXT,
-        FunctionKubeaiserveSpeechtotext,
+        Function,
         FunctionSpecKubeaiserve,
         Status,
         base=FunctionBuilder,
@@ -114,7 +106,7 @@ kubeai_speech = ExecFamily(
 kubeai_text = ExecFamily(
     executable=BuilderDef(
         EntityKinds.FUNCTION_KUBEAISERVETEXT,
-        FunctionKubeaiserveText,
+        Function,
         FunctionSpecKubeaiserveText,
         Status,
         base=FunctionBuilder,
@@ -190,7 +182,7 @@ mlflowserve = ExecFamily(
 ollamaserve = ExecFamily(
     executable=BuilderDef(
         EntityKinds.FUNCTION_OLLAMASERVE,
-        FunctionModelserve,
+        Function,
         FunctionSpecOllamaserve,
         Status,
         base=FunctionBuilder,
@@ -220,7 +212,7 @@ ollamaserve = ExecFamily(
 sglangserve = ExecFamily(
     executable=BuilderDef(
         EntityKinds.FUNCTION_SGLANGSERVE,
-        FunctionModelserve,
+        Function,
         FunctionSpecSglangserve,
         Status,
         base=FunctionBuilder,
@@ -250,7 +242,7 @@ sglangserve = ExecFamily(
 sklearnserve = ExecFamily(
     executable=BuilderDef(
         EntityKinds.FUNCTION_SKLEARNSERVE,
-        FunctionSklearnserve,
+        Function,
         FunctionSpecModelserve,
         Status,
         base=FunctionBuilder,
@@ -280,7 +272,7 @@ sklearnserve = ExecFamily(
 teiserve = ExecFamily(
     executable=BuilderDef(
         EntityKinds.FUNCTION_TEISERVE,
-        FunctionModelserve,
+        Function,
         FunctionSpecTeiserve,
         Status,
         base=FunctionBuilder,
@@ -304,7 +296,7 @@ teiserve = ExecFamily(
 vllmserve_pooling = ExecFamily(
     executable=BuilderDef(
         EntityKinds.FUNCTION_VLLMSERVEPOOLING,
-        FunctionVllmservepooling,
+        Function,
         FunctionSpecVllmserve,
         Status,
         base=FunctionBuilder,
@@ -334,7 +326,7 @@ vllmserve_pooling = ExecFamily(
 vllmserve_speech = ExecFamily(
     executable=BuilderDef(
         EntityKinds.FUNCTION_VLLMSERVESPEECH,
-        FunctionVllmservespeech,
+        Function,
         FunctionSpecVllmserve,
         Status,
         base=FunctionBuilder,
@@ -364,7 +356,7 @@ vllmserve_speech = ExecFamily(
 vllmserve_text = ExecFamily(
     executable=BuilderDef(
         EntityKinds.FUNCTION_VLLMSERVETEXT,
-        FunctionVllmservetext,
+        Function,
         FunctionSpecVllmserve,
         Status,
         base=FunctionBuilder,

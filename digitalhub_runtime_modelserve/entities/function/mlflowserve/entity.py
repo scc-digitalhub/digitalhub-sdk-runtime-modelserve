@@ -6,9 +6,7 @@ from __future__ import annotations
 
 import typing
 
-from digitalhub.plugins import ExecutableBuildMixin
-
-from digitalhub_runtime_modelserve.entities.function.modelserve.entity import FunctionModelserve
+from digitalhub.plugins import ExecutableBuildMixin, Function
 
 if typing.TYPE_CHECKING:
     from digitalhub.plugins import Status
@@ -16,7 +14,7 @@ if typing.TYPE_CHECKING:
     from digitalhub_runtime_modelserve.entities.function.modelserve.spec import FunctionSpecModelserve
 
 
-class FunctionMlflowserve(ExecutableBuildMixin, FunctionModelserve):
+class FunctionMlflowserve(ExecutableBuildMixin, Function):
     """
     FunctionMlflowserve class.
     """

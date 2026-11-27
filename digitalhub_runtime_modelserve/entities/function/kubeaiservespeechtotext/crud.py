@@ -11,9 +11,7 @@ from digitalhub.entities.function.crud import new_function
 from digitalhub_runtime_modelserve.entities._commons.enums import EntityKinds
 
 if typing.TYPE_CHECKING:
-    from digitalhub_runtime_modelserve.entities.function.kubeaiservespeechtotext.entity import (
-        FunctionKubeaiserveSpeechtotext,
-    )
+    from digitalhub.plugins import Function
 
 
 def new_function_kubeaiservespeechtotext(
@@ -28,7 +26,7 @@ def new_function_kubeaiservespeechtotext(
     description: str | None = None,
     labels: list[str] | None = None,
     embedded: bool = False,
-) -> FunctionKubeaiserveSpeechtotext:
+) -> Function:
     """
     Create a KubeAI speech-to-text function entity.
 

@@ -11,7 +11,7 @@ from digitalhub.entities.function.crud import new_function
 from digitalhub_runtime_modelserve.entities._commons.enums import EntityKinds
 
 if typing.TYPE_CHECKING:
-    from digitalhub_runtime_modelserve.entities.function.vllmservetext.entity import FunctionVllmservetext
+    from digitalhub.plugins import Function
 
 
 def new_function_vllmservetext(
@@ -26,7 +26,7 @@ def new_function_vllmservetext(
     description: str | None = None,
     labels: list[str] | None = None,
     embedded: bool = False,
-) -> FunctionVllmservetext:
+) -> Function:
     """
     Create a VLLM text function entity.
 

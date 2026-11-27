@@ -11,7 +11,7 @@ from digitalhub.entities.function.crud import new_function
 from digitalhub_runtime_modelserve.entities._commons.enums import EntityKinds
 
 if typing.TYPE_CHECKING:
-    from digitalhub_runtime_modelserve.entities.function.sklearnserve.entity import FunctionSklearnserve
+    from digitalhub.plugins import Function
 
 
 def new_function_sklearnserve(
@@ -25,7 +25,7 @@ def new_function_sklearnserve(
     description: str | None = None,
     labels: list[str] | None = None,
     embedded: bool = False,
-) -> FunctionSklearnserve:
+) -> Function:
     """
     Create a scikit-learn serving function entity.
 

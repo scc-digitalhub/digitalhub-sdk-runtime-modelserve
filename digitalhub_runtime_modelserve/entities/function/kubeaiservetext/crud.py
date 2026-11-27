@@ -11,7 +11,7 @@ from digitalhub.entities.function.crud import new_function
 from digitalhub_runtime_modelserve.entities._commons.enums import EntityKinds
 
 if typing.TYPE_CHECKING:
-    from digitalhub_runtime_modelserve.entities.function.kubeaiservetext.entity import FunctionKubeaiserveText
+    from digitalhub.plugins import Function
 
 
 def new_function_kubeaiservetext(
@@ -28,7 +28,7 @@ def new_function_kubeaiservetext(
     description: str | None = None,
     labels: list[str] | None = None,
     embedded: bool = False,
-) -> FunctionKubeaiserveText:
+) -> Function:
     """
     Create a KubeAI text function entity.
 

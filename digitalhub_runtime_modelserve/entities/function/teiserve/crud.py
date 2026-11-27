@@ -11,7 +11,7 @@ from digitalhub.entities.function.crud import new_function
 from digitalhub_runtime_modelserve.entities._commons.enums import EntityKinds
 
 if typing.TYPE_CHECKING:
-    from digitalhub_runtime_modelserve.entities.function.modelserve.entity import FunctionModelserve
+    from digitalhub.plugins import Function
 
 
 def new_function_teiserve(
@@ -24,7 +24,7 @@ def new_function_teiserve(
     description: str | None = None,
     labels: list[str] | None = None,
     embedded: bool = False,
-) -> FunctionModelserve:
+) -> Function:
     """
     Create a Text Embeddings Inference serving function entity.
 

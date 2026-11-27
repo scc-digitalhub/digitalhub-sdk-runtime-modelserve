@@ -11,7 +11,7 @@ from digitalhub.entities.function.crud import new_function
 from digitalhub_runtime_modelserve.entities._commons.enums import EntityKinds
 
 if typing.TYPE_CHECKING:
-    from digitalhub_runtime_modelserve.entities.function.vllmservepooling.entity import FunctionVllmservepooling
+    from digitalhub.plugins import Function
 
 
 def new_function_vllmservepooling(
@@ -26,7 +26,7 @@ def new_function_vllmservepooling(
     description: str | None = None,
     labels: list[str] | None = None,
     embedded: bool = False,
-) -> FunctionVllmservepooling:
+) -> Function:
     """
     Create a VLLM pooling function entity.
 

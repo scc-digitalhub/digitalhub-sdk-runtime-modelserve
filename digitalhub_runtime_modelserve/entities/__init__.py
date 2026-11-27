@@ -19,7 +19,7 @@ from digitalhub.plugins import (
     TaskBuilder,
 )
 
-from digitalhub_runtime_modelserve.entities._commons.enums import Actions, EntityKinds
+from digitalhub_runtime_modelserve.entities._commons.enums import EntityKinds
 from digitalhub_runtime_modelserve.entities.function.kubeaiserve.spec import FunctionSpecKubeaiserve
 from digitalhub_runtime_modelserve.entities.function.kubeaiservespeechtotext.crud import (
     new_function_kubeaiservespeechtotext,
@@ -59,19 +59,16 @@ from digitalhub_runtime_modelserve.entities.model.ollama.crud import register_ol
 from digitalhub_runtime_modelserve.entities.model.sklearn.crud import log_sklearn, register_sklearn
 from digitalhub_runtime_modelserve.entities.model.sklearn.entity import ModelSklearn
 from digitalhub_runtime_modelserve.entities.model.sklearn.spec import ModelSpecSklearn
-from digitalhub_runtime_modelserve.entities.run.kubeaiserve_run.entity import RunKubeaiserveRun
 from digitalhub_runtime_modelserve.entities.run.kubeaiserve_run.spec import RunSpecKubeaiserveRun
 from digitalhub_runtime_modelserve.entities.run.kubeaiservetext_run.spec import RunSpecKubeaiserveTextRun
 from digitalhub_runtime_modelserve.entities.run.mlflowserve_build_run.entity import RunMlflowserveBuildRun
 from digitalhub_runtime_modelserve.entities.run.mlflowserve_build_run.spec import RunSpecMlflowserveBuildRun
 from digitalhub_runtime_modelserve.entities.run.mlflowserve_build_run.status import RunStatusMlflowserveBuildRun
-from digitalhub_runtime_modelserve.entities.run.mlflowserve_serve_run.entity import RunMlflowserveServeRun
 from digitalhub_runtime_modelserve.entities.run.mlflowserve_serve_run.spec import RunSpecMlflowserveServeRun
-from digitalhub_runtime_modelserve.entities.run.modelserve_run.entity import RunServiceUrlsRun
+from digitalhub_runtime_modelserve.entities.run.modelserve_run.entity import RunModelserveRun, RunModelserveV2Run
 from digitalhub_runtime_modelserve.entities.run.modelserve_run.status import RunStatusModelserveRun
 from digitalhub_runtime_modelserve.entities.run.ollamaserve_run.spec import RunSpecOllamaserveRun
 from digitalhub_runtime_modelserve.entities.run.sglangserve_run.spec import RunSpecSglangserveRun
-from digitalhub_runtime_modelserve.entities.run.sklearnserve_run.entity import RunSklearnserveRun
 from digitalhub_runtime_modelserve.entities.run.sklearnserve_run.spec import RunSpecSklearnserveRun
 from digitalhub_runtime_modelserve.entities.run.teiserve_run.spec import RunSpecTeiserveRun
 from digitalhub_runtime_modelserve.entities.run.vllmserve_run.spec import RunSpecVllmserveRun
@@ -94,7 +91,7 @@ kubeai_speech = ExecFamily(
         shortcuts=(CrudPlugin(new_function_kubeaiservespeechtotext),),
     ),
     actions={
-        Actions.SERVE: Action(
+        ExecutableActions.SERVE: Action(
             task=BuilderDef(
                 EntityKinds.TASK_KUBEAISERVESPEECHTOTEXT_SERVE,
                 Task,
@@ -104,7 +101,7 @@ kubeai_speech = ExecFamily(
             ),
             run=BuilderDef(
                 EntityKinds.RUN_KUBEAISERVESPEECHTOTEXT_SERVE,
-                RunKubeaiserveRun,
+                RunModelserveRun,
                 RunSpecKubeaiserveRun,
                 RunStatusModelserveRun,
                 base=RunBuilder,
@@ -124,7 +121,7 @@ kubeai_text = ExecFamily(
         shortcuts=(CrudPlugin(new_function_kubeaiservetext),),
     ),
     actions={
-        Actions.SERVE: Action(
+        ExecutableActions.SERVE: Action(
             task=BuilderDef(
                 EntityKinds.TASK_KUBEAISERVETEXT_SERVE,
                 Task,
@@ -134,7 +131,7 @@ kubeai_text = ExecFamily(
             ),
             run=BuilderDef(
                 EntityKinds.RUN_KUBEAISERVETEXT_SERVE,
-                RunKubeaiserveRun,
+                RunModelserveRun,
                 RunSpecKubeaiserveTextRun,
                 RunStatusModelserveRun,
                 base=RunBuilder,
@@ -154,7 +151,7 @@ mlflowserve = ExecFamily(
         shortcuts=(CrudPlugin(new_function_mlflowserve),),
     ),
     actions={
-        Actions.SERVE: Action(
+        ExecutableActions.SERVE: Action(
             task=BuilderDef(
                 EntityKinds.TASK_MLFLOWSERVE_SERVE,
                 Task,
@@ -164,7 +161,7 @@ mlflowserve = ExecFamily(
             ),
             run=BuilderDef(
                 EntityKinds.RUN_MLFLOWSERVE_SERVE,
-                RunMlflowserveServeRun,
+                RunModelserveV2Run,
                 RunSpecMlflowserveServeRun,
                 RunStatusModelserveRun,
                 base=RunBuilder,
@@ -200,7 +197,7 @@ ollamaserve = ExecFamily(
         shortcuts=(CrudPlugin(new_function_ollamaserve),),
     ),
     actions={
-        Actions.SERVE: Action(
+        ExecutableActions.SERVE: Action(
             task=BuilderDef(
                 EntityKinds.TASK_OLLAMASERVE_SERVE,
                 Task,
@@ -210,7 +207,7 @@ ollamaserve = ExecFamily(
             ),
             run=BuilderDef(
                 EntityKinds.RUN_OLLAMASERVE_SERVE,
-                RunServiceUrlsRun,
+                RunModelserveRun,
                 RunSpecOllamaserveRun,
                 RunStatusModelserveRun,
                 base=RunBuilder,
@@ -230,7 +227,7 @@ sglangserve = ExecFamily(
         shortcuts=(CrudPlugin(new_function_sglangserve),),
     ),
     actions={
-        Actions.SERVE: Action(
+        ExecutableActions.SERVE: Action(
             task=BuilderDef(
                 EntityKinds.TASK_SGLANGSERVE_SERVE,
                 Task,
@@ -240,7 +237,7 @@ sglangserve = ExecFamily(
             ),
             run=BuilderDef(
                 EntityKinds.RUN_SGLANGSERVE_SERVE,
-                RunServiceUrlsRun,
+                RunModelserveRun,
                 RunSpecSglangserveRun,
                 RunStatusModelserveRun,
                 base=RunBuilder,
@@ -260,7 +257,7 @@ sklearnserve = ExecFamily(
         shortcuts=(CrudPlugin(new_function_sklearnserve),),
     ),
     actions={
-        Actions.SERVE: Action(
+        ExecutableActions.SERVE: Action(
             task=BuilderDef(
                 EntityKinds.TASK_SKLEARNSERVE_SERVE,
                 Task,
@@ -270,7 +267,7 @@ sklearnserve = ExecFamily(
             ),
             run=BuilderDef(
                 EntityKinds.RUN_SKLEARNSERVE_SERVE,
-                RunSklearnserveRun,
+                RunModelserveV2Run,
                 RunSpecSklearnserveRun,
                 RunStatusModelserveRun,
                 base=RunBuilder,
@@ -290,11 +287,11 @@ teiserve = ExecFamily(
         shortcuts=(CrudPlugin(new_function_teiserve),),
     ),
     actions={
-        Actions.SERVE: Action(
+        ExecutableActions.SERVE: Action(
             task=BuilderDef(EntityKinds.TASK_TEISERVE_SERVE, Task, TaskSpecModelserveServe, Status, base=TaskBuilder),
             run=BuilderDef(
                 EntityKinds.RUN_TEISERVE_SERVE,
-                RunServiceUrlsRun,
+                RunModelserveRun,
                 RunSpecTeiserveRun,
                 RunStatusModelserveRun,
                 base=RunBuilder,
@@ -314,7 +311,7 @@ vllmserve_pooling = ExecFamily(
         shortcuts=(CrudPlugin(new_function_vllmservepooling),),
     ),
     actions={
-        Actions.SERVE: Action(
+        ExecutableActions.SERVE: Action(
             task=BuilderDef(
                 EntityKinds.TASK_VLLMSERVEPOOLING_SERVE,
                 Task,
@@ -324,7 +321,7 @@ vllmserve_pooling = ExecFamily(
             ),
             run=BuilderDef(
                 EntityKinds.RUN_VLLMSERVEPOOLING_SERVE,
-                RunServiceUrlsRun,
+                RunModelserveRun,
                 RunSpecVllmserveRun,
                 RunStatusVllmserveRun,
                 base=RunBuilder,
@@ -344,7 +341,7 @@ vllmserve_speech = ExecFamily(
         shortcuts=(CrudPlugin(new_function_vllmservespeech),),
     ),
     actions={
-        Actions.SERVE: Action(
+        ExecutableActions.SERVE: Action(
             task=BuilderDef(
                 EntityKinds.TASK_VLLMSERVESPEECH_SERVE,
                 Task,
@@ -354,7 +351,7 @@ vllmserve_speech = ExecFamily(
             ),
             run=BuilderDef(
                 EntityKinds.RUN_VLLMSERVESPEECH_SERVE,
-                RunServiceUrlsRun,
+                RunModelserveRun,
                 RunSpecVllmserveRun,
                 RunStatusVllmserveRun,
                 base=RunBuilder,
@@ -374,7 +371,7 @@ vllmserve_text = ExecFamily(
         shortcuts=(CrudPlugin(new_function_vllmservetext),),
     ),
     actions={
-        Actions.SERVE: Action(
+        ExecutableActions.SERVE: Action(
             task=BuilderDef(
                 EntityKinds.TASK_VLLMSERVETEXT_SERVE,
                 Task,
@@ -384,7 +381,7 @@ vllmserve_text = ExecFamily(
             ),
             run=BuilderDef(
                 EntityKinds.RUN_VLLMSERVETEXT_SERVE,
-                RunServiceUrlsRun,
+                RunModelserveRun,
                 RunSpecVllmserveRun,
                 RunStatusVllmserveRun,
                 base=RunBuilder,

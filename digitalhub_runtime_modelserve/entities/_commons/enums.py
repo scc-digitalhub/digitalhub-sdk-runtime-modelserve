@@ -58,11 +58,3 @@ class EntityKinds(Enum):
     FUNCTION_VLLMSERVETEXT = "vllmserve-text"
     TASK_VLLMSERVETEXT_SERVE = "vllmserve-text+serve"
     RUN_VLLMSERVETEXT_SERVE = "vllmserve-text+serve:run"
-
-
-class Actions(Enum):
-    """
-    Task actions.
-    """
-
-    SERVE = "serve"

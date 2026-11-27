@@ -6,14 +6,14 @@ from __future__ import annotations
 
 import typing
 
-from digitalhub_runtime_modelserve.entities.run.modelserve_run.entity import RunModelserveRun
+from digitalhub.plugins import Run
 
 if typing.TYPE_CHECKING:
     from digitalhub_runtime_modelserve.entities.run.mlflowserve_build_run.spec import RunSpecMlflowserveBuildRun
     from digitalhub_runtime_modelserve.entities.run.mlflowserve_build_run.status import RunStatusMlflowserveBuildRun
 
 
-class RunMlflowserveBuildRun(RunModelserveRun):
+class RunMlflowserveBuildRun(Run):
     """
     RunMlflowserveBuildRun class.
     """
